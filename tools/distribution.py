@@ -46,6 +46,7 @@ def safe_path(value):
  if len(value)>180 or '\\' in value or value.startswith('/') or any(not s or s in ['.','..'] or s.endswith(('.', ' ')) or re.search(r'[<>:"|?*\x00-\x1f]',s) or re.match(r'^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(\.|$)',s,re.I) for s in value.split('/')):raise ValueError('Unsafe package path')
 def validate_manifest(data,minimum_sequence=0):
  schema(data,'genesis-manifest');freshness(data,minimum_sequence)
+ if data['saveSchema']==4 and tuple(map(int,data['minimumHubVersion'].split('.')))<(0,3,0):raise ValueError('Save schema4 requires Hub0.3.0')
  if sorted(p['kind'] for p in data['packages'])!=['game','model','runtime']:raise ValueError('Components mismatch')
  seen=set();total=0
  for p in data['packages']:

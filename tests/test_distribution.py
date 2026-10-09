@@ -57,3 +57,9 @@ class DistributionTests(unittest.TestCase):
  def test_screenshot_traversal(self):
   self.catalog['infrastructure']['screenshots']=[{'url':'/../private','alt':'Test'}]
   with self.assertRaises(ValueError):validate_catalog(self.catalog)
+
+ def test_schema4_requires_hub03(self):
+  from tools.distribution import validate_manifest
+  m={'schema':1,'product':'genesis','channel':'stable','platform':'windows-x64','version':'0.4.0','sequence':1,'expires':self.catalog['expires'],'minimumHubVersion':'0.2.0','saveSchema':4,'sourceCommit':'a'*40,'packages':[]}
+  for kind,path in [('game','EvidenceGenesis.exe'),('runtime','llama-server.exe'),('model','genesis.gguf')]:m['packages'].append({'kind':kind,'url':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/'+kind+'.zip','size':1,'sha256':'a'*64,'files':[{'path':path,'size':1,'sha256':'b'*64}]})
+  with self.assertRaises(ValueError):validate_manifest(m)
