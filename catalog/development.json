@@ -47,7 +47,7 @@
       "release": null,
       "screenshots": [],
       "licenseNotices": [],
-      "description": "A local companion workshop for teaching, creating and reviewing tasks.",
+      "description": "A teachable 2.5D AI companion game with local inference and user-controlled memory.",
       "requirements": [
         "Windows x64"
       ],
@@ -67,7 +67,7 @@
       "release": null,
       "screenshots": [],
       "licenseNotices": [],
-      "description": "Planned local experimentation workspace.",
+      "description": "A local voice cloning, speech and audio studio.",
       "requirements": [],
       "releaseNotes": []
     },
@@ -85,7 +85,7 @@
       "release": null,
       "screenshots": [],
       "licenseNotices": [],
-      "description": "Planned local automation companion.",
+      "description": "A local wake-word device assistant.",
       "requirements": [],
       "releaseNotes": []
     },
@@ -103,7 +103,7 @@
       "release": null,
       "screenshots": [],
       "licenseNotices": [],
-      "description": "Planned learning workspace.",
+      "description": "An interactive AI learning application.",
       "requirements": [],
       "releaseNotes": []
     },
@@ -121,7 +121,7 @@
       "release": null,
       "screenshots": [],
       "licenseNotices": [],
-      "description": "Planned workflow workspace.",
+      "description": "A visual workflow and automation builder.",
       "requirements": [],
       "releaseNotes": []
     },
@@ -139,7 +139,7 @@
       "release": null,
       "screenshots": [],
       "licenseNotices": [],
-      "description": "Planned collaborative deliberation workspace.",
+      "description": "A workspace with AI researcher, writer, reviewer and planner roles.",
       "requirements": [],
       "releaseNotes": []
     }

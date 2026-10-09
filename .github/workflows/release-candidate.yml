@@ -1,0 +1,40 @@
+name: Review release candidate evidence (no publishing)
+on:
+  workflow_dispatch:
+    inputs:
+      reviewed_commit:
+        description: Full reviewed distribution source commit
+        required: true
+permissions:
+  contents: read
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    environment: distribution-candidate
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.reviewed_commit }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Validate shared consumers and produce review evidence
+        env:
+          REVIEWED_COMMIT: ${{ inputs.reviewed_commit }}
+        run: |
+          mkdir -p artifacts
+          python - <<'PY'
+          import os,re,subprocess
+          sha=os.environ['REVIEWED_COMMIT']
+          if not re.fullmatch('[a-f0-9]{40}',sha) or subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()!=sha:raise SystemExit('Reviewed commit mismatch')
+          PY
+          python -m unittest discover -s tests -v > artifacts/tests.txt 2>&1
+          python tools/distribution.py validate-catalog catalog/development.json > artifacts/validated-catalog.json
+          cp catalog/source-lock.json artifacts/source-lock.json
+          python tools/rc_evidence.py > artifacts/authenticity-evidence.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: distribution-review-evidence
+          path: artifacts/
+          retention-days: 14
