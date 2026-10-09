@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+artifacts/
+*.pem
+*.key
+*.zip
+*.exe
+*.dll
+*.gguf

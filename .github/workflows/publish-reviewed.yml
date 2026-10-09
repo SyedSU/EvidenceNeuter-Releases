@@ -1,0 +1,62 @@
+name: Publish reviewed signed metadata
+on:
+  workflow_dispatch:
+    inputs:
+      reviewed_commit:
+        description: Full reviewed source commit in this repository
+        required: true
+      immutable_tag:
+        description: Existing immutable release tag (renewal does not modify packages)
+        required: true
+      envelope_path:
+        description: Reviewed signed metadata JSON path in repository
+        required: true
+      kind:
+        type: choice
+        options: [catalog, manifest, hub]
+        required: true
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.reviewed_commit }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Validate candidate and immutable inputs
+        env:
+          COMMIT: ${{ inputs.reviewed_commit }}
+          TAG: ${{ inputs.immutable_tag }}
+          FILE: ${{ inputs.envelope_path }}
+          KIND: ${{ inputs.kind }}
+          PUBLIC_KEY: ${{ vars.DISTRIBUTION_PUBLIC_KEY_PEM }}
+        run: |
+          python tools/review_candidate.py
+  publish:
+    needs: verify
+    runs-on: ubuntu-latest
+    environment: distribution-release
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.reviewed_commit }}
+      - name: Publish reviewed metadata after protected human approval
+        env:
+          GH_TOKEN: ${{ secrets.DISTRIBUTION_WRITE_TOKEN }}
+          TAG: ${{ inputs.immutable_tag }}
+          FILE: ${{ inputs.envelope_path }}
+        run: |
+          python - <<'PY'
+          import os,re,subprocess
+          from pathlib import Path
+          tag=os.environ['TAG']; path=Path(os.environ['FILE'])
+          if not re.fullmatch('[A-Za-z0-9][A-Za-z0-9._-]{0,100}',tag) or not path.is_file() or path.is_absolute() or '..' in path.parts:raise SystemExit('Invalid reviewed inputs')
+          # Existing release only; no release creation, executable upload or clobber.
+          subprocess.run(['gh','release','view',tag,'--repo','SyedSU/EvidenceNeuter-Releases'],check=True)
+          subprocess.run(['gh','release','upload',tag,str(path),'--repo','SyedSU/EvidenceNeuter-Releases'],check=True)
+          PY

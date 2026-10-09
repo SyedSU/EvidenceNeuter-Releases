@@ -1,0 +1,84 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "product",
+    "channel",
+    "platform",
+    "version",
+    "sequence",
+    "expires",
+    "minimumHubVersion",
+    "sourceCommit",
+    "minimumWindowsBuild",
+    "installer"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "product": {
+      "const": "hub"
+    },
+    "channel": {
+      "const": "stable"
+    },
+    "platform": {
+      "const": "windows-x64"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "expires": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "minimumHubVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+    },
+    "sourceCommit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "minimumWindowsBuild": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "installer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "size",
+        "sha256",
+        "publisherThumbprint"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4294967296
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "publisherThumbprint": {
+          "type": "string",
+          "pattern": "^[A-F0-9]{64}$"
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

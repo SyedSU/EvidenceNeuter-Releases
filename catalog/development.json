@@ -25,7 +25,12 @@
     "sourceCommit": null,
     "release": null,
     "screenshots": [],
-    "licenseNotices": []
+    "licenseNotices": [],
+    "description": "Install and launch approved Evidence products.",
+    "requirements": [
+      "Windows x64"
+    ],
+    "releaseNotes": []
   },
   "products": [
     {
@@ -33,7 +38,7 @@
       "name": "Genesis",
       "availability": "development",
       "version": "0.4.0",
-      "saveSchema": 3,
+      "saveSchema": 4,
       "sourceCommit": null,
       "components": {
         "runtime": null,
@@ -41,7 +46,12 @@
       },
       "release": null,
       "screenshots": [],
-      "licenseNotices": []
+      "licenseNotices": [],
+      "description": "A local companion workshop for teaching, creating and reviewing tasks.",
+      "requirements": [
+        "Windows x64"
+      ],
+      "releaseNotes": []
     },
     {
       "id": "lab",
@@ -56,7 +66,10 @@
       },
       "release": null,
       "screenshots": [],
-      "licenseNotices": []
+      "licenseNotices": [],
+      "description": "Planned local experimentation workspace.",
+      "requirements": [],
+      "releaseNotes": []
     },
     {
       "id": "bot",
@@ -71,7 +84,10 @@
       },
       "release": null,
       "screenshots": [],
-      "licenseNotices": []
+      "licenseNotices": [],
+      "description": "Planned local automation companion.",
+      "requirements": [],
+      "releaseNotes": []
     },
     {
       "id": "academy",
@@ -86,7 +102,10 @@
       },
       "release": null,
       "screenshots": [],
-      "licenseNotices": []
+      "licenseNotices": [],
+      "description": "Planned learning workspace.",
+      "requirements": [],
+      "releaseNotes": []
     },
     {
       "id": "flow",
@@ -101,7 +120,10 @@
       },
       "release": null,
       "screenshots": [],
-      "licenseNotices": []
+      "licenseNotices": [],
+      "description": "Planned workflow workspace.",
+      "requirements": [],
+      "releaseNotes": []
     },
     {
       "id": "council",
@@ -116,7 +138,10 @@
       },
       "release": null,
       "screenshots": [],
-      "licenseNotices": []
+      "licenseNotices": [],
+      "description": "Planned collaborative deliberation workspace.",
+      "requirements": [],
+      "releaseNotes": []
     }
   ]
 }
