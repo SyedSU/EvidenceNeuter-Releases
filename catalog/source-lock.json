@@ -1,7 +1,7 @@
 {
   "hub": {
     "version": "0.3.0",
-    "sourceCommit": "c832b499d195d7ff946137d04e1cba1268b8f366"
+    "sourceCommit": null
   },
   "genesis": {
     "version": "0.4.0",
