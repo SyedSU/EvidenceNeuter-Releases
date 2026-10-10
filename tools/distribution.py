@@ -111,8 +111,8 @@ def validate_candidate(envelope,key,kind,lock,hub_envelope=None,genesis_envelope
    if entry['availability']=='available':check_lock(lock,entry['id'],entry['version'],entry['sourceCommit'],entry.get('saveSchema'))
  else:check_lock(lock,data['product'],data['version'],data['sourceCommit'],data.get('saveSchema'))
  if kind=='catalog' and data['publicDownloads']:
-  if not hub_envelope or not genesis_envelope or not manifest_urls or not publisher_pin:raise ValueError('Public activation requires independently signed release bundle and publisher pin')
-  hub=verify(hub_envelope,hub_key or key,'hub');genesis=verify(genesis_envelope,genesis_key or key,'manifest')
+  if not hub_envelope or not genesis_envelope or not manifest_urls or not publisher_pin or hub_key is None or genesis_key is None:raise ValueError('Public activation requires independently signed release bundle and publisher pin')
+  hub=verify(hub_envelope,hub_key,'hub');genesis=verify(genesis_envelope,genesis_key,'manifest')
   for entry,manifest in [(data['infrastructure'],hub),(data['products'][0],genesis)]:
    product=entry['id'];check_lock(lock,product,manifest['version'],manifest['sourceCommit'],manifest.get('saveSchema'))
    if entry['release']['manifestUrl']!=manifest_urls.get(product):raise ValueError('Reviewed manifest locator differs')

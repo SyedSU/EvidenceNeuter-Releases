@@ -138,13 +138,14 @@ class DistributionTests(unittest.TestCase):
   for kind,path in [('game','EvidenceGenesis.exe'),('runtime','llama-server.exe'),('model','genesis.gguf')]:genesis['packages'].append({'kind':kind,'url':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/'+kind+'.zip','size':1,'sha256':'a'*64,'files':[{'path':path,'size':1,'sha256':'b'*64}]})
   key=rsa.generate_private_key(public_exponent=65537,key_size=3072)
   with self.assertRaises(ValueError):validate_candidate(sign(c,key),key.public_key(),'catalog',lock)
-  validate_candidate(sign(c,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,publisher_pin='A'*64)
+  with self.assertRaises(ValueError):validate_candidate(sign(c,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,publisher_pin='A'*64)
+  validate_candidate(sign(c,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,hub_key=key.public_key(),genesis_key=key.public_key(),publisher_pin='A'*64)
   for field,value in [('url',installer['url'].replace('hub.exe','different.exe')),('size',11),('sha256','b'*64)]:
    changed=copy.deepcopy(c);changed['infrastructure']['release']['download'][field]=value
-   with self.assertRaises(ValueError):validate_candidate(sign(changed,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,publisher_pin='A'*64)
+   with self.assertRaises(ValueError):validate_candidate(sign(changed,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,hub_key=key.public_key(),genesis_key=key.public_key(),publisher_pin='A'*64)
   changed=copy.deepcopy(c);changed['products'][0]['saveSchema']=3
-  with self.assertRaises(ValueError):validate_candidate(sign(changed,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,publisher_pin='A'*64)
+  with self.assertRaises(ValueError):validate_candidate(sign(changed,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,hub_key=key.public_key(),genesis_key=key.public_key(),publisher_pin='A'*64)
 
-  with self.assertRaises(ValueError):validate_candidate(sign(c,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,publisher_pin='B'*64)
+  with self.assertRaises(ValueError):validate_candidate(sign(c,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,hub_key=key.public_key(),genesis_key=key.public_key(),publisher_pin='B'*64)
   changed_urls=dict(urls,hub=urls['hub'].replace('hub.json','other.json'))
-  with self.assertRaises(ValueError):validate_candidate(sign(c,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),changed_urls,publisher_pin='A'*64)
+  with self.assertRaises(ValueError):validate_candidate(sign(c,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),changed_urls,hub_key=key.public_key(),genesis_key=key.public_key(),publisher_pin='A'*64)
