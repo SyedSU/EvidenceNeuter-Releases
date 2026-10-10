@@ -12,12 +12,12 @@ No production keys, releases, binaries or models committed. Genesis schema1 rema
 Expired/replayed metadata, tampered signatures, fabricated URLs, unsafe archive paths, mismatched source versions must reject.
 
 ### Task 1: Contract validation
-- [ ] Write catalog tests, observe missing validator failure.
-- [ ] Implement strict schemas and validation with authentication and gates.
-- [ ] Verify unsigned development catalog succeeds but public enabling fails.
+- [x] Write catalog tests, observe missing validator failure.
+- [x] Implement strict schemas and validation with authentication and gates.
+- [x] Verify unsigned development catalog succeeds but public enabling fails.
 
 ### Task 2: Packaging and publication
-- [ ] Test deterministic packaging, traversal rejection, signing tamper/expiry and version lock.
-- [ ] Implement offline CLI tools and protected manual approval workflow.
-- [ ] Document metadata renewal/key recovery and production prerequisites.
-- [ ] Run entire test suite, commit, push, open PR without publishing.
+- [x] Test deterministic packaging, traversal rejection, signing tamper/expiry and version lock.
+- [x] Implement offline CLI tools and protected manual approval workflow.
+- [x] Document metadata renewal/key recovery and production prerequisites.
+- [x] Run entire test suite, commit, push, open PR without publishing.
