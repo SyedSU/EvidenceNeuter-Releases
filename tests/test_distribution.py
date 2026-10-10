@@ -85,5 +85,15 @@ class DistributionTests(unittest.TestCase):
  def test_review_candidate_requires_complete_source_lock(self):
   from tools.distribution import validate_candidate
   key=rsa.generate_private_key(public_exponent=65537,key_size=3072);envelope=sign(self.catalog,key)
-  pending=json.loads(Path('catalog/source-lock.json').read_text())
+  pending={'hub':{'version':'0.3.0','sourceCommit':None},'genesis':{'version':'0.4.0','sourceCommit':None,'saveSchema':4}}
   with self.assertRaises(ValueError):validate_candidate(envelope,key.public_key(),'catalog',pending)
+
+ def test_review_hub_candidate_matches_locked_source(self):
+  from tools.distribution import validate_candidate
+  key=rsa.generate_private_key(public_exponent=65537,key_size=3072)
+  lock={'hub':{'version':'0.3.0','sourceCommit':'a'*40},'genesis':{'version':'0.4.0','sourceCommit':'b'*40,'saveSchema':4}}
+  m={'schema':1,'product':'hub','channel':'stable','platform':'windows-x64','version':'0.3.0','sequence':1,'expires':self.catalog['expires'],'minimumHubVersion':'0.2.0','minimumWindowsBuild':19041,'sourceCommit':'a'*40,'installer':{'url':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/hub.exe','size':10,'sha256':'a'*64,'publisherThumbprint':'A'*64}}
+  validate_candidate(sign(m,key),key.public_key(),'hub',lock)
+  for field,value in [('sourceCommit','c'*40),('version','0.3.1')]:
+   candidate=dict(m);candidate[field]=value
+   with self.assertRaises(ValueError):validate_candidate(sign(candidate,key),key.public_key(),'hub',lock)
