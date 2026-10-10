@@ -15,6 +15,7 @@ def schema(data,name):
 def release_url(value):
  u=urlsplit(value)
  if u.scheme!='https' or u.netloc!='github.com' or u.query or u.fragment or not re.fullmatch(r'/SyedSU/EvidenceNeuter-Releases/releases/download/[^/]+/[^/]+',u.path):raise ValueError('Unapproved release URL')
+ safe_path(u.path[1:]);safe_path(unquote(u.path)[1:])
 def freshness(data,minimum_sequence=0):
  if datetime.datetime.fromisoformat(data['expires'].replace('Z','+00:00'))<=datetime.datetime.now(datetime.timezone.utc) or data['sequence']<minimum_sequence:raise ValueError('Expired or replayed metadata')
 def validate_catalog(data,authenticated=False,minimum_sequence=0):
@@ -57,7 +58,7 @@ def validate_manifest(data,minimum_sequence=0):
   release_url(p['url'])
   for f in p['files']:
    safe_path(f['path']);path=({'game':'','runtime':'brain/','model':'model/'}[p['kind']]+f['path']).lower()
-   if path in seen or p['kind']=='game' and (path.startswith(('brain/','model/')) or path=='release.json'):raise ValueError('Overlapping package path')
+   if any(path==old or path.startswith(old+'/') or old.startswith(path+'/') for old in seen) or p['kind']=='game' and (path.startswith(('brain/','model/')) or path=='release.json'):raise ValueError('Overlapping package path')
    seen.add(path);total+=f['size']
  if total>8589934592 or not {'evidencegenesis.exe','brain/llama-server.exe','model/genesis.gguf'}<=seen:raise ValueError('Incomplete/oversized release')
  return data
@@ -95,6 +96,18 @@ def package(source,output):
 def check_lock(lock,product,version,source_commit,save_schema=None):
  e=lock.get(product)
  if not e or e.get('version')!=version or e.get('sourceCommit')!=source_commit or not re.fullmatch('[a-f0-9]{40}',source_commit) or product=='genesis' and e.get('saveSchema')!=save_schema:raise ValueError('Source/version compatibility lock mismatch')
+def validate_candidate(envelope,key,kind,lock):
+ for product in ['hub','genesis']:
+  entry=lock.get(product,{})
+  if not isinstance(entry.get('sourceCommit'),str) or not re.fullmatch('[a-f0-9]{40}',entry['sourceCommit']):raise ValueError('Incomplete reviewed source lock')
+  check_lock(lock,product,'0.3.0' if product=='hub' else '0.4.0',entry['sourceCommit'],4 if product=='genesis' else None)
+ data=verify(envelope,key,kind)
+ if kind=='catalog':
+  for entry in [data['infrastructure']]+data['products']:
+   if entry['availability']=='available':check_lock(lock,entry['id'],entry['version'],entry['sourceCommit'],entry.get('saveSchema'))
+ else:check_lock(lock,data['product'],data['version'],data['sourceCommit'],data.get('saveSchema'))
+ return data
+
 def main():
  p=argparse.ArgumentParser();p.add_argument('command',choices=['validate-catalog','validate-manifest','verify','sign','package']);p.add_argument('input');p.add_argument('--output');p.add_argument('--key');p.add_argument('--lock');p.add_argument('--kind',default='catalog',choices=['catalog','manifest','hub']);a=p.parse_args()
  if a.command=='package':result=package(Path(a.input),Path(a.output))

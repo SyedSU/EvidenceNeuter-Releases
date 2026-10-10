@@ -71,3 +71,19 @@ class DistributionTests(unittest.TestCase):
    with self.subTest(url=url):
     self.setUp();self.catalog['infrastructure']['screenshots']=[{'url':url,'alt':'Test'}]
     with self.assertRaises(ValueError):validate_catalog(self.catalog)
+ def test_asset_url_dot_segments_rejected(self):
+  from tools.distribution import release_url
+  for suffix in ['test/../hub.exe','test/%2e%2e','%2e%2e/hub.exe','test/a%2f..%2fhub.exe']:
+   with self.subTest(suffix=suffix):
+    with self.assertRaises(ValueError):release_url('https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/'+suffix)
+ def test_mounted_ancestor_conflict_rejected(self):
+  from tools.distribution import validate_manifest
+  m={'schema':1,'product':'genesis','channel':'stable','platform':'windows-x64','version':'0.4.0','sequence':1,'expires':self.catalog['expires'],'minimumHubVersion':'0.3.0','saveSchema':4,'sourceCommit':'a'*40,'packages':[]}
+  for kind,path in [('game','EvidenceGenesis.exe'),('runtime','llama-server.exe'),('model','genesis.gguf')]:m['packages'].append({'kind':kind,'url':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/'+kind+'.zip','size':1,'sha256':'a'*64,'files':[{'path':path,'size':1,'sha256':'b'*64}]})
+  m['packages'][1]['files'] += [{'path':'shared','size':1,'sha256':'b'*64},{'path':'shared/file.dll','size':1,'sha256':'b'*64}]
+  with self.assertRaises(ValueError):validate_manifest(m)
+ def test_review_candidate_requires_complete_source_lock(self):
+  from tools.distribution import validate_candidate
+  key=rsa.generate_private_key(public_exponent=65537,key_size=3072);envelope=sign(self.catalog,key)
+  pending=json.loads(Path('catalog/source-lock.json').read_text())
+  with self.assertRaises(ValueError):validate_candidate(envelope,key.public_key(),'catalog',pending)
