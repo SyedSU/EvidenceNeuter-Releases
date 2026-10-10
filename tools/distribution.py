@@ -12,10 +12,16 @@ def schema(data,name):
  try:jsonschema.Draft202012Validator(json.loads((ROOT/'schemas'/f'{name}.schema.json').read_text()),format_checker=jsonschema.FormatChecker()).validate(data)
  except jsonschema.ValidationError as e:raise ValueError(e.message) from e
 
-def release_url(value):
+def release_url(value,metadata_locator=False):
  u=urlsplit(value)
  if u.scheme!='https' or u.netloc!='github.com' or u.query or u.fragment or not re.fullmatch(r'/SyedSU/EvidenceNeuter-Releases/releases/download/[^/]+/[^/]+',u.path):raise ValueError('Unapproved release URL')
  safe_path(u.path[1:]);safe_path(unquote(u.path)[1:])
+ if '%' in u.path or not metadata_locator and u.path.split('/')[-2].lower() in ['latest','stable','genesis-stable','hub-stable']:raise ValueError('Mutable or encoded asset URL')
+def asset_url(value):
+ if value.startswith('/') and not value.startswith('//'):
+  if any(c in value for c in ['%','?','#']):raise ValueError('Unsafe local asset URL')
+  safe_path(value[1:])
+ else:release_url(value)
 def freshness(data,minimum_sequence=0):
  if datetime.datetime.fromisoformat(data['expires'].replace('Z','+00:00'))<=datetime.datetime.now(datetime.timezone.utc) or data['sequence']<minimum_sequence:raise ValueError('Expired or replayed metadata')
 def validate_catalog(data,authenticated=False,minimum_sequence=0):
@@ -23,17 +29,15 @@ def validate_catalog(data,authenticated=False,minimum_sequence=0):
  if [x['id'] for x in data['products']]!=IDS or data['infrastructure']['id']!='hub':raise ValueError('Stable identity set mismatch')
  entries=[data['infrastructure']]+data['products']
  for e in entries:
-  for image in e['screenshots']:
-   u=image['url']
-   if u.startswith('/') and not u.startswith('//'):
-    parsed=urlsplit(u)
-    if parsed.query or parsed.fragment:raise ValueError('Unsafe screenshot URL')
-    safe_path(unquote(parsed.path)[1:])
-   else:release_url(u)
+  for image in e['screenshots']:asset_url(image['url'])
+  for notice in e['licenseNotices']:asset_url(notice['url'])
+  for component in e.get('components',{}).values():
+   if component:
+    for notice in component['licenseNotices']:asset_url(notice['url'])
   if e['release']:
    if e['release']['download']:release_url(e['release']['download']['url'])
    if e['id']=='genesis' and e['release']['download'] is not None:raise ValueError('Genesis requires signed component manifest')
-   release_url(e['release']['manifestUrl'])
+   release_url(e['release']['manifestUrl'],metadata_locator=True)
    if any(e[k]!=e['release'][k] for k in ['version','sourceCommit']):raise ValueError('Release provenance mismatch')
   if e['availability']=='available' and (not e['version'] or not e['sourceCommit'] or not e['release']):raise ValueError('Incomplete available entry')
  if data['publicDownloads']:

@@ -202,7 +202,7 @@
             "properties": {
               "url": {
                 "type": "string",
-                "format": "uri"
+                "format": "uri-reference"
               },
               "alt": {
                 "type": "string",
@@ -227,7 +227,7 @@
               },
               "url": {
                 "type": "string",
-                "format": "uri"
+                "format": "uri-reference"
               }
             }
           }
@@ -388,7 +388,7 @@
               "properties": {
                 "url": {
                   "type": "string",
-                  "format": "uri"
+                  "format": "uri-reference"
                 },
                 "alt": {
                   "type": "string",
@@ -413,7 +413,7 @@
                 },
                 "url": {
                   "type": "string",
-                  "format": "uri"
+                  "format": "uri-reference"
                 }
               }
             }
@@ -477,7 +477,7 @@
                             },
                             "url": {
                               "type": "string",
-                              "format": "uri"
+                              "format": "uri-reference"
                             }
                           }
                         }
@@ -530,7 +530,7 @@
                             },
                             "url": {
                               "type": "string",
-                              "format": "uri"
+                              "format": "uri-reference"
                             }
                           }
                         }

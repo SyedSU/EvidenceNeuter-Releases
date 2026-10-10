@@ -35,9 +35,9 @@ class DistributionTests(unittest.TestCase):
   c=self.catalog;c['publicDownloads']=True;c['releaseGate'].update(status='approved',reasons=[])
   for k in ['trustConfigured','signedArtifactsPublished','windowsAcceptancePassed','licensesApproved','authenticodeVerified']:c['releaseGate'][k]=True
   for e in [c['infrastructure'],c['products'][0]]:
-   e.update(availability='available',sourceCommit='a'*40,licenseNotices=[{'name':'Test notice','url':'https://example.com/license'}])
+   e.update(availability='available',sourceCommit='a'*40,licenseNotices=[{'name':'Test notice','url':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/LICENSE.txt'}])
    e['release']={'manifestUrl':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/manifest.json','version':e['version'],'sourceCommit':e['sourceCommit'],'platform':'windows-x64','download':{'url':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/hub.exe','size':12,'sha256':'a'*64} if e['id']=='hub' else None}
-  c['products'][0]['components']={k:{'version':'1.0.0','sourceCommit':'b'*40,'licenseNotices':[{'name':'Notice','url':'https://example.com/license'}]} for k in ['runtime','model']}
+  c['products'][0]['components']={k:{'version':'1.0.0','sourceCommit':'b'*40,'licenseNotices':[{'name':'Notice','url':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/LICENSE.txt'}]} for k in ['runtime','model']}
   validate_catalog(c,authenticated=True)
   extra=c['products'][1];extra.update(availability='available',version='1.0.0',sourceCommit='a'*40,release=dict(c['products'][0]['release'],version='1.0.0'))
   with self.assertRaises(ValueError):validate_catalog(c,authenticated=True)
@@ -105,3 +105,20 @@ class DistributionTests(unittest.TestCase):
    self.assertEqual(subprocess.run(command,capture_output=True).returncode,0)
    schema['properties']['schema']['const']=2;(root/'schemas/catalog.schema.json').write_text(json.dumps(schema))
    result=subprocess.run(command,capture_output=True,text=True);self.assertNotEqual(result.returncode,0);self.assertIn('schema differs from canonical',result.stderr)
+ def test_mutable_release_and_executable_notice_urls_rejected(self):
+  from tools.distribution import release_url
+  for tag in ['latest','stable','genesis-stable','hub-stable']:
+   with self.subTest(tag=tag):
+    with self.assertRaises(ValueError):release_url('https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/'+tag+'/a.zip')
+  self.catalog['products'][0]['licenseNotices']=[{'name':'Unsafe','url':'javascript:alert(1)'}]
+  with self.assertRaises(ValueError):validate_catalog(self.catalog)
+
+ def test_metadata_locator_is_separate_from_immutable_download(self):
+  from tools.distribution import release_url
+  value='https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/hub-stable/hub-stable.json'
+  release_url(value,metadata_locator=True)
+  with self.assertRaises(ValueError):release_url(value)
+ def test_local_screenshot_and_notice_are_valid(self):
+  self.catalog['products'][0]['licenseNotices']=[{'name':'License','url':'/assets/license.txt'}]
+  self.catalog['products'][0]['screenshots']=[{'alt':'Preview','url':'/assets/preview.png'}]
+  validate_catalog(self.catalog)
