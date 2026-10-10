@@ -123,3 +123,28 @@ class DistributionTests(unittest.TestCase):
   self.catalog['products'][0]['licenseNotices']=[{'name':'License','url':'/assets/license.txt'}]
   self.catalog['products'][0]['screenshots']=[{'alt':'Preview','url':'/assets/preview.png'}]
   validate_catalog(self.catalog)
+ def test_public_bundle_requires_matching_signed_manifests(self):
+  from tools.distribution import validate_candidate
+  c=self.catalog;c['publicDownloads']=True;c['releaseGate'].update(status='approved',reasons=[])
+  for k in ['trustConfigured','signedArtifactsPublished','windowsAcceptancePassed','licensesApproved','authenticodeVerified']:c['releaseGate'][k]=True
+  installer={'url':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/hub.exe','size':10,'sha256':'a'*64,'publisherThumbprint':'A'*64}
+  lock={'hub':{'version':'0.3.0','sourceCommit':'a'*40},'genesis':{'version':'0.4.0','sourceCommit':'b'*40,'saveSchema':4}}
+  urls={p:'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/'+p+'.json' for p in ['hub','genesis']}
+  for e in [c['infrastructure'],c['products'][0]]:
+   e.update(availability='available',sourceCommit=lock[e['id']]['sourceCommit'],licenseNotices=[{'name':'License','url':'/assets/license.txt'}]);e['release']={'manifestUrl':urls[e['id']],'version':e['version'],'sourceCommit':e['sourceCommit'],'platform':'windows-x64','download':{k:v for k,v in installer.items() if k!='publisherThumbprint'} if e['id']=='hub' else None}
+  c['products'][0]['components']={k:{'version':'1.0.0','sourceCommit':'c'*40,'licenseNotices':[{'name':'License','url':'/assets/license.txt'}]} for k in ['runtime','model']}
+  hub={'schema':1,'product':'hub','channel':'stable','platform':'windows-x64','version':'0.3.0','sequence':1,'expires':c['expires'],'minimumHubVersion':'0.2.0','minimumWindowsBuild':19041,'sourceCommit':'a'*40,'installer':installer}
+  genesis={'schema':1,'product':'genesis','channel':'stable','platform':'windows-x64','version':'0.4.0','sequence':1,'expires':c['expires'],'minimumHubVersion':'0.3.0','saveSchema':4,'sourceCommit':'b'*40,'packages':[]}
+  for kind,path in [('game','EvidenceGenesis.exe'),('runtime','llama-server.exe'),('model','genesis.gguf')]:genesis['packages'].append({'kind':kind,'url':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/'+kind+'.zip','size':1,'sha256':'a'*64,'files':[{'path':path,'size':1,'sha256':'b'*64}]})
+  key=rsa.generate_private_key(public_exponent=65537,key_size=3072)
+  with self.assertRaises(ValueError):validate_candidate(sign(c,key),key.public_key(),'catalog',lock)
+  validate_candidate(sign(c,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,publisher_pin='A'*64)
+  for field,value in [('url',installer['url'].replace('hub.exe','different.exe')),('size',11),('sha256','b'*64)]:
+   changed=copy.deepcopy(c);changed['infrastructure']['release']['download'][field]=value
+   with self.assertRaises(ValueError):validate_candidate(sign(changed,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,publisher_pin='A'*64)
+  changed=copy.deepcopy(c);changed['products'][0]['saveSchema']=3
+  with self.assertRaises(ValueError):validate_candidate(sign(changed,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,publisher_pin='A'*64)
+
+  with self.assertRaises(ValueError):validate_candidate(sign(c,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),urls,publisher_pin='B'*64)
+  changed_urls=dict(urls,hub=urls['hub'].replace('hub.json','other.json'))
+  with self.assertRaises(ValueError):validate_candidate(sign(c,key),key.public_key(),'catalog',lock,sign(hub,key),sign(genesis,key),changed_urls,publisher_pin='A'*64)

@@ -3,9 +3,22 @@ import json,os,re,subprocess
 from pathlib import Path
 from cryptography.hazmat.primitives import serialization
 from distribution import validate_candidate
-commit=os.environ['COMMIT'];tag=os.environ['TAG'];path=Path(os.environ['FILE'])
+
+def reviewed_json(path):
+ p=Path(path)
+ if not path or p.is_absolute() or '..' in p.parts or not p.is_file() or p.suffix!='.json' or not p.resolve().is_relative_to(Path.cwd().resolve()):raise SystemExit('Invalid reviewed metadata path')
+ return json.loads(p.read_text())
+def public_key(name,required=True):
+ value=os.environ.get(name,'')
+ if not value:
+  if required:raise SystemExit('Reviewed production trust prerequisite absent: '+name)
+  return None
+ return serialization.load_pem_public_key(value.encode())
+commit=os.environ['COMMIT'];tag=os.environ['TAG']
 if not re.fullmatch('[a-f0-9]{40}',commit) or subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()!=commit:raise SystemExit('Reviewed source commit mismatch')
-if not re.fullmatch('[A-Za-z0-9][A-Za-z0-9._-]{0,100}',tag) or path.is_absolute() or '..' in path.parts or not path.is_file() or path.suffix!='.json':raise SystemExit('Invalid reviewed metadata path/tag')
-key=os.environ.get('PUBLIC_KEY','')
-if not key:raise SystemExit('Production trust prerequisite absent')
-validate_candidate(json.loads(path.read_text()),serialization.load_pem_public_key(key.encode()),os.environ['KIND'],json.loads(Path('catalog/source-lock.json').read_text()))
+if not re.fullmatch('[A-Za-z0-9][A-Za-z0-9._-]{0,100}',tag):raise SystemExit('Invalid reviewed metadata tag')
+kind=os.environ['KIND'];hub_file=os.environ.get('HUB_FILE','');genesis_file=os.environ.get('GENESIS_FILE','')
+validate_candidate(reviewed_json(os.environ['FILE']),public_key('PUBLIC_KEY'),kind,json.loads(Path('catalog/source-lock.json').read_text()),
+ reviewed_json(hub_file) if hub_file else None,reviewed_json(genesis_file) if genesis_file else None,
+ {'hub':os.environ.get('HUB_URL',''),'genesis':os.environ.get('GENESIS_URL','')},
+ public_key('HUB_PUBLIC_KEY',False),public_key('GENESIS_PUBLIC_KEY',False),os.environ.get('PUBLISHER_PIN'))

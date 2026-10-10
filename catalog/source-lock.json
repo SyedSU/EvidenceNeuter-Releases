@@ -5,7 +5,7 @@
   },
   "genesis": {
     "version": "0.4.0",
-    "sourceCommit": "a99881b8b8a4c3a965a6954071b2767dfeb392dd",
+    "sourceCommit": null,
     "saveSchema": 4
   }
 }

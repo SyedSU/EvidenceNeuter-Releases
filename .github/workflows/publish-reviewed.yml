@@ -11,6 +11,18 @@ on:
       envelope_path:
         description: Reviewed signed metadata JSON path in repository
         required: true
+      hub_envelope_path:
+        description: Reviewed signed Hub envelope JSON (mandatory for public catalog)
+        required: false
+      genesis_envelope_path:
+        description: Reviewed signed Genesis envelope JSON (mandatory for public catalog)
+        required: false
+      hub_manifest_url:
+        description: Reviewed published Hub manifest locator matching catalog
+        required: false
+      genesis_manifest_url:
+        description: Reviewed published Genesis manifest locator matching catalog
+        required: false
       kind:
         type: choice
         options: [catalog, manifest, hub]
@@ -35,6 +47,13 @@ jobs:
           FILE: ${{ inputs.envelope_path }}
           KIND: ${{ inputs.kind }}
           PUBLIC_KEY: ${{ vars.DISTRIBUTION_PUBLIC_KEY_PEM }}
+          HUB_PUBLIC_KEY: ${{ vars.HUB_MANIFEST_PUBLIC_KEY_PEM }}
+          GENESIS_PUBLIC_KEY: ${{ vars.GENESIS_MANIFEST_PUBLIC_KEY_PEM }}
+          PUBLISHER_PIN: ${{ vars.HUB_PUBLISHER_SHA256 }}
+          HUB_FILE: ${{ inputs.hub_envelope_path }}
+          GENESIS_FILE: ${{ inputs.genesis_envelope_path }}
+          HUB_URL: ${{ inputs.hub_manifest_url }}
+          GENESIS_URL: ${{ inputs.genesis_manifest_url }}
         run: |
           python tools/review_candidate.py
   publish:

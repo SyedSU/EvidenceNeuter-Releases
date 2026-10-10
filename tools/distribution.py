@@ -100,7 +100,7 @@ def package(source,output):
 def check_lock(lock,product,version,source_commit,save_schema=None):
  e=lock.get(product)
  if not e or e.get('version')!=version or e.get('sourceCommit')!=source_commit or not re.fullmatch('[a-f0-9]{40}',source_commit) or product=='genesis' and e.get('saveSchema')!=save_schema:raise ValueError('Source/version compatibility lock mismatch')
-def validate_candidate(envelope,key,kind,lock):
+def validate_candidate(envelope,key,kind,lock,hub_envelope=None,genesis_envelope=None,manifest_urls=None,hub_key=None,genesis_key=None,publisher_pin=None):
  for product in ['hub','genesis']:
   entry=lock.get(product,{})
   if not isinstance(entry.get('sourceCommit'),str) or not re.fullmatch('[a-f0-9]{40}',entry['sourceCommit']):raise ValueError('Incomplete reviewed source lock')
@@ -110,6 +110,16 @@ def validate_candidate(envelope,key,kind,lock):
   for entry in [data['infrastructure']]+data['products']:
    if entry['availability']=='available':check_lock(lock,entry['id'],entry['version'],entry['sourceCommit'],entry.get('saveSchema'))
  else:check_lock(lock,data['product'],data['version'],data['sourceCommit'],data.get('saveSchema'))
+ if kind=='catalog' and data['publicDownloads']:
+  if not hub_envelope or not genesis_envelope or not manifest_urls or not publisher_pin:raise ValueError('Public activation requires independently signed release bundle and publisher pin')
+  hub=verify(hub_envelope,hub_key or key,'hub');genesis=verify(genesis_envelope,genesis_key or key,'manifest')
+  for entry,manifest in [(data['infrastructure'],hub),(data['products'][0],genesis)]:
+   product=entry['id'];check_lock(lock,product,manifest['version'],manifest['sourceCommit'],manifest.get('saveSchema'))
+   if entry['release']['manifestUrl']!=manifest_urls.get(product):raise ValueError('Reviewed manifest locator differs')
+   if any(entry['release'][field]!=manifest[field] for field in ['version','sourceCommit','platform']) or data['channel']!=manifest['channel']:raise ValueError('Catalog/manifest provenance mismatch')
+  if any(data['infrastructure']['release']['download'][field]!=hub['installer'][field] for field in ['url','size','sha256']):raise ValueError('Catalog installer differs from signed Hub manifest')
+  if not re.fullmatch('[A-F0-9]{64}',publisher_pin) or hub['installer']['publisherThumbprint']!=publisher_pin:raise ValueError('Publisher pin mismatch')
+  if data['products'][0]['saveSchema']!=genesis['saveSchema'] or tuple(map(int,hub['version'].split('.')))<tuple(map(int,genesis['minimumHubVersion'].split('.'))):raise ValueError('Genesis profile/Hub compatibility mismatch')
  return data
 
 def main():
