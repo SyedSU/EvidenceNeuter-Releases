@@ -97,3 +97,11 @@ class DistributionTests(unittest.TestCase):
   for field,value in [('sourceCommit','c'*40),('version','0.3.1')]:
    candidate=dict(m);candidate[field]=value
    with self.assertRaises(ValueError):validate_candidate(sign(candidate,key),key.public_key(),'hub',lock)
+ def test_consumer_checker_detects_schema_drift(self):
+  import subprocess,sys
+  with tempfile.TemporaryDirectory() as directory:
+   root=Path(directory);(root/'schemas').mkdir();(root/'catalog.json').write_text(json.dumps(self.catalog));schema=json.loads(Path('schemas/catalog.schema.json').read_text());(root/'schemas/catalog.schema.json').write_text(json.dumps(schema))
+   command=[sys.executable,'tools/check_consumers.py','--website',str(root)]
+   self.assertEqual(subprocess.run(command,capture_output=True).returncode,0)
+   schema['properties']['schema']['const']=2;(root/'schemas/catalog.schema.json').write_text(json.dumps(schema))
+   result=subprocess.run(command,capture_output=True,text=True);self.assertNotEqual(result.returncode,0);self.assertIn('schema differs from canonical',result.stderr)
