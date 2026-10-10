@@ -31,6 +31,7 @@ class DistributionTests(unittest.TestCase):
   lock={'hub':{'version':'0.3.0','sourceCommit':'a'*40},'genesis':{'version':'0.4.0','sourceCommit':'b'*40,'saveSchema':4}}
   check_lock(lock,'genesis','0.4.0','b'*40,4)
   with self.assertRaises(ValueError):check_lock(lock,'genesis','0.4.0','a'*40,4)
+  with self.assertRaises(ValueError):check_lock(lock,'genesis','0.4.0','b'*40,3)
  def test_authenticated_public_gate_complete(self):
   c=self.catalog;c['publicDownloads']=True;c['releaseGate'].update(status='approved',reasons=[])
   for k in ['trustConfigured','signedArtifactsPublished','windowsAcceptancePassed','licensesApproved','authenticodeVerified']:c['releaseGate'][k]=True
