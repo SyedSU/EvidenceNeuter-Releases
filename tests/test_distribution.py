@@ -39,6 +39,9 @@ class DistributionTests(unittest.TestCase):
    e['release']={'manifestUrl':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/manifest.json','version':e['version'],'sourceCommit':e['sourceCommit'],'platform':'windows-x64','download':{'url':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/hub.exe','size':12,'sha256':'a'*64} if e['id']=='hub' else None}
   c['products'][0]['components']={k:{'version':'1.0.0','sourceCommit':'b'*40,'licenseNotices':[{'name':'Notice','url':'https://example.com/license'}]} for k in ['runtime','model']}
   validate_catalog(c,authenticated=True)
+  extra=c['products'][1];extra.update(availability='available',version='1.0.0',sourceCommit='a'*40,release=dict(c['products'][0]['release'],version='1.0.0'))
+  with self.assertRaises(ValueError):validate_catalog(c,authenticated=True)
+  extra.update(availability='planned',version=None,sourceCommit=None,release=None)
   with self.assertRaises(ValueError):validate_catalog(c)
   c['infrastructure']['release']['download']=None
   with self.assertRaises(ValueError):validate_catalog(c,authenticated=True)
@@ -63,3 +66,8 @@ class DistributionTests(unittest.TestCase):
   m={'schema':1,'product':'genesis','channel':'stable','platform':'windows-x64','version':'0.4.0','sequence':1,'expires':self.catalog['expires'],'minimumHubVersion':'0.2.0','saveSchema':4,'sourceCommit':'a'*40,'packages':[]}
   for kind,path in [('game','EvidenceGenesis.exe'),('runtime','llama-server.exe'),('model','genesis.gguf')]:m['packages'].append({'kind':kind,'url':'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/'+kind+'.zip','size':1,'sha256':'a'*64,'files':[{'path':path,'size':1,'sha256':'b'*64}]})
   with self.assertRaises(ValueError):validate_manifest(m)
+ def test_screenshot_encoded_and_backslash_paths_rejected(self):
+  for url in ['/assets/%2e%2e/private.png','/\\evil.example/image.png','/assets/image.png?redirect=evil','//evil.example/image.png']:
+   with self.subTest(url=url):
+    self.setUp();self.catalog['infrastructure']['screenshots']=[{'url':url,'alt':'Test'}]
+    with self.assertRaises(ValueError):validate_catalog(self.catalog)

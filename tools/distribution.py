@@ -1,7 +1,7 @@
 """Canonical fail-closed distribution validation; signing is offline, never publishing."""
 import argparse,base64,datetime,hashlib,json,re,zipfile
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit,unquote
 import jsonschema
 from cryptography.hazmat.primitives import hashes,serialization
 from cryptography.hazmat.primitives.asymmetric import padding
@@ -24,7 +24,10 @@ def validate_catalog(data,authenticated=False,minimum_sequence=0):
  for e in entries:
   for image in e['screenshots']:
    u=image['url']
-   if u.startswith('/') and not u.startswith('//') and not any(x in u.split('/') for x in ['..','.']):pass
+   if u.startswith('/') and not u.startswith('//'):
+    parsed=urlsplit(u)
+    if parsed.query or parsed.fragment:raise ValueError('Unsafe screenshot URL')
+    safe_path(unquote(parsed.path)[1:])
    else:release_url(u)
   if e['release']:
    if e['release']['download']:release_url(e['release']['download']['url'])
@@ -35,8 +38,9 @@ def validate_catalog(data,authenticated=False,minimum_sequence=0):
  if data['publicDownloads']:
   g=data['releaseGate']
   if not authenticated or g['status']!='approved' or g['reasons'] or not all(g[x] for x in GATES):raise ValueError('Download gate blocked')
-  for e in entries[:2]:
-   if e['availability']!='available' or not e['licenseNotices']:raise ValueError('Incomplete public entry')
+  if any(e['availability']!='available' for e in entries[:2]):raise ValueError('Hub and Genesis unavailable')
+  for e in entries:
+   if e['availability']=='available' and not e['licenseNotices']:raise ValueError('Incomplete public entry')
   if not data['infrastructure']['release']['download']:raise ValueError('Hub download facts required')
   for c in data['products'][0]['components'].values():
    if not c or not c['version'] or not c['sourceCommit'] or not c['licenseNotices']:raise ValueError('Missing component provenance')
