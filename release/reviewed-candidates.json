@@ -4,15 +4,15 @@
   "publicationAuthorized": false,
   "hub": {
     "version": "0.3.0",
-    "reviewedBuildCommit": "90ab50c039a3ea8c0bc5c56bef4bce1ba261c118",
+    "reviewedBuildCommit": "c89f863fafe0eae86933026c84c81ecb4a54c10e",
     "integrationCommit": null,
-    "windowsRun": 38151868195,
-    "artifactId": 11707530253,
-    "artifactWrapperBytes": 99009921,
-    "artifactWrapperSha256": "f4ecd618de45517cb0e2214ba98e249d5b41e81fdfef2bc21a7b566b6917a387",
+    "windowsRun": 38152904287,
+    "artifactId": 11707646185,
+    "artifactWrapperBytes": 99010547,
+    "artifactWrapperSha256": "4587fee89277e6bc23253ffa11bf9338ddc0ba8f479b50731813844587168cf5",
     "installerSha256": null,
     "productionAuthenticodeAcceptance": null,
-    "note": "Current approved build retained; new isolated signed-core operator harness candidate awaits root approval and matching Windows CI."
+    "note": "Approved isolated operator-harness source with successful matching Windows CI and no Critical/Important security findings; production signed-core operator journey remains unrun."
   },
   "genesis": {
     "version": "0.4.0",
@@ -76,6 +76,27 @@
       "artifactWrapperSha256": "4e79fa1e107beb7d3ed42e3570da7ab5ea810e44f968b1124f8422cf388966cd",
       "componentCandidates": null,
       "note": "New deterministic component-build source awaits independent review and successful real-model Windows run."
+    },
+    {
+      "product": "hub",
+      "status": "superseded",
+      "version": "0.3.0",
+      "reviewedBuildCommit": "90ab50c039a3ea8c0bc5c56bef4bce1ba261c118",
+      "integrationCommit": null,
+      "windowsRun": 38151868195,
+      "artifactId": 11707530253,
+      "artifactWrapperBytes": 99009921,
+      "artifactWrapperSha256": "f4ecd618de45517cb0e2214ba98e249d5b41e81fdfef2bc21a7b566b6917a387",
+      "installerSha256": null,
+      "productionAuthenticodeAcceptance": null,
+      "note": "Current approved build retained; new isolated signed-core operator harness candidate awaits root approval and matching Windows CI."
     }
-  ]
+  ],
+  "verificationSummary": {
+    "distributionTests": 49,
+    "rootLinuxUpdaterTests": 110,
+    "rootCoreTests": 16,
+    "actualSignedProductionAcceptance": "Not run",
+    "publicDownloads": false
+  }
 }
