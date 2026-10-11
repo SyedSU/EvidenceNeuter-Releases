@@ -26,7 +26,18 @@
     "componentCandidates": null,
     "note": "New deterministic component-build source awaits independent review and successful real-model Windows run."
   },
-  "userReportedLaptopAcceptance": {"status": "passed", "artifactBindings": null, "independentlyVerified": false},
-  "protectedEnvironmentInventory": {"distribution-release": "absent", "distribution-candidate": "absent", "source": "Root read-only environments API returned total_count0", "variablesAndSecrets": "Unknown: integration API403"},
+  "userReportedLaptopAcceptance": {
+    "status": "passed",
+    "artifactBindings": null,
+    "independentlyVerified": false,
+    "reportedDate": "2026-10-11",
+    "scope": "User-reported laptop gameplay acceptance; not artifact-specific signed production flow"
+  },
+  "protectedEnvironmentInventory": {
+    "distribution-release": "absent",
+    "distribution-candidate": "absent",
+    "source": "Root read-only environments API returned total_count0",
+    "variablesAndSecrets": "Unknown: integration API403"
+  },
   "digestScope": "Wrapper hashes identify GitHub artifact archives only; never package/installer or public signed-release hashes."
 }

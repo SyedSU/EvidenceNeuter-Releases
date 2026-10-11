@@ -5,7 +5,9 @@
   "userReportedLaptopAcceptance": {
     "status": "passed",
     "artifactBindings": null,
-    "independentlyVerified": false
+    "independentlyVerified": false,
+    "reportedDate": "2026-10-11",
+    "scope": "User-reported laptop gameplay acceptance; not artifact-specific signed production flow"
   },
   "metadata": {
     "sequence": null,
