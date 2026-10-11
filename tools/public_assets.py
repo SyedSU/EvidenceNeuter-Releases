@@ -76,4 +76,6 @@ def verify_public_assets(catalog,hub_envelope,genesis_envelope,hub_key,genesis_k
   for asset in assets:
    evidence=read_asset(asset['url'],transport,asset['size'],asset['size'],asset['sha256'])
    result['assets'].append(dict(url=asset['url'],**evidence))
+ # Recheck role freshness after potentially long package streaming.
+ verify(hub_envelope,hub_key,'hub');verify(genesis_envelope,genesis_key,'manifest')
  return result

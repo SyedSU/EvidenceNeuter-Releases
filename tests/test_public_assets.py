@@ -1,4 +1,4 @@
-import copy,hashlib,io,json,unittest
+import copy,datetime,hashlib,io,json,unittest
 from cryptography.hazmat.primitives.asymmetric import rsa
 from tools.distribution import sign
 from tools.public_assets import AssetResponse,verify_public_assets
@@ -10,8 +10,8 @@ class PublicAssetTests(unittest.TestCase):
  def setUp(self):
   self.key=self.private.public_key();self.requests=[];self.remote={}
   installer=b'unsigned synthetic installer fixture'
-  self.hub={'schema':1,'product':'hub','channel':'stable','platform':'windows-x64','version':'0.3.0','sequence':1,'expires':'2026-11-08T00:00:00Z','minimumHubVersion':'0.2.0','minimumWindowsBuild':19041,'sourceCommit':'a'*40,'installer':{'url':BASE+'hub.exe','size':len(installer),'sha256':hashlib.sha256(installer).hexdigest(),'publisherThumbprint':'A'*64}}
-  self.genesis={'schema':1,'product':'genesis','channel':'stable','platform':'windows-x64','version':'0.4.0','sequence':1,'expires':'2026-11-08T00:00:00Z','minimumHubVersion':'0.3.0','saveSchema':4,'sourceCommit':'b'*40,'packages':[]}
+  self.hub={'schema':1,'product':'hub','channel':'stable','platform':'windows-x64','version':'0.3.0','sequence':1,'expires':(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(days=2)).isoformat().replace('+00:00','Z'),'minimumHubVersion':'0.2.0','minimumWindowsBuild':19041,'sourceCommit':'a'*40,'installer':{'url':BASE+'hub.exe','size':len(installer),'sha256':hashlib.sha256(installer).hexdigest(),'publisherThumbprint':'A'*64}}
+  self.genesis={'schema':1,'product':'genesis','channel':'stable','platform':'windows-x64','version':'0.4.0','sequence':1,'expires':(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(days=2)).isoformat().replace('+00:00','Z'),'minimumHubVersion':'0.3.0','saveSchema':4,'sourceCommit':'b'*40,'packages':[]}
   self.add(BASE+'hub.exe',installer)
   for kind,path in [('game','EvidenceGenesis.exe'),('runtime','llama-server.exe'),('model','genesis.gguf')]:
    body=(kind+' synthetic archive fixture').encode();url=BASE+kind+'.zip';self.add(url,body)
@@ -75,3 +75,13 @@ class PublicAssetTests(unittest.TestCase):
     return response
   with patch('tools.public_assets.build_opener',return_value=Opener()):
    anonymous_transport(BASE+'hub.json').body.close()
+
+ def test_expiry_during_streaming_blocks_activation(self):
+  from unittest.mock import patch
+  from tools import distribution
+  real_freshness=distribution.freshness
+  def expired(data,minimum_sequence=0):
+   if len(self.requests)>=6:raise ValueError('Expired during streaming')
+   return real_freshness(data,minimum_sequence)
+  with patch('tools.distribution.freshness',side_effect=expired):
+   with self.assertRaisesRegex(ValueError,'Expired during streaming'):self.verify()

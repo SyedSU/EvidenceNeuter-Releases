@@ -30,3 +30,7 @@ data=validate_candidate(envelope,catalog_key,kind,json.loads(Path('catalog/sourc
  hub_key,genesis_key,os.environ.get('PUBLISHER_PIN'))
 if public_activation:
  print(json.dumps(verify_public_assets(data,hub_envelope,genesis_envelope,hub_key,genesis_key),indent=2))
+ # Revalidate catalog and complete signed bundle after downloads, before upload.
+ validate_candidate(envelope,catalog_key,kind,json.loads(Path('catalog/source-lock.json').read_text()),
+  hub_envelope,genesis_envelope,{'hub':os.environ.get('HUB_URL',''),'genesis':os.environ.get('GENESIS_URL','')},
+  hub_key,genesis_key,os.environ.get('PUBLISHER_PIN'))
