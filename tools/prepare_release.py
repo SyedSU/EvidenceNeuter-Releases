@@ -17,9 +17,9 @@ def inspect_package(path):
  result=digest_file(path);files=[];seen=set();total=0
  with zipfile.ZipFile(path) as archive:
   for item in archive.infolist():
-   if item.is_dir():continue
+   if item.is_dir():raise ValueError('Explicit ZIP directories are unsupported by Hub')
    safe_path(item.filename)
-   if item.flag_bits&1 or stat.S_ISLNK(item.external_attr>>16) or item.filename.lower() in seen:raise ValueError('Unsafe ZIP entry')
+   if item.flag_bits&1 or item.external_attr&0x400 or stat.S_ISLNK(item.external_attr>>16) or item.filename.lower() in seen:raise ValueError('Unsafe ZIP entry')
    seen.add(item.filename.lower());total+=item.file_size
    if total>8589934592:raise ValueError('Package expanded size exceeds bound')
    h=hashlib.sha256();size=0

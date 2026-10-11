@@ -23,6 +23,17 @@ class PreparationTests(unittest.TestCase):
     with zipfile.ZipFile(path,'w') as archive:
      for name in names:archive.writestr(name,b'fixture')
     with self.assertRaises(ValueError):inspect_package(path)
+ def test_explicit_directory_entries_rejected_like_hub(self):
+  with tempfile.TemporaryDirectory() as directory:
+   path=Path(directory)/'package.zip'
+   with zipfile.ZipFile(path,'w') as archive:
+    archive.writestr('docs/',b'');archive.writestr('EvidenceGenesis.exe',b'fixture')
+   with self.assertRaises(ValueError):inspect_package(path)
+ def test_windows_reparse_attribute_rejected_like_hub(self):
+  with tempfile.TemporaryDirectory() as directory:
+   path=Path(directory)/'package.zip';entry=zipfile.ZipInfo('EvidenceGenesis.exe');entry.create_system=0;entry.external_attr=0x400
+   with zipfile.ZipFile(path,'w') as archive:archive.writestr(entry,b'fixture')
+   with self.assertRaises(ValueError):inspect_package(path)
  def test_merge_tree_mapping_requires_explicit_equivalence(self):
   with tempfile.TemporaryDirectory() as directory:
    def git(*args):return subprocess.check_output(['git','-C',directory,*args],text=True).strip()
