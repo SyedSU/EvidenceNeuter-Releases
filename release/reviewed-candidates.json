@@ -11,20 +11,28 @@
     "artifactWrapperBytes": 99009921,
     "artifactWrapperSha256": "f4ecd618de45517cb0e2214ba98e249d5b41e81fdfef2bc21a7b566b6917a387",
     "installerSha256": null,
-    "productionAuthenticodeAcceptance": null
+    "productionAuthenticodeAcceptance": null,
+    "note": "Current approved build retained; new isolated signed-core operator harness candidate awaits root approval and matching Windows CI."
   },
   "genesis": {
     "version": "0.4.0",
     "saveSchema": 4,
     "minimumHubVersion": "0.3.0",
-    "reviewedBuildCommit": "8190af101b206314c2f5b922ac52ca5f7ae6798e",
+    "reviewedBuildCommit": "10339a41e79aecbd90802dd23cd29804665f5b55",
     "integrationCommit": null,
-    "windowsRun": 38039309964,
-    "artifactId": 11664698376,
-    "artifactWrapperBytes": 535605293,
-    "artifactWrapperSha256": "4e79fa1e107beb7d3ed42e3570da7ab5ea810e44f968b1124f8422cf388966cd",
-    "componentCandidates": null,
-    "note": "New deterministic component-build source awaits independent review and successful real-model Windows run."
+    "windowsRun": 38152368849,
+    "artifactId": 11707207157,
+    "artifactWrapperBytes": 535605611,
+    "artifactWrapperSha256": "ad613170defee07414f5fe0cad0bf75b23c19bb9e0c6ae67337385a1d3100bb9",
+    "componentCandidates": {
+      "artifactId": 11707420957,
+      "artifactWrapperBytes": 535607354,
+      "artifactWrapperSha256": "a7c7f74e7a751be919c329797e5feb9553fdacf9b0847cc0ce0aa1f134797cf7",
+      "innerPackageFacts": null,
+      "resolvedModelRevision": null,
+      "inspectionStatus": "Blocked: Azure artifact download returned403"
+    },
+    "note": "Approved genuine component source and successful real-model Windows CI; actual report/archive inspection remains blocked."
   },
   "userReportedLaptopAcceptance": {
     "status": "passed",
@@ -53,6 +61,21 @@
       "artifactWrapperSha256": "2418dfd935524a34cb5deccf1ebfde32db3a0e843426a5d93551e77b88e96958",
       "installerSha256": null,
       "productionAuthenticodeAcceptance": null
+    },
+    {
+      "product": "genesis",
+      "status": "superseded",
+      "version": "0.4.0",
+      "saveSchema": 4,
+      "minimumHubVersion": "0.3.0",
+      "reviewedBuildCommit": "8190af101b206314c2f5b922ac52ca5f7ae6798e",
+      "integrationCommit": null,
+      "windowsRun": 38039309964,
+      "artifactId": 11664698376,
+      "artifactWrapperBytes": 535605293,
+      "artifactWrapperSha256": "4e79fa1e107beb7d3ed42e3570da7ab5ea810e44f968b1124f8422cf388966cd",
+      "componentCandidates": null,
+      "note": "New deterministic component-build source awaits independent review and successful real-model Windows run."
     }
   ]
 }

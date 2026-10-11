@@ -26,7 +26,7 @@
   "genesis": {
     "repository": null,
     "integrationCommit": null,
-    "reviewedBuildCommit": "8190af101b206314c2f5b922ac52ca5f7ae6798e",
+    "reviewedBuildCommit": "10339a41e79aecbd90802dd23cd29804665f5b55",
     "packages": {
       "game": {
         "path": null,
