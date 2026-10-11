@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "publicDownloads": false,
+  "publicationAuthorized": false,
+  "hub": {
+    "version": "0.3.0",
+    "reviewedBuildCommit": "0e7033b601cb1ca40c7b4683d50f5d8b6e89a7bb",
+    "integrationCommit": null,
+    "windowsRun": 38149240893,
+    "artifactId": 11706466820,
+    "artifactWrapperBytes": 99010039,
+    "artifactWrapperSha256": "2418dfd935524a34cb5deccf1ebfde32db3a0e843426a5d93551e77b88e96958",
+    "installerSha256": null,
+    "productionAuthenticodeAcceptance": null
+  },
+  "genesis": {
+    "version": "0.4.0",
+    "saveSchema": 4,
+    "minimumHubVersion": "0.3.0",
+    "reviewedBuildCommit": "8190af101b206314c2f5b922ac52ca5f7ae6798e",
+    "integrationCommit": null,
+    "windowsRun": 38039309964,
+    "artifactId": 11664698376,
+    "artifactWrapperBytes": 535605293,
+    "artifactWrapperSha256": "4e79fa1e107beb7d3ed42e3570da7ab5ea810e44f968b1124f8422cf388966cd",
+    "componentCandidates": null,
+    "note": "New deterministic component-build source awaits independent review and successful real-model Windows run."
+  },
+  "userReportedLaptopAcceptance": {"status": "passed", "artifactBindings": null, "independentlyVerified": false},
+  "protectedEnvironmentInventory": {"distribution-release": "absent", "distribution-candidate": "absent", "source": "Root read-only environments API returned total_count0", "variablesAndSecrets": "Unknown: integration API403"},
+  "digestScope": "Wrapper hashes identify GitHub artifact archives only; never package/installer or public signed-release hashes."
+}
