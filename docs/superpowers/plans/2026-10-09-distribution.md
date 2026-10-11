@@ -21,3 +21,7 @@ Expired/replayed metadata, tampered signatures, fabricated URLs, unsafe archive 
 - [x] Implement offline CLI tools and protected manual approval workflow.
 - [x] Document metadata renewal/key recovery and production prerequisites.
 - [x] Run entire test suite, commit, push, open PR without publishing.
+
+## Production preparation follow-up
+
+Add blocked machine-readable config and provenance report; inspect real supplied ZIP/installer bytes; preserve reviewed build SHA across explicit tree-equivalent postmerge mappings; capture reported laptop pass separately from artifact-bound production evidence; preflight existing protected environment without creating settings; document package-first/catalog-last proposal. Keep all approval gates and production pins unchanged. Validate missing inputs, unsafe archives, source mismatches, synthetic gate resistance and environment policies before push.

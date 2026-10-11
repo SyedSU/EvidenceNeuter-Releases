@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "status": "blocked",
+  "publicDownloads": false,
+  "userReportedLaptopAcceptance": {
+    "status": "passed",
+    "artifactBindings": null,
+    "independentlyVerified": false
+  },
+  "metadata": {
+    "sequence": null,
+    "expires": null,
+    "hubManifestUrl": null,
+    "genesisManifestUrl": null
+  },
+  "hub": {
+    "repository": null,
+    "integrationCommit": null,
+    "reviewedBuildCommit": "0e7033b601cb1ca40c7b4683d50f5d8b6e89a7bb",
+    "installerPath": null,
+    "installerUrl": null,
+    "publisherThumbprint": null
+  },
+  "genesis": {
+    "repository": null,
+    "integrationCommit": null,
+    "reviewedBuildCommit": "8190af101b206314c2f5b922ac52ca5f7ae6798e",
+    "packages": {
+      "game": {
+        "path": null,
+        "url": null
+      },
+      "runtime": {
+        "path": null,
+        "url": null
+      },
+      "model": {
+        "path": null,
+        "url": null
+      }
+    },
+    "components": null
+  },
+  "acceptanceEvidencePath": null,
+  "productionTrustConfigured": false,
+  "componentReportPath": null
+}

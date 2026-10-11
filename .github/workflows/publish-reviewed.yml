@@ -56,6 +56,10 @@ jobs:
           GENESIS_URL: ${{ inputs.genesis_manifest_url }}
         run: |
           python tools/review_candidate.py
+      - name: Require existing protected release environment (read-only)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/environment_preflight.py
   publish:
     needs: verify
     runs-on: ubuntu-latest
