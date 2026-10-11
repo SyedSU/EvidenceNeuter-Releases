@@ -67,3 +67,20 @@ class EnvironmentTests(unittest.TestCase):
    bad=copy.deepcopy(environment);bad[field]=value
    with self.assertRaises(ValueError):validate_environment(bad,policies)
   with self.assertRaises(ValueError):validate_environment(environment,{'branch_policies':[{'name':'*','type':'branch'}]})
+
+class BundleProofTests(unittest.TestCase):
+ def test_bundle_requires_replay_floors_and_no_approval(self):
+  from unittest.mock import patch
+  from tools.verify_bundle import verify_bundle
+  data={'publicDownloads':True,'sequence':3,'expires':'future'}
+  with patch('tools.verify_bundle.verify') as verify,patch('tools.verify_bundle.validate_candidate',return_value=data) as validate,patch('tools.verify_bundle.verify_public_assets',return_value={'manifests':[],'assets':[]}) as public:
+   result=verify_bundle({}, {}, {},None,None,None,{},'pin','huburl','genesisurl',3,4,5)
+   self.assertFalse(result['publicationAuthorized']);self.assertEqual(validate.call_count,2);self.assertEqual(public.call_count,1)
+   self.assertEqual([call.args[-1] for call in verify.call_args_list],[3,4,5,3,4,5])
+   with self.assertRaises(ValueError):verify_bundle({}, {}, {},None,None,None,{},'pin','huburl','genesisurl',-1)
+ def test_development_bundle_cannot_supply_production_proof(self):
+  from unittest.mock import patch
+  from tools.verify_bundle import verify_bundle
+  with patch('tools.verify_bundle.verify'),patch('tools.verify_bundle.validate_candidate',return_value={'publicDownloads':False}),patch('tools.verify_bundle.verify_public_assets') as public:
+   with self.assertRaises(ValueError):verify_bundle({}, {}, {},None,None,None,{},'pin','huburl','genesisurl')
+   public.assert_not_called()

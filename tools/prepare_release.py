@@ -87,7 +87,9 @@ def prepare(config):
   catalog=json.loads((ROOT/'catalog/development.json').read_text());catalog.update(sequence=metadata['sequence'],expires=metadata['expires'])
   for entry,payload,url in [(catalog['infrastructure'],hub_payload,metadata['hubManifestUrl']),(catalog['products'][0],genesis_payload,metadata['genesisManifestUrl'])]:
    entry['sourceCommit']=payload['sourceCommit'];entry['release']={'manifestUrl':url,'version':payload['version'],'sourceCommit':payload['sourceCommit'],'platform':'windows-x64','download':{k:hub_payload['installer'][k] for k in ('url','size','sha256')} if entry['id']=='hub' else None}
-  if genesis.get('components'):catalog['products'][0]['components']=genesis['components']
+  components=genesis.get('components')
+  if components and all(c and c.get('version') and re.fullmatch('[a-f0-9]{40}',c.get('sourceCommit') or '') and c.get('licenseNotices') and all(n.get('url') for n in c['licenseNotices']) for c in components.values()):catalog['products'][0]['components']=components
+  else:blockers.append('Component identity or approved publication license-notice URLs missing')
   validate_catalog(catalog)
   report['unsignedProposals']={'hub':hub_payload,'genesis':genesis_payload,'catalog':catalog}
  blockers.extend(['Production role pins and signed envelopes require independent review','Artifact-bound Windows/Authenticode acceptance requires protected human review','Anonymous published-byte proof has not run','Approved license and component provenance required'])
