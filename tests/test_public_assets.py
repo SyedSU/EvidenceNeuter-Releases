@@ -52,3 +52,26 @@ class PublicAssetTests(unittest.TestCase):
   with self.assertRaises(ValueError):self.verify()
  def test_unsigned_development_never_requests_assets(self):
   self.catalog['publicDownloads']=False;self.assertEqual(self.verify(),{'manifests':[],'assets':[]});self.assertEqual(self.requests,[])
+
+ def test_redirect_loop_is_bounded(self):
+  self.add(BASE+'hub.exe',b'',302,{'Location':BASE+'hub.exe'})
+  with self.assertRaises(ValueError):self.verify()
+  self.assertEqual(self.requests.count(BASE+'hub.exe'),6)
+ def test_oversized_metadata_rejected_before_read(self):
+  self.remote[BASE+'hub.json']=(200,{'Content-Length':str(2*1024*1024+1)},b'{}')
+  with self.assertRaises(ValueError):self.verify()
+ def test_encoded_asset_response_rejected(self):
+  body=self.remote[BASE+'hub.exe'][2]
+  self.add(BASE+'hub.exe',body,headers={'Content-Encoding':'gzip'})
+  with self.assertRaises(ValueError):self.verify()
+ def test_default_transport_has_no_credentials(self):
+  from unittest.mock import patch
+  from tools.public_assets import anonymous_transport
+  response=io.BytesIO(b'fixture');response.code=200;response.headers={}
+  class Opener:
+   def open(inner,request,timeout):
+    self.assertNotIn('Authorization',request.headers);self.assertNotIn('Cookie',request.headers)
+    self.assertEqual(request.headers['Accept-encoding'],'identity');self.assertEqual(timeout,30)
+    return response
+  with patch('tools.public_assets.build_opener',return_value=Opener()):
+   anonymous_transport(BASE+'hub.json').body.close()
