@@ -45,5 +45,23 @@
   },
   "acceptanceEvidencePath": null,
   "productionTrustConfigured": false,
-  "componentReportPath": null
+  "componentReportPath": null,
+  "publicationPhases": [
+    {
+      "phase": 1,
+      "scope": "Immutable packages and signed Hub/Genesis envelopes only",
+      "authorized": false,
+      "catalogPublicDownloads": false
+    },
+    {
+      "phase": 2,
+      "scope": "Signed catalog and separately authorized website activation after actual signed-core acceptance",
+      "authorized": false,
+      "requiresPhase1Evidence": true
+    }
+  ],
+  "acceptancePairs": {
+    "sameEpochGenesis": null,
+    "newerHubInstaller": null
+  }
 }

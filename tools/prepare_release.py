@@ -55,6 +55,8 @@ def integration_mapping(repository,build,integrated):
 def prepare(config):
  report={'schema':1,'status':'blocked','publicDownloads':False,'authenticated':False,'publicationAuthorized':False,'blockers':[], 'provenance':{},'unsignedProposals':{},'userReportedLaptopAcceptance':config.get('userReportedLaptopAcceptance'), 'publicationOrder':['immutable installer and component archives','independently signed Hub and Genesis manifests','anonymous public verification and reviewed Windows evidence','signed catalog last and byte-preserving website mirror']}
  if config.get('componentReportPath'):report['componentProvenance']=import_component_report(config['componentReportPath'],config)
+ report['publicationPhases']=config.get('publicationPhases',[])
+ report['acceptancePairs']=config.get('acceptancePairs',{})
  blockers=report['blockers'];lock=json.loads((ROOT/'catalog/source-lock.json').read_text())
  for product in ('hub','genesis'):
   source=config[product]
@@ -92,7 +94,7 @@ def prepare(config):
   else:blockers.append('Component identity or approved publication license-notice URLs missing')
   validate_catalog(catalog)
   report['unsignedProposals']={'hub':hub_payload,'genesis':genesis_payload,'catalog':catalog}
- blockers.extend(['Production role pins and signed envelopes require independent review','Artifact-bound Windows/Authenticode acceptance requires protected human review','Anonymous published-byte proof has not run','Approved license and component provenance required'])
+ blockers.extend(['Genuine same-epoch Genesis and newer-version Hub acceptance pairs required','Production role pins and signed envelopes require independent review','Artifact-bound Windows/Authenticode acceptance requires protected human review','Anonymous published-byte proof has not run','Approved license and component provenance required'])
  if config.get('acceptanceEvidencePath'):
   evidence=json.loads(Path(config['acceptanceEvidencePath']).read_text());report['acceptanceEvidence']=evidence
   # An unsigned assertion is evidence to review, never authentication or approval.
