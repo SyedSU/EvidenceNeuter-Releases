@@ -32,7 +32,7 @@ def inspect_package(path):
 
 def import_component_report(path,config):
  report_path=Path(path);report=json.loads(report_path.read_text())
- if any(report.get(k)!=v for k,v in {'schema':1,'product':'genesis','version':'0.4.0','saveSchema':4,'minimumHubVersion':'0.3.0','sourceCommit':config['genesis']['reviewedBuildCommit']}.items()):raise ValueError('Component report source/version mismatch')
+ if any(report.get(k)!=v for k,v in {'schema':1,'product':'genesis','version':config['genesis'].get('version','0.4.0'),'saveSchema':4,'minimumHubVersion':'0.3.0','sourceCommit':config['genesis']['reviewedBuildCommit']}.items()):raise ValueError('Component report source/version mismatch')
  if sorted(item['kind'] for item in report['packages'])!=['game','model','runtime']:raise ValueError('Component report identities mismatch')
  for item in report['packages']:
   safe_path(item['path']);archive=report_path.parent/item['path']
@@ -56,6 +56,7 @@ def prepare(config):
  report={'schema':1,'status':'blocked','publicDownloads':False,'authenticated':False,'publicationAuthorized':False,'blockers':[], 'provenance':{},'unsignedProposals':{},'userReportedLaptopAcceptance':config.get('userReportedLaptopAcceptance'), 'publicationOrder':['immutable installer and component archives','independently signed Hub and Genesis manifests','anonymous public verification and reviewed Windows evidence','signed catalog last and byte-preserving website mirror']}
  if config.get('componentReportPath'):report['componentProvenance']=import_component_report(config['componentReportPath'],config)
  report['publicationPhases']=config.get('publicationPhases',[])
+ report['ownerPublicationAuthorized']=bool(report['publicationPhases']) and all(p.get('authorized') is True for p in report['publicationPhases'])
  report['acceptancePairs']=config.get('acceptancePairs',{})
  blockers=report['blockers'];lock=json.loads((ROOT/'catalog/source-lock.json').read_text())
  for product in ('hub','genesis'):
@@ -83,12 +84,12 @@ def prepare(config):
  if set(genesis['packages'])!={'game','runtime','model'}:raise ValueError('Missing component identity')
  if ready:
   common={'schema':1,'channel':'stable','platform':'windows-x64','sequence':metadata['sequence'],'expires':metadata['expires']}
-  hub_payload=dict(common,product='hub',version='0.3.0',sourceCommit=hub['reviewedBuildCommit'],minimumHubVersion='0.3.0',minimumWindowsBuild=19041,installer=dict(digest_file(hub['installerPath']),url=hub['installerUrl'],publisherThumbprint=hub['publisherThumbprint']))
-  genesis_payload=dict(common,product='genesis',version='0.4.0',sourceCommit=genesis['reviewedBuildCommit'],minimumHubVersion='0.3.0',saveSchema=4,packages=[dict(inspect_package(item['path']),kind=kind,url=item['url']) for kind,item in genesis['packages'].items()])
+  hub_payload=dict(common,product='hub',version=lock['hub']['version'],sourceCommit=hub['reviewedBuildCommit'],minimumHubVersion='0.3.0',minimumWindowsBuild=19041,installer=dict(digest_file(hub['installerPath']),url=hub['installerUrl'],publisherThumbprint=hub['publisherThumbprint']))
+  genesis_payload=dict(common,product='genesis',version=lock['genesis']['version'],sourceCommit=genesis['reviewedBuildCommit'],minimumHubVersion='0.3.0',saveSchema=4,packages=[dict(inspect_package(item['path']),kind=kind,url=item['url']) for kind,item in genesis['packages'].items()])
   validate_hub(hub_payload);validate_manifest(genesis_payload)
   catalog=json.loads((ROOT/'catalog/development.json').read_text());catalog.update(sequence=metadata['sequence'],expires=metadata['expires'])
   for entry,payload,url in [(catalog['infrastructure'],hub_payload,metadata['hubManifestUrl']),(catalog['products'][0],genesis_payload,metadata['genesisManifestUrl'])]:
-   entry['sourceCommit']=payload['sourceCommit'];entry['release']={'manifestUrl':url,'version':payload['version'],'sourceCommit':payload['sourceCommit'],'platform':'windows-x64','download':{k:hub_payload['installer'][k] for k in ('url','size','sha256')} if entry['id']=='hub' else None}
+   entry['version']=payload['version'];entry['sourceCommit']=payload['sourceCommit'];entry['release']={'manifestUrl':url,'version':payload['version'],'sourceCommit':payload['sourceCommit'],'platform':'windows-x64','download':{k:hub_payload['installer'][k] for k in ('url','size','sha256')} if entry['id']=='hub' else None}
   components=genesis.get('components')
   if components and all(c and c.get('version') and re.fullmatch('[a-f0-9]{40}',c.get('sourceCommit') or '') and c.get('licenseNotices') and all(n.get('url') for n in c['licenseNotices']) for c in components.values()):catalog['products'][0]['components']=components
   else:blockers.append('Component identity or approved publication license-notice URLs missing')

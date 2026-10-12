@@ -104,7 +104,9 @@ def validate_candidate(envelope,key,kind,lock,hub_envelope=None,genesis_envelope
  for product in ['hub','genesis']:
   entry=lock.get(product,{})
   if not isinstance(entry.get('sourceCommit'),str) or not re.fullmatch('[a-f0-9]{40}',entry['sourceCommit']):raise ValueError('Incomplete reviewed source lock')
-  check_lock(lock,product,'0.3.0' if product=='hub' else '0.4.0',entry['sourceCommit'],4 if product=='genesis' else None)
+
+  if not isinstance(entry.get('version'),str) or not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+',entry['version']):raise ValueError('Reviewed version lock invalid')
+  check_lock(lock,product,entry['version'],entry['sourceCommit'],4 if product=='genesis' else None)
  data=verify(envelope,key,kind)
  if kind=='catalog':
   for entry in [data['infrastructure']]+data['products']:

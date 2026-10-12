@@ -131,7 +131,7 @@ class DistributionTests(unittest.TestCase):
   lock={'hub':{'version':'0.3.0','sourceCommit':'a'*40},'genesis':{'version':'0.4.0','sourceCommit':'b'*40,'saveSchema':4}}
   urls={p:'https://github.com/SyedSU/EvidenceNeuter-Releases/releases/download/test/'+p+'.json' for p in ['hub','genesis']}
   for e in [c['infrastructure'],c['products'][0]]:
-   e.update(availability='available',sourceCommit=lock[e['id']]['sourceCommit'],licenseNotices=[{'name':'License','url':'/assets/license.txt'}]);e['release']={'manifestUrl':urls[e['id']],'version':e['version'],'sourceCommit':e['sourceCommit'],'platform':'windows-x64','download':{k:v for k,v in installer.items() if k!='publisherThumbprint'} if e['id']=='hub' else None}
+   e.update(availability='available',version=lock[e['id']]['version'],sourceCommit=lock[e['id']]['sourceCommit'],licenseNotices=[{'name':'License','url':'/assets/license.txt'}]);e['release']={'manifestUrl':urls[e['id']],'version':e['version'],'sourceCommit':e['sourceCommit'],'platform':'windows-x64','download':{k:v for k,v in installer.items() if k!='publisherThumbprint'} if e['id']=='hub' else None}
   c['products'][0]['components']={k:{'version':'1.0.0','sourceCommit':'c'*40,'licenseNotices':[{'name':'License','url':'/assets/license.txt'}]} for k in ['runtime','model']}
   hub={'schema':1,'product':'hub','channel':'stable','platform':'windows-x64','version':'0.3.0','sequence':1,'expires':c['expires'],'minimumHubVersion':'0.2.0','minimumWindowsBuild':19041,'sourceCommit':'a'*40,'installer':installer}
   genesis={'schema':1,'product':'genesis','channel':'stable','platform':'windows-x64','version':'0.4.0','sequence':1,'expires':c['expires'],'minimumHubVersion':'0.3.0','saveSchema':4,'sourceCommit':'b'*40,'packages':[]}

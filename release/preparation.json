@@ -16,17 +16,18 @@
     "genesisManifestUrl": null
   },
   "hub": {
-    "repository": null,
-    "integrationCommit": null,
-    "reviewedBuildCommit": "c89f863fafe0eae86933026c84c81ecb4a54c10e",
+    "repository": "/workspace/EvidenceNeuterHub",
+    "integrationCommit": "c1dd06459c5c4f791daf6d30f442de074efa3075",
+    "reviewedBuildCommit": "c1dd06459c5c4f791daf6d30f442de074efa3075",
     "installerPath": null,
     "installerUrl": null,
-    "publisherThumbprint": null
+    "publisherThumbprint": null,
+    "version": "0.3.0"
   },
   "genesis": {
-    "repository": null,
-    "integrationCommit": null,
-    "reviewedBuildCommit": "10339a41e79aecbd90802dd23cd29804665f5b55",
+    "repository": "/workspace/EvidenceGenesis",
+    "integrationCommit": "541cd718b2cf617e23c8737bbb99247f9df6e068",
+    "reviewedBuildCommit": "541cd718b2cf617e23c8737bbb99247f9df6e068",
     "packages": {
       "game": {
         "path": null,
@@ -41,7 +42,8 @@
         "url": null
       }
     },
-    "components": null
+    "components": null,
+    "version": "0.5.0"
   },
   "acceptanceEvidencePath": null,
   "productionTrustConfigured": false,
@@ -50,13 +52,13 @@
     {
       "phase": 1,
       "scope": "Immutable packages and signed Hub/Genesis envelopes only",
-      "authorized": false,
+      "authorized": true,
       "catalogPublicDownloads": false
     },
     {
       "phase": 2,
       "scope": "Signed catalog and separately authorized website activation after actual signed-core acceptance",
-      "authorized": false,
+      "authorized": true,
       "requiresPhase1Evidence": true
     }
   ],
