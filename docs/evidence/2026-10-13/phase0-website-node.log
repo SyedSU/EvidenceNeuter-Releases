@@ -1,0 +1,38 @@
+✔ canonical development snapshot cannot enable downloads (2.308918ms)
+✔ same complete public data without signature is rejected (3.085412ms)
+✔ missing production pin rejects authentic-looking signed metadata (7.924101ms)
+✔ authentic catalog verifies only with independently supplied test pin (4.507129ms)
+✔ tampering cannot authorize downloads (2.579497ms)
+✔ signed expiry and sequence rollback fail closed (6.677138ms)
+✔ unknown fields, blocked gate, and missing provenance rejected (1.272593ms)
+✔ private actions artifacts, mutable tags, unsafe local assets rejected (0.398111ms)
+✔ stable signed manifest locators are allowed but executable assets stay immutable (0.570341ms)
+✔ production Hub trust and publisher pins remain absent (0.993701ms)
+✔ matching independently signed release documents authorize the exact manifest installer (89.628053ms)
+✔ catalog alone cannot authorize a link (3.532377ms)
+✔ authentic but mismatched installer URL, length, and digest each block authorization (10.557034ms)
+✔ authentic but mismatched version and source commit each block authorization (5.034696ms)
+✔ manifest signature cannot use the catalog trust pin (1.477282ms)
+✔ absent or mismatched independent publisher pins block authorization (3.32229ms)
+✔ expired or rolled back Hub metadata cannot authorize a link (4.102879ms)
+✔ tampered or unknown-field Hub metadata cannot authorize a link (3.705518ms)
+✔ Hub manifest platform and channel are constrained independently (3.797447ms)
+✔ review staging preserves exact signed bytes and never patches shipped trust (139.808372ms)
+✔ verification-only does not create an overlay (126.953955ms)
+✔ wrong reviewed source revision blocks staging (61.577672ms)
+✔ unsigned development metadata blocks staging despite supplied public pins (62.575248ms)
+✔ existing destination is never overwritten (58.016471ms)
+✔ website checkout cannot be used as staging destination (61.06058ms)
+✔ sequence history rollback blocks staging (74.863954ms)
+✔ private key input is rejected as a public pin (62.252194ms)
+✔ blocked preparation report is never accepted as release proof (119.067257ms)
+✔ unreviewed Python sidecars cannot override the reviewed distribution verifier (133.727919ms)
+✔ dirty tracked website source cannot be attributed to the recorded commit (48.82489ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1945.239767

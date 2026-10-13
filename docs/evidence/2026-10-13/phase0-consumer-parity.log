@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/EvidenceNeuter-Releases/tools/check_consumers.py", line 34, in <module>
+    print(json.dumps(check_consumers(args.website,args.hub,args.genesis),indent=2))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/EvidenceNeuter-Releases/tools/check_consumers.py", line 21, in check_consumers
+    if not re.search(r"['\"]version['\"]\s*:\s*['\"]0\.4\.0['\"]",text) or not re.search(r"['\"]saveSchema['\"]\s*:\s*4\b",text):raise ValueError('Genesis builder requires0.4.0/saveSchema4')
+                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Genesis builder requires0.4.0/saveSchema4

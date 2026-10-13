@@ -1,0 +1,4 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GENESIS_STARTUP_TEST_OK: missing profile preserves legacy, menu fits, text scales
+GENESIS_RESTORE_TEST_OK: menu restore creates profile, failed restore rolls back

@@ -1,0 +1,66 @@
+[
+  {
+    "name": "godot-import",
+    "command": [
+      "godot",
+      "--headless",
+      "--path",
+      "/workspace/work/audit/native",
+      "--editor",
+      "--import",
+      "--quit"
+    ],
+    "engine": "4.6.3 (required 4.7.2 unavailable)",
+    "exit_code": 0,
+    "script_errors": false,
+    "output": "Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org\n\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Started Project initialization (5 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Scanning file structure...\u001b[39m\u001b[0m\n[  16% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Loading global class names...\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Verifying GDExtensions...\u001b[39m\u001b[0m\n[  50% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Creating autoload scripts...\u001b[39m\u001b[0m\n[  66% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Initializing plugins...\u001b[39m\u001b[0m\n[  83% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Starting file scan...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mfirst_scan_filesystem\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | Started Registering global classes... (13 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | GenesisArt\u001b[39m\u001b[0m\n[   7% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | GenesisAudio\u001b[39m\u001b[0m\n[  14% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | GenesisBrain\u001b[39m\u001b[0m\n[  21% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | GenesisDocuments\u001b[39m\u001b[0m\n[  28% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\n[  35% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | GenesisNotebook\u001b[39m\u001b[0m\n[  42% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | GenesisPanels\u001b[39m\u001b[0m\n[  50% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | GenesisProfiles\u001b[39m\u001b[0m\n[  57% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | GenesisState\u001b[39m\u001b[0m\n[  64% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | GenesisUI\u001b[39m\u001b[0m\n[  71% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | GenesisWorld\u001b[39m\u001b[0m\n[  78% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\n[  85% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mupdate_scripts_classes\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (1 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Preparing files to reimport...\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing pre-reimport operations...\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | icon.svg\u001b[39m\u001b[0m\n[  50% ] \u001b[90m\u001b[1mreimport\u001b[22m | Finalizing Asset Import...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (1 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing post-reimport operations...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Started Loading editor (5 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading editor layout...\u001b[39m\u001b[0m\n[  16% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading docks...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mloading_editor_layout\u001b[22m\n\u001b[0m\n"
+  },
+  {
+    "name": "godot-state",
+    "command": [
+      "godot",
+      "--headless",
+      "--path",
+      "/workspace/work/audit/native",
+      "--script",
+      "res://tests/state_test.gd"
+    ],
+    "engine": "4.6.3 (required 4.7.2 unavailable)",
+    "exit_code": 0,
+    "script_errors": false,
+    "output": "Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org\n\nGENESIS_STATE_TEST_OK: memory, approval, HTML escaping, saves, v2 migration, mission rewards, care, upgrades, levels\n"
+  },
+  {
+    "name": "godot-startup",
+    "command": [
+      "godot",
+      "--headless",
+      "--path",
+      "/workspace/work/audit/native",
+      "--script",
+      "res://tests/startup_test.gd",
+      "--",
+      "--no-brain"
+    ],
+    "engine": "4.6.3 (required 4.7.2 unavailable)",
+    "exit_code": 0,
+    "script_errors": false,
+    "output": "Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org\n\nGENESIS_STARTUP_TEST_OK: missing profile preserves legacy, menu fits, text scales\nGENESIS_RESTORE_TEST_OK: menu restore creates profile, failed restore rolls back\n"
+  },
+  {
+    "name": "godot-panel",
+    "command": [
+      "godot",
+      "--headless",
+      "--path",
+      "/workspace/work/audit/native",
+      "--",
+      "--no-brain",
+      "--smoke-test"
+    ],
+    "engine": "4.6.3 (required 4.7.2 unavailable)",
+    "exit_code": 0,
+    "script_errors": false,
+    "output": "Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org\n\nGENESIS_NATIVE_SMOKE_OK\n"
+  }
+]

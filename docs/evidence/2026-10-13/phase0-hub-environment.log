@@ -1,0 +1,8 @@
+test_exact_reviewed_main_environment (test_release_environment.GuardTests.test_exact_reviewed_main_environment) ... ok
+test_missing_or_weakened_approval_rejected (test_release_environment.GuardTests.test_missing_or_weakened_approval_rejected) ... ok
+test_self_review_or_wildcard_rejected (test_release_environment.GuardTests.test_self_review_or_wildcard_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "status": "blocked",
+  "publicDownloads": false,
+  "authenticated": false,
+  "publicationAuthorized": false,
+  "blockers": [
+    "Reviewed sequence and fresh expiry missing",
+    "hubManifestUrl missing",
+    "genesisManifestUrl missing",
+    "Hub installerPath missing",
+    "Hub installerUrl missing",
+    "Hub publisherThumbprint missing",
+    "game actual archive and immutable URL missing",
+    "runtime actual archive and immutable URL missing",
+    "model actual archive and immutable URL missing",
+    "Genuine same-epoch Genesis and newer-version Hub acceptance pairs required",
+    "Production role pins and signed envelopes require independent review",
+    "Artifact-bound Windows/Authenticode acceptance requires protected human review",
+    "Anonymous published-byte proof has not run",
+    "Approved license and component provenance required"
+  ],
+  "provenance": {
+    "hub": {
+      "reviewedBuildCommit": "c1dd06459c5c4f791daf6d30f442de074efa3075",
+      "integrationCommit": "c1dd06459c5c4f791daf6d30f442de074efa3075",
+      "tree": "07ef860e1b8f792e559079b076f1f09ae51d4227",
+      "reuseRequiresProtectedHumanReview": true
+    },
+    "genesis": {
+      "reviewedBuildCommit": "541cd718b2cf617e23c8737bbb99247f9df6e068",
+      "integrationCommit": "541cd718b2cf617e23c8737bbb99247f9df6e068",
+      "tree": "806b7fd6f421c3d80a3535c2a9499c056e138593",
+      "reuseRequiresProtectedHumanReview": true
+    }
+  },
+  "unsignedProposals": {},
+  "userReportedLaptopAcceptance": {
+    "status": "passed",
+    "artifactBindings": null,
+    "independentlyVerified": false,
+    "reportedDate": "2026-10-11",
+    "scope": "User-reported laptop gameplay acceptance; not artifact-specific signed production flow"
+  },
+  "publicationOrder": [
+    "immutable installer and component archives",
+    "independently signed Hub and Genesis manifests",
+    "anonymous public verification and reviewed Windows evidence",
+    "signed catalog last and byte-preserving website mirror"
+  ],
+  "publicationPhases": [
+    {
+      "phase": 1,
+      "scope": "Immutable packages and signed Hub/Genesis envelopes only",
+      "authorized": true,
+      "catalogPublicDownloads": false
+    },
+    {
+      "phase": 2,
+      "scope": "Signed catalog and separately authorized website activation after actual signed-core acceptance",
+      "authorized": true,
+      "requiresPhase1Evidence": true
+    }
+  ],
+  "ownerPublicationAuthorized": true,
+  "acceptancePairs": {
+    "sameEpochGenesis": null,
+    "newerHubInstaller": null
+  }
+}

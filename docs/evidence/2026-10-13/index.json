@@ -1,0 +1,106 @@
+{
+  "phase0-backup-failure.log": {
+    "size": 479,
+    "sha256": "a85c841b24f575b8d49b875f53b4936723acf88681a635468d0d6fb8f9e0ef1f"
+  },
+  "phase0-ci-jobs.json": {
+    "size": 5845,
+    "sha256": "7759ee07892cded7ca5e06c5599f93544d630844518dfefd13c93e3dd0f78e7e"
+  },
+  "phase0-consumer-parity.log": {
+    "size": 817,
+    "sha256": "d4621b4998c2a12094ad121be68ad7e94891f0d4c235891a0a9d52ed9e323da1"
+  },
+  "phase0-contract-results.json": {
+    "size": 7047,
+    "sha256": "df7e163daabd1a4658c3f6ee4c1b65ed6296e90bff6edf3f30c5c50d87160134"
+  },
+  "phase0-distribution.log": {
+    "size": 6470,
+    "sha256": "2ea17c7ed084fddd3649b7ba97a434780a905940277733c45402bc3dec3e5aaf"
+  },
+  "phase0-download-gate-report.json": {
+    "size": 1944,
+    "sha256": "d1af514ea87c9fafe934e8d428bdf25385bd4103e36efacaaebd82bef5c18cac"
+  },
+  "phase0-environment-checks.json": {
+    "size": 6719,
+    "sha256": "883789b717074bc7d80050251ea46649d7cd57c49c541e7376e96fa840a5576e"
+  },
+  "phase0-features-report.json": {
+    "size": 1241,
+    "sha256": "8408ebb8515ce3edec080186b3ea67f856347d7a02f7b542bf7dc0a319146798"
+  },
+  "phase0-gate-summary.json": {
+    "size": 1460,
+    "sha256": "96cd3db0ee18951c4079fe88af33e41b611b58455e3b6f3ab82764d0c8586c0d"
+  },
+  "phase0-genesis-js.log": {
+    "size": 683,
+    "sha256": "601c0690ffdddc58aae9ca821bbe22e248c5c3524d79b8dcca2715285d7173bb"
+  },
+  "phase0-genesis-python.log": {
+    "size": 1566,
+    "sha256": "5730f55a3ebece12f93bd64c684b2751924b6f5f677e01359a63b97f863bd3d8"
+  },
+  "phase0-godot-panel.log": {
+    "size": 97,
+    "sha256": "0235b3e6296ead5ef8cbad11cbfe87b0232b2958676c261b8316fe8eff9f7aba"
+  },
+  "phase0-godot-startup.log": {
+    "size": 236,
+    "sha256": "49a7532519acbc754695c95ccc7e400be77b1798001fc8b43f818ce5b8fff5e1"
+  },
+  "phase0-godot-state.log": {
+    "size": 190,
+    "sha256": "ed863b41dc93bee2781b709db94ac60248a272a89d7e87a84bc4e491b148c672"
+  },
+  "phase0-hub-environment.log": {
+    "size": 469,
+    "sha256": "771adbe67a11e0d8da4bfafe81f8e68e81fb2726e2b3010077bf7c247104123a"
+  },
+  "phase0-native-results.json": {
+    "size": 5451,
+    "sha256": "a17c01a614c985987b0f9b82542d72d51a59ec71d9c461ec07071ce01c68d0f0"
+  },
+  "phase0-preparation-output.json": {
+    "size": 2536,
+    "sha256": "9e9a9f47a0657a756d5dc56c0e80dc30d6ae3b648c9ab84f17c12ae7043e5373"
+  },
+  "phase0-remote-cli-checks.json": {
+    "size": 1355,
+    "sha256": "d0403306f6ffde0ac4dd8d647a26af01a58041ada94d1b80344965a1e8189da7"
+  },
+  "phase0-source-inventory.json": {
+    "size": 24751,
+    "sha256": "162bc707a0262a08168184209f42f96d6591b5912fd8a09f9dd3369b6d02737b"
+  },
+  "phase0-test-results.json": {
+    "size": 14979,
+    "sha256": "4b89337c5409110bb33f95614db1329e5a3a96af89edfa1a6757def0468ab34f"
+  },
+  "phase0-website-node.log": {
+    "size": 2469,
+    "sha256": "10087515f4a768c0afb1ccdcee2d7fd95762a4e0aa361927c2ef66b5703bedbf"
+  },
+  "phase0-website-python.log": {
+    "size": 1256,
+    "sha256": "1a066dc10311ea0ab0920af70926e2096bbb20c97ff3742ba9f15591420af412"
+  },
+  "phase1-cloud-environment.json": {
+    "size": 8689,
+    "sha256": "d8d47b4c66678f200252bf0d631c833bacafde69d5005dae4540e9701d1359a4"
+  },
+  "phase1-distribution-regression.log": {
+    "size": 6470,
+    "sha256": "51b0d4076e1e14d31bd6eedb7f2e89ac01f024855aa86dbf905831eb2ac72e85"
+  },
+  "phase1-environment-checks.json": {
+    "size": 1984,
+    "sha256": "fb8b6ccaa4d9ee088666bd91dce8740832a5d190e8061668d6009764cbc59bcb"
+  },
+  "phase1-starting-repositories.json": {
+    "size": 664,
+    "sha256": "46c0bc1de396895ac1cbfe781c1b03f6246b24ad397b32b51da0c3f0a9071f98"
+  }
+}

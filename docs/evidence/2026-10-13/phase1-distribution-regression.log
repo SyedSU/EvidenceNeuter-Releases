@@ -1,0 +1,54 @@
+test_asset_url_dot_segments_rejected (test_distribution.DistributionTests.test_asset_url_dot_segments_rejected) ... ok
+test_authenticated_public_gate_complete (test_distribution.DistributionTests.test_authenticated_public_gate_complete) ... ok
+test_consumer_checker_detects_schema_drift (test_distribution.DistributionTests.test_consumer_checker_detects_schema_drift) ... ok
+test_development (test_distribution.DistributionTests.test_development) ... ok
+test_expiry_and_replay (test_distribution.DistributionTests.test_expiry_and_replay) ... ok
+test_hub_manifest_publisher_and_url (test_distribution.DistributionTests.test_hub_manifest_publisher_and_url) ... ok
+test_local_screenshot_and_notice_are_valid (test_distribution.DistributionTests.test_local_screenshot_and_notice_are_valid) ... ok
+test_manifest_compatible_and_overlap_rejected (test_distribution.DistributionTests.test_manifest_compatible_and_overlap_rejected) ... ok
+test_metadata_locator_is_separate_from_immutable_download (test_distribution.DistributionTests.test_metadata_locator_is_separate_from_immutable_download) ... ok
+test_mounted_ancestor_conflict_rejected (test_distribution.DistributionTests.test_mounted_ancestor_conflict_rejected) ... ok
+test_mutable_release_and_executable_notice_urls_rejected (test_distribution.DistributionTests.test_mutable_release_and_executable_notice_urls_rejected) ... ok
+test_package_deterministic (test_distribution.DistributionTests.test_package_deterministic) ... ok
+test_public_bundle_requires_matching_signed_manifests (test_distribution.DistributionTests.test_public_bundle_requires_matching_signed_manifests) ... ok
+test_review_candidate_requires_complete_source_lock (test_distribution.DistributionTests.test_review_candidate_requires_complete_source_lock) ... ok
+test_review_hub_candidate_matches_locked_source (test_distribution.DistributionTests.test_review_hub_candidate_matches_locked_source) ... ok
+test_schema4_requires_hub03 (test_distribution.DistributionTests.test_schema4_requires_hub03) ... ok
+test_screenshot_encoded_and_backslash_paths_rejected (test_distribution.DistributionTests.test_screenshot_encoded_and_backslash_paths_rejected) ... ok
+test_screenshot_traversal (test_distribution.DistributionTests.test_screenshot_traversal) ... ok
+test_sign_tamper (test_distribution.DistributionTests.test_sign_tamper) ... ok
+test_unknown_field (test_distribution.DistributionTests.test_unknown_field) ... ok
+test_unsigned_downloads_blocked (test_distribution.DistributionTests.test_unsigned_downloads_blocked) ... ok
+test_version_lock (test_distribution.DistributionTests.test_version_lock) ... ok
+test_bundle_requires_replay_floors_and_no_approval (test_preparation.BundleProofTests.test_bundle_requires_replay_floors_and_no_approval) ... ok
+test_development_bundle_cannot_supply_production_proof (test_preparation.BundleProofTests.test_development_bundle_cannot_supply_production_proof) ... ok
+test_missing_environment_or_reviewers_fail_closed (test_preparation.EnvironmentTests.test_missing_environment_or_reviewers_fail_closed) ... ok
+test_only_strict_main_review_policy_accepted (test_preparation.EnvironmentTests.test_only_strict_main_review_policy_accepted) ... ok
+test_explicit_directory_entries_rejected_like_hub (test_preparation.PreparationTests.test_explicit_directory_entries_rejected_like_hub) ... ok
+test_full_unsigned_proposal_uses_real_packages_but_never_approves (test_preparation.PreparationTests.test_full_unsigned_proposal_uses_real_packages_but_never_approves) ... ok
+test_merge_tree_mapping_requires_explicit_equivalence (test_preparation.PreparationTests.test_merge_tree_mapping_requires_explicit_equivalence) ... ok
+test_missing_inputs_produce_blocked_record_without_fabricated_assets (test_preparation.PreparationTests.test_missing_inputs_produce_blocked_record_without_fabricated_assets) ... ok
+test_package_hashes_actual_file_bytes (test_preparation.PreparationTests.test_package_hashes_actual_file_bytes) ... ok
+test_package_traversal_and_duplicate_rejected (test_preparation.PreparationTests.test_package_traversal_and_duplicate_rejected) ... ok
+test_source_lock_mismatch_rejected (test_preparation.PreparationTests.test_source_lock_mismatch_rejected) ... ok
+test_user_report_cannot_authorize_publication (test_preparation.PreparationTests.test_user_report_cannot_authorize_publication) ... ok
+test_windows_reparse_attribute_rejected_like_hub (test_preparation.PreparationTests.test_windows_reparse_attribute_rejected_like_hub) ... ok
+test_approved_cdn_redirect_preserves_signed_integrity (test_public_assets.PublicAssetTests.test_approved_cdn_redirect_preserves_signed_integrity) ... ok
+test_complete_public_bundle_bytes_and_envelopes (test_public_assets.PublicAssetTests.test_complete_public_bundle_bytes_and_envelopes) ... ok
+test_default_transport_has_no_credentials (test_public_assets.PublicAssetTests.test_default_transport_has_no_credentials) ... ok
+test_different_valid_signed_remote_manifest_rejects (test_public_assets.PublicAssetTests.test_different_valid_signed_remote_manifest_rejects) ... ok
+test_encoded_asset_response_rejected (test_public_assets.PublicAssetTests.test_encoded_asset_response_rejected) ... ok
+test_expiry_during_streaming_blocks_activation (test_public_assets.PublicAssetTests.test_expiry_during_streaming_blocks_activation) ... ok
+test_missing_public_package_rejects (test_public_assets.PublicAssetTests.test_missing_public_package_rejects) ... ok
+test_oversized_metadata_rejected_before_read (test_public_assets.PublicAssetTests.test_oversized_metadata_rejected_before_read) ... ok
+test_redirect_loop_is_bounded (test_public_assets.PublicAssetTests.test_redirect_loop_is_bounded) ... ok
+test_remote_signature_tamper_rejects (test_public_assets.PublicAssetTests.test_remote_signature_tamper_rejects) ... ok
+test_truncated_and_tampered_package_rejects (test_public_assets.PublicAssetTests.test_truncated_and_tampered_package_rejects) ... ok
+test_truncation_without_content_length_rejects (test_public_assets.PublicAssetTests.test_truncation_without_content_length_rejects) ... ok
+test_unapproved_or_insecure_redirect_rejected_before_request (test_public_assets.PublicAssetTests.test_unapproved_or_insecure_redirect_rejected_before_request) ... ok
+test_unsigned_development_never_requests_assets (test_public_assets.PublicAssetTests.test_unsigned_development_never_requests_assets) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 1.180s
+
+OK

@@ -1,0 +1,102 @@
+[
+  {
+    "name": "website-node",
+    "repo": "EvidenceNeuter",
+    "command": [
+      "node",
+      "--test",
+      "tests/catalog.test.mjs",
+      "tests/hub-manifest.test.mjs",
+      "tests/staging.test.mjs"
+    ],
+    "exit_code": 0,
+    "output": "\u2714 canonical development snapshot cannot enable downloads (2.308918ms)\n\u2714 same complete public data without signature is rejected (3.085412ms)\n\u2714 missing production pin rejects authentic-looking signed metadata (7.924101ms)\n\u2714 authentic catalog verifies only with independently supplied test pin (4.507129ms)\n\u2714 tampering cannot authorize downloads (2.579497ms)\n\u2714 signed expiry and sequence rollback fail closed (6.677138ms)\n\u2714 unknown fields, blocked gate, and missing provenance rejected (1.272593ms)\n\u2714 private actions artifacts, mutable tags, unsafe local assets rejected (0.398111ms)\n\u2714 stable signed manifest locators are allowed but executable assets stay immutable (0.570341ms)\n\u2714 production Hub trust and publisher pins remain absent (0.993701ms)\n\u2714 matching independently signed release documents authorize the exact manifest installer (89.628053ms)\n\u2714 catalog alone cannot authorize a link (3.532377ms)\n\u2714 authentic but mismatched installer URL, length, and digest each block authorization (10.557034ms)\n\u2714 authentic but mismatched version and source commit each block authorization (5.034696ms)\n\u2714 manifest signature cannot use the catalog trust pin (1.477282ms)\n\u2714 absent or mismatched independent publisher pins block authorization (3.32229ms)\n\u2714 expired or rolled back Hub metadata cannot authorize a link (4.102879ms)\n\u2714 tampered or unknown-field Hub metadata cannot authorize a link (3.705518ms)\n\u2714 Hub manifest platform and channel are constrained independently (3.797447ms)\n\u2714 review staging preserves exact signed bytes and never patches shipped trust (139.808372ms)\n\u2714 verification-only does not create an overlay (126.953955ms)\n\u2714 wrong reviewed source revision blocks staging (61.577672ms)\n\u2714 unsigned development metadata blocks staging despite supplied public pins (62.575248ms)\n\u2714 existing destination is never overwritten (58.016471ms)\n\u2714 website checkout cannot be used as staging destination (61.06058ms)\n\u2714 sequence history rollback blocks staging (74.863954ms)\n\u2714 private key input is rejected as a public pin (62.252194ms)\n\u2714 blocked preparation report is never accepted as release proof (119.067257ms)\n\u2714 unreviewed Python sidecars cannot override the reviewed distribution verifier (133.727919ms)\n\u2714 dirty tracked website source cannot be attributed to the recorded commit (48.82489ms)\n\u2139 tests 30\n\u2139 suites 0\n\u2139 pass 30\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 1945.239767\n"
+  },
+  {
+    "name": "website-python",
+    "repo": "EvidenceNeuter",
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "output": "test_all_client_dependencies_and_not_private_source (test_production_verification.ProductionVerificationTests.test_all_client_dependencies_and_not_private_source) ... ok\ntest_mismatched_actual_bytes_rejected (test_production_verification.ProductionVerificationTests.test_mismatched_actual_bytes_rejected) ... ok\ntest_actual_git_export_excludes_personal_or_model_files (test_site_deployment.CandidateSafety.test_actual_git_export_excludes_personal_or_model_files) ... ok\ntest_candidate_requires_explicit_production_action (test_site_deployment.CandidateSafety.test_candidate_requires_explicit_production_action) ... ok\ntest_changed_bytes_rejected_even_if_manifest_rehashed (test_site_deployment.CandidateSafety.test_changed_bytes_rejected_even_if_manifest_rehashed) ... ok\ntest_existing_project_binding_cannot_change (test_site_deployment.CandidateSafety.test_existing_project_binding_cannot_change) ... ok\ntest_extra_file_cannot_be_uploaded (test_site_deployment.CandidateSafety.test_extra_file_cannot_be_uploaded) ... ok\ntest_missing_credential_stops_before_network (test_site_deployment.CandidateSafety.test_missing_credential_stops_before_network) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.371s\n\nOK\n"
+  },
+  {
+    "name": "genesis-js",
+    "repo": "EvidenceGenesis",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 0,
+    "output": "\n> evidence-genesis@0.5.0 test\n> node --test tests/core.test.js\n\n\u2714 lessons persist, corrections replace lessons, and notebooks belong to each character (1.614089ms)\n\u2714 teaching format changes actual output; sign-off and glossary are included (3.78612ms)\n\u2714 only user approval grants progress and repeated approval does not duplicate it (0.296789ms)\n\u2714 export keeps Urdu text and escapes executable HTML (0.460366ms)\n\u2714 invalid saves and oversized notes are rejected (0.378692ms)\n\u2714 printable export renders headings and lists without executing HTML (0.219532ms)\n\u2139 tests 6\n\u2139 suites 0\n\u2139 pass 6\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 63.361345\n"
+  },
+  {
+    "name": "genesis-syntax",
+    "repo": "EvidenceGenesis",
+    "command": [
+      "npm",
+      "run",
+      "check"
+    ],
+    "exit_code": 0,
+    "output": "\n> evidence-genesis@0.5.0 check\n> node --check web/app.js && node --check web/ui.js && node --check web/scene.js && node --check web/core.js\n\n"
+  },
+  {
+    "name": "genesis-python",
+    "repo": "EvidenceGenesis",
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "output": "test_archives_preserve_exact_bytes_and_inventory (test_component_packages.ComponentPackagingTests.test_archives_preserve_exact_bytes_and_inventory) ... ok\ntest_empty_component_and_missing_required_payload_rejected (test_component_packages.ComponentPackagingTests.test_empty_component_and_missing_required_payload_rejected) ... ok\ntest_full_package_parity_detects_changed_payload (test_component_packages.ComponentPackagingTests.test_full_package_parity_detects_changed_payload) ... ok\ntest_symlinks_cannot_escape_component (test_component_packages.ComponentPackagingTests.test_symlinks_cannot_escape_component) ... ok\ntest_timestamps_and_modes_do_not_change_archive (test_component_packages.ComponentPackagingTests.test_timestamps_and_modes_do_not_change_archive) ... ok\ntest_unknown_source_provenance_rejected (test_component_packages.ComponentPackagingTests.test_unknown_source_provenance_rejected) ... ok\ntest_health_and_generation_transport (test_runtime.RuntimeTests.test_health_and_generation_transport) ... ok\ntest_no_cloud_model_address (test_runtime.RuntimeTests.test_no_cloud_model_address) ... ok\ntest_rejects_cross_origin_and_invalid_input (test_runtime.RuntimeTests.test_rejects_cross_origin_and_invalid_input) ... ok\ntest_static_server_does_not_expose_runtime (test_runtime.RuntimeTests.test_static_server_does_not_expose_runtime) ... ok\ntest_unavailable_model_never_falls_back (test_runtime.RuntimeTests.test_unavailable_model_never_falls_back) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.517s\n\nOK\n"
+  },
+  {
+    "name": "hub-environment",
+    "repo": "EvidenceNeuterHub",
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "output": "test_exact_reviewed_main_environment (test_release_environment.GuardTests.test_exact_reviewed_main_environment) ... ok\ntest_missing_or_weakened_approval_rejected (test_release_environment.GuardTests.test_missing_or_weakened_approval_rejected) ... ok\ntest_self_review_or_wildcard_rejected (test_release_environment.GuardTests.test_self_review_or_wildcard_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+  },
+  {
+    "name": "distribution",
+    "repo": "EvidenceNeuter-Releases",
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "output": "test_asset_url_dot_segments_rejected (test_distribution.DistributionTests.test_asset_url_dot_segments_rejected) ... ok\ntest_authenticated_public_gate_complete (test_distribution.DistributionTests.test_authenticated_public_gate_complete) ... ok\ntest_consumer_checker_detects_schema_drift (test_distribution.DistributionTests.test_consumer_checker_detects_schema_drift) ... ok\ntest_development (test_distribution.DistributionTests.test_development) ... ok\ntest_expiry_and_replay (test_distribution.DistributionTests.test_expiry_and_replay) ... ok\ntest_hub_manifest_publisher_and_url (test_distribution.DistributionTests.test_hub_manifest_publisher_and_url) ... ok\ntest_local_screenshot_and_notice_are_valid (test_distribution.DistributionTests.test_local_screenshot_and_notice_are_valid) ... ok\ntest_manifest_compatible_and_overlap_rejected (test_distribution.DistributionTests.test_manifest_compatible_and_overlap_rejected) ... ok\ntest_metadata_locator_is_separate_from_immutable_download (test_distribution.DistributionTests.test_metadata_locator_is_separate_from_immutable_download) ... ok\ntest_mounted_ancestor_conflict_rejected (test_distribution.DistributionTests.test_mounted_ancestor_conflict_rejected) ... ok\ntest_mutable_release_and_executable_notice_urls_rejected (test_distribution.DistributionTests.test_mutable_release_and_executable_notice_urls_rejected) ... ok\ntest_package_deterministic (test_distribution.DistributionTests.test_package_deterministic) ... ok\ntest_public_bundle_requires_matching_signed_manifests (test_distribution.DistributionTests.test_public_bundle_requires_matching_signed_manifests) ... ok\ntest_review_candidate_requires_complete_source_lock (test_distribution.DistributionTests.test_review_candidate_requires_complete_source_lock) ... ok\ntest_review_hub_candidate_matches_locked_source (test_distribution.DistributionTests.test_review_hub_candidate_matches_locked_source) ... ok\ntest_schema4_requires_hub03 (test_distribution.DistributionTests.test_schema4_requires_hub03) ... ok\ntest_screenshot_encoded_and_backslash_paths_rejected (test_distribution.DistributionTests.test_screenshot_encoded_and_backslash_paths_rejected) ... ok\ntest_screenshot_traversal (test_distribution.DistributionTests.test_screenshot_traversal) ... ok\ntest_sign_tamper (test_distribution.DistributionTests.test_sign_tamper) ... ok\ntest_unknown_field (test_distribution.DistributionTests.test_unknown_field) ... ok\ntest_unsigned_downloads_blocked (test_distribution.DistributionTests.test_unsigned_downloads_blocked) ... ok\ntest_version_lock (test_distribution.DistributionTests.test_version_lock) ... ok\ntest_bundle_requires_replay_floors_and_no_approval (test_preparation.BundleProofTests.test_bundle_requires_replay_floors_and_no_approval) ... ok\ntest_development_bundle_cannot_supply_production_proof (test_preparation.BundleProofTests.test_development_bundle_cannot_supply_production_proof) ... ok\ntest_missing_environment_or_reviewers_fail_closed (test_preparation.EnvironmentTests.test_missing_environment_or_reviewers_fail_closed) ... ok\ntest_only_strict_main_review_policy_accepted (test_preparation.EnvironmentTests.test_only_strict_main_review_policy_accepted) ... ok\ntest_explicit_directory_entries_rejected_like_hub (test_preparation.PreparationTests.test_explicit_directory_entries_rejected_like_hub) ... ok\ntest_full_unsigned_proposal_uses_real_packages_but_never_approves (test_preparation.PreparationTests.test_full_unsigned_proposal_uses_real_packages_but_never_approves) ... ok\ntest_merge_tree_mapping_requires_explicit_equivalence (test_preparation.PreparationTests.test_merge_tree_mapping_requires_explicit_equivalence) ... ok\ntest_missing_inputs_produce_blocked_record_without_fabricated_assets (test_preparation.PreparationTests.test_missing_inputs_produce_blocked_record_without_fabricated_assets) ... ok\ntest_package_hashes_actual_file_bytes (test_preparation.PreparationTests.test_package_hashes_actual_file_bytes) ... ok\ntest_package_traversal_and_duplicate_rejected (test_preparation.PreparationTests.test_package_traversal_and_duplicate_rejected) ... ok\ntest_source_lock_mismatch_rejected (test_preparation.PreparationTests.test_source_lock_mismatch_rejected) ... ok\ntest_user_report_cannot_authorize_publication (test_preparation.PreparationTests.test_user_report_cannot_authorize_publication) ... ok\ntest_windows_reparse_attribute_rejected_like_hub (test_preparation.PreparationTests.test_windows_reparse_attribute_rejected_like_hub) ... ok\ntest_approved_cdn_redirect_preserves_signed_integrity (test_public_assets.PublicAssetTests.test_approved_cdn_redirect_preserves_signed_integrity) ... ok\ntest_complete_public_bundle_bytes_and_envelopes (test_public_assets.PublicAssetTests.test_complete_public_bundle_bytes_and_envelopes) ... ok\ntest_default_transport_has_no_credentials (test_public_assets.PublicAssetTests.test_default_transport_has_no_credentials) ... ok\ntest_different_valid_signed_remote_manifest_rejects (test_public_assets.PublicAssetTests.test_different_valid_signed_remote_manifest_rejects) ... ok\ntest_encoded_asset_response_rejected (test_public_assets.PublicAssetTests.test_encoded_asset_response_rejected) ... ok\ntest_expiry_during_streaming_blocks_activation (test_public_assets.PublicAssetTests.test_expiry_during_streaming_blocks_activation) ... ok\ntest_missing_public_package_rejects (test_public_assets.PublicAssetTests.test_missing_public_package_rejects) ... ok\ntest_oversized_metadata_rejected_before_read (test_public_assets.PublicAssetTests.test_oversized_metadata_rejected_before_read) ... ok\ntest_redirect_loop_is_bounded (test_public_assets.PublicAssetTests.test_redirect_loop_is_bounded) ... ok\ntest_remote_signature_tamper_rejects (test_public_assets.PublicAssetTests.test_remote_signature_tamper_rejects) ... ok\ntest_truncated_and_tampered_package_rejects (test_public_assets.PublicAssetTests.test_truncated_and_tampered_package_rejects) ... ok\ntest_truncation_without_content_length_rejects (test_public_assets.PublicAssetTests.test_truncation_without_content_length_rejects) ... ok\ntest_unapproved_or_insecure_redirect_rejected_before_request (test_public_assets.PublicAssetTests.test_unapproved_or_insecure_redirect_rejected_before_request) ... ok\ntest_unsigned_development_never_requests_assets (test_public_assets.PublicAssetTests.test_unsigned_development_never_requests_assets) ... ok\n\n----------------------------------------------------------------------\nRan 49 tests in 1.336s\n\nOK\n"
+  }
+]

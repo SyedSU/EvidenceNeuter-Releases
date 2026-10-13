@@ -1,0 +1,44 @@
+[
+  {
+    "name": "consumer-parity",
+    "command": [
+      "python",
+      "tools/check_consumers.py",
+      "--website",
+      "/workspace/EvidenceNeuter",
+      "--hub",
+      "/workspace/EvidenceNeuterHub",
+      "--genesis",
+      "/workspace/EvidenceGenesis"
+    ],
+    "exit_code": 1,
+    "output": "Traceback (most recent call last):\n  File \"/workspace/EvidenceNeuter-Releases/tools/check_consumers.py\", line 34, in <module>\n    print(json.dumps(check_consumers(args.website,args.hub,args.genesis),indent=2))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/EvidenceNeuter-Releases/tools/check_consumers.py\", line 21, in check_consumers\n    if not re.search(r\"['\\\"]version['\\\"]\\s*:\\s*['\\\"]0\\.4\\.0['\\\"]\",text) or not re.search(r\"['\\\"]saveSchema['\\\"]\\s*:\\s*4\\b\",text):raise ValueError('Genesis builder requires0.4.0/saveSchema4')\n                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Genesis builder requires0.4.0/saveSchema4\n"
+  },
+  {
+    "name": "catalog-validation",
+    "command": [
+      "python",
+      "tools/distribution.py",
+      "validate-catalog",
+      "catalog/development.json"
+    ],
+    "exit_code": 0,
+    "output": "{\n  \"schema\": 1,\n  \"channel\": \"stable\",\n  \"sequence\": 1,\n  \"expires\": \"2026-11-08T00:00:00Z\",\n  \"publicDownloads\": false,\n  \"releaseGate\": {\n    \"status\": \"blocked\",\n    \"reasons\": [\n      \"Production trust key not provisioned\",\n      \"No public signed releases\",\n      \"Windows acceptance pending\"\n    ],\n    \"trustConfigured\": false,\n    \"signedArtifactsPublished\": false,\n    \"windowsAcceptancePassed\": false,\n    \"licensesApproved\": false,\n    \"authenticodeVerified\": false\n  },\n  \"infrastructure\": {\n    \"id\": \"hub\",\n    \"name\": \"Evidence Hub\",\n    \"availability\": \"development\",\n    \"version\": \"0.3.0\",\n    \"sourceCommit\": null,\n    \"release\": null,\n    \"screenshots\": [],\n    \"licenseNotices\": [],\n    \"description\": \"Install and launch approved Evidence products.\",\n    \"requirements\": [\n      \"Windows 10/11 x64 (development target).\",\n      \"Production downloads and self-update require independently reviewed release trust and an Authenticode publisher pin.\"\n    ],\n    \"releaseNotes\": [\n      \"Development preview adds the shared product catalog and release details.\",\n      \"Managed Genesis installs keep game, runtime and model separate and reuse verified unchanged components.\",\n      \"Imported installations remain playable offline; existing files and saves are preserved.\",\n      \"The separate Hub bootstrap updater requires signed metadata, a known publisher and protected release approval; production trust is not configured.\"\n    ]\n  },\n  \"products\": [\n    {\n      \"id\": \"genesis\",\n      \"name\": \"Genesis\",\n      \"availability\": \"development\",\n      \"version\": \"0.5.0\",\n      \"saveSchema\": 4,\n      \"sourceCommit\": null,\n      \"components\": {\n        \"runtime\": null,\n        \"model\": null\n      },\n      \"release\": null,\n      \"screenshots\": [],\n      \"licenseNotices\": [],\n      \"description\": \"A teachable 2.5D AI companion game with local inference and user-controlled memory.\",\n      \"requirements\": [\n        \"Windows 10/11 x64.\",\n        \"Hardware with an OpenGL 3.3 graphics driver.\",\n        \"Minimum CPU and RAM requirements have not been benchmarked; local AI speed depends on available hardware.\",\n        \"Bundled local AI may require the Microsoft Visual C++ x64 runtime; the official prerequisite download needs internet.\"\n      ],\n      \"releaseNotes\": [\n        \"0.5 candidate: Mosswood, Tidal Archive, editable field notes and once-only expedition rewards. Signed public packages remain blocked.\"\n      ]\n    },\n    {\n      \"id\": \"lab\",\n      \"name\": \"Lab\",\n      \"availability\": \"planned\",\n      \"version\": null,\n      \"saveSchema\": null,\n      \"sourceCommit\": null,\n      \"components\": {\n        \"runtime\": null,\n        \"model\": null\n      },\n      \"release\": null,\n      \"screenshots\": [],\n      \"licenseNotices\": [],\n      \"description\": \"A local voice cloning, speech and audio studio.\",\n      \"requirements\": [],\n      \"releaseNotes\": []\n    },\n    {\n      \"id\": \"bot\",\n      \"name\": \"Bot\",\n      \"availability\": \"planned\",\n      \"version\": null,\n      \"saveSchema\": null,\n      \"sourceCommit\": null,\n      \"components\": {\n        \"runtime\": null,\n        \"model\": null\n      },\n      \"release\": null,\n      \"screenshots\": [],\n      \"licenseNotices\": [],\n      \"description\": \"A local wake-word device assistant.\",\n      \"requirements\": [],\n      \"releaseNotes\": []\n    },\n    {\n      \"id\": \"academy\",\n      \"name\": \"Academy\",\n      \"availability\": \"planned\",\n      \"version\": null,\n      \"saveSchema\": null,\n      \"sourceCommit\": null,\n      \"components\": {\n        \"runtime\": null,\n        \"model\": null\n      },\n      \"release\": null,\n      \"screenshots\": [],\n      \"licenseNotices\": [],\n      \"description\": \"An interactive AI learning application.\",\n      \"requirements\": [],\n      \"releaseNotes\": []\n    },\n    {\n      \"id\": \"flow\",\n      \"name\": \"Flow\",\n      \"availability\": \"planned\",\n      \"version\": null,\n      \"saveSchema\": null,\n      \"sourceCommit\": null,\n      \"components\": {\n        \"runtime\": null,\n        \"model\": null\n      },\n      \"release\": null,\n      \"screenshots\": [],\n      \"licenseNotices\": [],\n      \"description\": \"A visual workflow and automation builder.\",\n      \"requirements\": [],\n      \"releaseNotes\": []\n    },\n    {\n      \"id\": \"council\",\n      \"name\": \"Council\",\n      \"availability\": \"planned\",\n      \"version\": null,\n      \"saveSchema\": null,\n      \"sourceCommit\": null,\n      \"components\": {\n        \"runtime\": null,\n        \"model\": null\n      },\n      \"release\": null,\n      \"screenshots\": [],\n      \"licenseNotices\": [],\n      \"description\": \"A workspace with AI researcher, writer, reviewer and planner roles.\",\n      \"requirements\": [],\n      \"releaseNotes\": []\n    }\n  ]\n}\n"
+  },
+  {
+    "name": "preparation",
+    "command": [
+      "python",
+      "tools/prepare_release.py",
+      "release/preparation.json",
+      "--output",
+      "/workspace/work/audit/preparation-output.json"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "name": "ci-missing-source-reproduction",
+    "result": "CalledProcessError: Command '['git', '-C', '/workspace/work/audit/ci-without-source-repos/hub', 'rev-parse', 'c1dd06459c5c4f791daf6d30f442de074efa3075^{tree}']' returned non-zero exit status 128."
+  }
+]

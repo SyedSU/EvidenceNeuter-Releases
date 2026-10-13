@@ -1,0 +1,50 @@
+[
+  {
+    "scenario": "authentic signed hash mismatch",
+    "links": 0,
+    "mirrorRequests": 1,
+    "status": "Public downloads blocked. Release information could not be verified. Please try again later; installation links remain unavailable."
+  },
+  {
+    "scenario": "matching separately signed bundle",
+    "links": 1,
+    "mirrorRequests": 1,
+    "status": "Verified public release 0.3.0. Its installer matches the independently signed Hub manifest. Hub verifies packages before installation."
+  },
+  {
+    "scenario": "missing mirror",
+    "links": 0,
+    "mirrorRequests": 1,
+    "status": "Public downloads blocked. Release information could not be verified. Please try again later; installation links remain unavailable."
+  },
+  {
+    "scenario": "unsigned mirror",
+    "links": 0,
+    "mirrorRequests": 1,
+    "status": "Public downloads blocked. Release information could not be verified. Please try again later; installation links remain unavailable."
+  },
+  {
+    "scenario": "absent manifest trust pin",
+    "links": 0,
+    "mirrorRequests": 1,
+    "status": "Public downloads blocked. Release information could not be verified. Please try again later; installation links remain unavailable."
+  },
+  {
+    "scenario": "absent publisher pin",
+    "links": 0,
+    "mirrorRequests": 1,
+    "status": "Public downloads blocked. Release information could not be verified. Please try again later; installation links remain unavailable."
+  },
+  {
+    "scenario": "rolled-back signed Hub manifest",
+    "links": 0,
+    "mirrorRequests": 1,
+    "status": "Public downloads blocked. Release information could not be verified. Please try again later; installation links remain unavailable."
+  },
+  {
+    "scenario": "expired signed Hub manifest",
+    "links": 0,
+    "mirrorRequests": 1,
+    "status": "Public downloads blocked. Release information could not be verified. Please try again later; installation links remain unavailable."
+  }
+]

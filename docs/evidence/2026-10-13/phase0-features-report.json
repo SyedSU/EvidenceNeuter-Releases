@@ -1,0 +1,59 @@
+{
+  "results": [
+    {
+      "width": 320,
+      "filters": true,
+      "shareableSearch": true,
+      "comparisonLimitAndTruth": true,
+      "modalFocusAndEscape": true,
+      "gallery": true,
+      "faq": true,
+      "pages": 6,
+      "noOverflow": true,
+      "errors": []
+    },
+    {
+      "width": 768,
+      "filters": true,
+      "shareableSearch": true,
+      "comparisonLimitAndTruth": true,
+      "modalFocusAndEscape": true,
+      "gallery": true,
+      "faq": true,
+      "pages": 6,
+      "noOverflow": true,
+      "errors": []
+    },
+    {
+      "width": 1024,
+      "filters": true,
+      "shareableSearch": true,
+      "comparisonLimitAndTruth": true,
+      "modalFocusAndEscape": true,
+      "gallery": true,
+      "faq": true,
+      "pages": 6,
+      "noOverflow": true,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "filters": true,
+      "shareableSearch": true,
+      "comparisonLimitAndTruth": true,
+      "modalFocusAndEscape": true,
+      "gallery": true,
+      "faq": true,
+      "pages": 6,
+      "noOverflow": true,
+      "errors": []
+    }
+  ],
+  "noJavaScript": true,
+  "reducedMotion": true,
+  "searchInjectionRejected": true,
+  "tamperedCatalogBlocked": true,
+  "browsers": [
+    "Chromium"
+  ]
+}

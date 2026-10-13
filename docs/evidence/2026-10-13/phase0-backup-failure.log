@@ -1,0 +1,8 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: Failed to open '/workspace/work/audit/backup-failure-data/EvidenceGenesis/backup-failure.json.backup'.
+   at: copy (core/io/dir_access.cpp:423)
+   GDScript backtrace (most recent call first):
+       [0] save (res://scripts/state.gd:114)
+       [1] _initialize (res://tests/backup_failure_audit.gd:9)
+{"active_changed":true,"backup_file_exists":false,"backup_is_directory":true,"save_returned":true}

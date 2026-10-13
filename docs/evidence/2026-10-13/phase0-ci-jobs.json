@@ -1,0 +1,210 @@
+{
+  "EvidenceNeuter": {
+    "retrievedDuring": "Phase 0, client date 2026-10-13",
+    "jobs": [
+      {
+        "id": 114971802251,
+        "name": "verify",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify main bytes on the existing production website",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ],
+    "runId": 38297431557,
+    "headSha": "7236c0e1273749e789d7052722e5c609d4f2e133",
+    "htmlUrl": "https://github.com/SyedSU/EvidenceNeuter/actions/runs/38297431557",
+    "runConclusion": "success"
+  },
+  "EvidenceNeuterHub": {
+    "retrievedDuring": "Phase 0, client date 2026-10-13",
+    "jobs": [
+      {
+        "id": 114965195666,
+        "name": "build",
+        "conclusion": "failure",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-dotnet@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run choco install nsis --version=3.11 -y --no-progress",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ./installer/build.ps1",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ./installer/smoke.ps1",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "conclusion": "failure"
+          },
+          {
+            "name": "Post Run actions/setup-dotnet@v4",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ],
+    "runId": 38295420622,
+    "headSha": "c1dd06459c5c4f791daf6d30f442de074efa3075",
+    "htmlUrl": "https://github.com/SyedSU/EvidenceNeuterHub/actions/runs/38295420622",
+    "runConclusion": "failure"
+  },
+  "EvidenceGenesis": {
+    "retrievedDuring": "Phase 0, client date 2026-10-13",
+    "jobs": [
+      {
+        "id": 114959627143,
+        "name": "build",
+        "conclusion": "failure",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify deterministic component packaging",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build and test the Windows game and bundled AI",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "conclusion": "failure"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ],
+    "runId": 38293710437,
+    "headSha": "541cd718b2cf617e23c8737bbb99247f9df6e068",
+    "htmlUrl": "https://github.com/SyedSU/EvidenceGenesis/actions/runs/38293710437",
+    "runConclusion": "failure"
+  },
+  "EvidenceNeuter-Releases": {
+    "retrievedDuring": "Phase 0, client date 2026-10-13",
+    "jobs": [
+      {
+        "id": 114967019964,
+        "name": "test",
+        "conclusion": "failure",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run pip install -r requirements.txt",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m unittest discover -s tests -v",
+            "conclusion": "failure"
+          },
+          {
+            "name": "Run python tools/distribution.py validate-catalog catalog/development.json",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ],
+    "runId": 38295974265,
+    "headSha": "9ff409890181c60affa7a4de2e415743ce80f7e0",
+    "htmlUrl": "https://github.com/SyedSU/EvidenceNeuter-Releases/actions/runs/38295974265",
+    "runConclusion": "failure"
+  }
+}

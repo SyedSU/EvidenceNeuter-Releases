@@ -1,0 +1,55 @@
+{
+  "website": {
+    "publicDownloads": false,
+    "releaseGate": {
+      "status": "blocked",
+      "reasons": [
+        "Production trust key not provisioned",
+        "No public signed releases",
+        "Windows acceptance pending"
+      ],
+      "trustConfigured": false,
+      "signedArtifactsPublished": false,
+      "windowsAcceptancePassed": false,
+      "licensesApproved": false,
+      "authenticodeVerified": false
+    },
+    "genesisVersion": "0.5.0"
+  },
+  "hub": {
+    "publicDownloads": false,
+    "releaseGate": {
+      "status": "blocked",
+      "reasons": [
+        "Production trust key not provisioned",
+        "No public signed releases",
+        "Windows acceptance pending"
+      ],
+      "trustConfigured": false,
+      "signedArtifactsPublished": false,
+      "windowsAcceptancePassed": false,
+      "licensesApproved": false,
+      "authenticodeVerified": false
+    },
+    "genesisVersion": "0.5.0"
+  },
+  "distribution": {
+    "publicDownloads": false,
+    "releaseGate": {
+      "status": "blocked",
+      "reasons": [
+        "Production trust key not provisioned",
+        "No public signed releases",
+        "Windows acceptance pending"
+      ],
+      "trustConfigured": false,
+      "signedArtifactsPublished": false,
+      "windowsAcceptancePassed": false,
+      "licensesApproved": false,
+      "authenticodeVerified": false
+    },
+    "genesisVersion": "0.5.0"
+  },
+  "catalogParity": true,
+  "catalogSchemaParity": true
+}
