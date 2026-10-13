@@ -1,0 +1,19 @@
+{
+  "source": "first-party C persistence code, reviewed with native tests and independent read-only reviewer",
+  "godotSourceCommit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+  "release": "4.7.2-stable",
+  "releasePublished": "2026-08-18",
+  "headerOrigin": "--headless --dump-gdextension-interface from verified existing official engine",
+  "headerSha256": "640b48188708ba0016f8d7ace9e0e1d3279a41fa1226c59ff3193b15538bd254",
+  "generatorSource": "https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/core/extension/gdextension_interface.json",
+  "licenseSource": "https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/LICENSE.txt",
+  "license": "MIT",
+  "licenseSha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
+  "compatibleScope": "MIT notice retained; original app licensing unchanged",
+  "apiSizes": "standard Godot float_64 String/StringName8 bytes; x64-only build check",
+  "permissions": "process-local native library, regular save file sync/same-directory rename/parent directory sync, no network or subprocess; C compiler required only at build time",
+  "newThirdPartyBindingOrAction": false,
+  "toolchain": "existing cc14.2.0 Linux; existing Windows runner Visual Studio version captured by /Bv, independent exact pin/license acceptance still pending",
+  "productionApproval": false,
+  "observedWindowsFinal": "source7df30d5/run38365587053: compilation/native/game/model/parity stepPASS; uploadquotaFAIL; no independent artifact inspection"
+}

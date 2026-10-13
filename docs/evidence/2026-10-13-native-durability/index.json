@@ -1,0 +1,90 @@
+{
+  "recordedAtUtc": "2026-10-13T08:10:18.332943+00:00",
+  "scope": "C native persistence source and exact local/decoded Windows outputs; no approved release artifacts",
+  "files": {
+    "48fd-windows-output.json": {
+      "byteSize": 47758,
+      "sha256": "4e6d13f3ce22213c2cd10ae58bb2bf21e4f2129dd747f209c73e77cd249bb284"
+    },
+    "aa-windows-output.json": {
+      "byteSize": 28621,
+      "sha256": "eae3fbe2d9682530b62a0dd885e1d2c9e5fbed7cdf028fd0f8bb10ae78a5dd15"
+    },
+    "adapter-vetting.json": {
+      "byteSize": 1543,
+      "sha256": "15b44adfd2744b8a9c2341010738b9d4528cd9ad8368500a8bccbe64824abcd6"
+    },
+    "bounded-windows-output.json": {
+      "byteSize": 28758,
+      "sha256": "4825b2540d2111091ce50c4500f4889c09bcdfb0a6ea4e0e9e323ead696c565d"
+    },
+    "cloud-environment.json": {
+      "byteSize": 7992,
+      "sha256": "bb970e7d1facec0e35fc72a374c6a561a00a1fdf508f5ad1063e44cd67ff27e2"
+    },
+    "dialog-windows-output.json": {
+      "byteSize": 28862,
+      "sha256": "516f35b987b0bf5eef2b01b1f62a97ceb09eb33f4f3e907c8bb6a3d6f93d3cbd"
+    },
+    "e3-windows-output.json": {
+      "byteSize": 24096,
+      "sha256": "b67b2c4aa551204930badf1380650e41d2603a8aeb6aace100f62f2212d8935a"
+    },
+    "failed-windows-output.json": {
+      "byteSize": 14427,
+      "sha256": "3cc5435743e4f64554183213bd483b23a36c6832653cef7c2b7a3dcf64a39b92"
+    },
+    "final-artifacts.json": {
+      "byteSize": 161,
+      "sha256": "c3d575098a5138bf89dbf56b7529efa03609f2b319900cff0771df212f13b177"
+    },
+    "final-ci-report.json": {
+      "byteSize": 66631,
+      "sha256": "60883ae95f18816c36227714ff6eb761f7d3b18544583ebd852dbc30ca83d906"
+    },
+    "initial-mutations.json": {
+      "byteSize": 17561,
+      "sha256": "095de72218bebbe19f2d7ff32edd0edd93c143164256eaa698849bf7f9619e63"
+    },
+    "mutations.json": {
+      "byteSize": 17815,
+      "sha256": "1ef07f4662308b52a226eb8455e7236cff5b8f0e5d57b3b2fec9af7bd4be8150"
+    },
+    "pid-windows-output.json": {
+      "byteSize": 28820,
+      "sha256": "7a0a41e1490167fa17ca23d3b70a0614e1369805d8798821cd3187c5cc7df510"
+    },
+    "pipe-windows-output.json": {
+      "byteSize": 29293,
+      "sha256": "29183ab9f47d84d708d83407c1a54102a6fc6802b4e435a94da0988133a4ebbe"
+    },
+    "previous-windows-output.json": {
+      "byteSize": 39064,
+      "sha256": "cb51a7c1de6d76db947a07a29531e26bbf4d2fdc0763f015f7fcbc47e5937968"
+    },
+    "raw-outputs.json": {
+      "byteSize": 117909,
+      "sha256": "96aec6a071eb74926aa5d35feba09154780c86acbc7a7c3672ff66aad17f7bd2"
+    },
+    "release-tests.json": {
+      "byteSize": 6713,
+      "sha256": "ba6d7c6889bcaaa51af005780f26d946430a6ac5c329eb05b34b9d08c639f080"
+    },
+    "review.md": {
+      "byteSize": 2129,
+      "sha256": "b8526b5dc9f8b19731b28ebda0b129e294513683c8c54931aaeecf15a64ed585"
+    },
+    "source-binding.json": {
+      "byteSize": 6397,
+      "sha256": "a2311d427d47d17b3d260813afc7e42b0ab570130f7fbc6e09c667cd21606bf9"
+    },
+    "trace-windows-output.json": {
+      "byteSize": 28752,
+      "sha256": "1c03ef78ddb169b9c79f744a227da580ac1f85d736cecbc5d0acdfc1a3397ba5"
+    },
+    "utf8-windows-output.json": {
+      "byteSize": 50644,
+      "sha256": "a8005b3b5ad9f6257b06ee89319b1667dc842c95e6312ac6d03f768b4fec0459"
+    }
+  }
+}
