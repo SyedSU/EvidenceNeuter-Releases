@@ -99,6 +99,18 @@
     "size": 1984,
     "sha256": "fb8b6ccaa4d9ee088666bd91dce8740832a5d190e8061668d6009764cbc59bcb"
   },
+  "phase1-main-publication.json": {
+    "size": 1082,
+    "sha256": "5cbe5651bbf92c92eb006b2754b247758c3845221f475611cb59fa5b82b6e3bb"
+  },
+  "phase1-prepush-distribution.log": {
+    "size": 6470,
+    "sha256": "2ac8454a254c7d187d6900ee8461421524626cc88d094d6a11f26ca9d9de0b9e"
+  },
+  "phase1-review.md": {
+    "size": 1286,
+    "sha256": "c8b4ca931040b9d0d896a5aab7d5a87069d40981148ac3aa736b6ed6badb0f8b"
+  },
   "phase1-starting-repositories.json": {
     "size": 664,
     "sha256": "46c0bc1de396895ac1cbfe781c1b03f6246b24ad397b32b51da0c3f0a9071f98"

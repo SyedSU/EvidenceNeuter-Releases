@@ -1,0 +1,27 @@
+{
+  "verifiedAtUtc": "2026-10-13T01:30:13.345693+00:00",
+  "scope": "documentation commits only; no product package publication or release approval",
+  "repositories": {
+    "EvidenceNeuter-Releases": {
+      "documentationCommit": "32d483d2108dbf31d38f4b271724bcde579133f1",
+      "remoteMain": "32d483d2108dbf31d38f4b271724bcde579133f1",
+      "match": true
+    },
+    "EvidenceNeuter": {
+      "documentationCommit": "0d413d420d66abfc90ef1222590d0c6fe0858ac9",
+      "remoteMain": "0d413d420d66abfc90ef1222590d0c6fe0858ac9",
+      "match": true
+    },
+    "EvidenceNeuterHub": {
+      "documentationCommit": "6f921885b8e480320b2654cd344228254d4a3e30",
+      "remoteMain": "6f921885b8e480320b2654cd344228254d4a3e30",
+      "match": true
+    },
+    "EvidenceGenesis": {
+      "documentationCommit": "87df678f1b5877c49acdf7907ac95fa7fdee1216",
+      "remoteMain": "87df678f1b5877c49acdf7907ac95fa7fdee1216",
+      "match": true
+    }
+  },
+  "canonicalFollowup": "Final evidence/checklist commit follows this publication snapshot; see Git history and session handoff for its SHA."
+}

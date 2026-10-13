@@ -1,6 +1,6 @@
 # Evidence Neuter — RELEASE-STATE
 
-State revision 1 · 2026-10-13 (Asia/Karachi) · active session: PHASE 1 STATE.
+State revision 1 · 2026-10-13 (Asia/Karachi) · completed session: PHASE 1 STATE.
 
 **Release verdict: blocked.** Phase 1 records scope and evidence; it does not fix product code, publish packages, configure trust, approve acceptance, or activate downloads. Read [the canonical brief](docs/RELEASE-BRIEF.md) first. Historical README/plan status and authorization statements are superseded only where this state and the current owner brief explicitly differ; technical constraints remain applicable. Never treat a passed documentation check as product acceptance.
 
@@ -93,6 +93,7 @@ Evidence is captured under [docs/evidence/2026-10-13](docs/evidence/2026-10-13/i
 | E12 | Existing portal-features-browser.cjs on audit copy, Chromium | PASS: four widths, six routes, focus/keyboard/search/filter/compare/gallery/FAQ/no-JS/motion/injection/disabled gates; screenshot outputs outside Git | [report](docs/evidence/2026-10-13/phase0-features-report.json) |
 | E13 | Existing download-gate-browser.cjs on audit copy, output path redirected only | PASS: eight synthetic signed-bundle scenarios; real ephemeral signatures, no published assets | [report](docs/evidence/2026-10-13/phase0-download-gate-report.json) |
 | E15 | Phase1 distribution regression, `python -m unittest discover -s tests -v` | 49 passed in this documentation phase; not new product/device acceptance | [fresh log](docs/evidence/2026-10-13/phase1-distribution-regression.log) |
+| E16 | Phase1 pre-push regression after fetch/rebase; independent documentation review and initial remote-main equality | 49 tests passed again; one provider evidence gap corrected; initial docs pushes verified, final evidence commit recorded separately in Git/session handoff | [regression](docs/evidence/2026-10-13/phase1-prepush-distribution.log), [review](docs/evidence/2026-10-13/phase1-review.md), [publication snapshot](docs/evidence/2026-10-13/phase1-main-publication.json) |
 | E14 | Missing-sibling provenance reproduction and prepare command | prepare blocked report emitted locally; missing repository gives git exit128/CalledProcessError. CI cause hypothesis supported by workflow layout, not remotely log-confirmed | [results](docs/evidence/2026-10-13/phase0-contract-results.json), [blocked preparation](docs/evidence/2026-10-13/phase0-preparation-output.json) |
 
 | Layer | Current disposition |

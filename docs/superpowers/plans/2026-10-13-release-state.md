@@ -32,7 +32,7 @@
 - [x] Write feature/acceptance matrix, blockers/owner steps, decisions, five evidence layers, proposed budgets/design/recovery notes.
 - [x] Record existing dependencies with unverified fields pending; preserve selected exact audit logs and digests.
 - [x] Verify unique46 requirement IDs/classes, all local evidence links/digests, required brief sections and unchanged locks/gates; expected PASS for document integrity, existing consumer validation still FAIL K02.
-- [ ] Commit the complete canonical documentation after review.
+- [x] Commit the complete canonical documentation after review.
 
 ## Task 2: Consumer guidance and coordinated handoff
 
@@ -41,7 +41,9 @@
 
 - [x] Add short canonical guidance and pointers; preserve original Genesis instructions byte-for-byte after preface.
 - [x] Verify canonical GitHub/sibling paths, documentation-only changed paths, source SHA identities and disabled catalog gates; run existing distribution49 tests as a provenance/regression check.
-- [ ] Review whole documentation change, resolve material findings, commit each clean main; fetch/rebase and repeat verification before non-force push.
-- [ ] Report actual commit/push results, tests and unchanged release blockers; stop at Phase1.
+- [x] Review whole documentation change, resolve material findings, commit each clean main; fetch/rebase and repeat verification before non-force push.
+- [x] Report actual commit/push results, tests and unchanged release blockers; stop at Phase1.
 
 Documentation-only verification replaces implementation TDD here: no product behavior or runtime feature is added, and the owner requests a state ledger. Native/UI/model/installer checks are retained as historical scoped evidence, not rerun or promoted by this phase. No skill automation scripts/new test dependencies are adopted.
+
+Execution completed: documentation checks pass,49 distribution tests pass before and after fetch/rebase, independent review evidence correction verified, initial documentation commits pushed and remote mains matched in all four repos. Final canonical evidence/checklist commit is a documentation-only follow-up; final SHA belongs to Git history/session handoff. Product/public release remains blocked.
