@@ -1,0 +1,70 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+SAVE_PASS: initial save
+SAVE_PASS: backup directory rejects save
+SAVE_PASS: backup failure preserves active bytes
+SAVE_PASS: backup failure reports error
+SAVE_PASS: candidate baseline
+SAVE_FAIL: invalid candidate refuses persistence
+SAVE_FAIL: invalid candidate preserves original
+SAVE_PASS: care baseline
+SAVE_PASS: failed feed rolls back berry energy and progress
+SAVE_PASS: failed feed reports failure
+SAVE_PASS: failed harvest rolls back berries and cooldown
+SAVE_PASS: failed harvest reports failure
+SAVE_PASS: failed rest reports false
+SAVE_PASS: failed rest rolls back energy and progress
+SAVE_PASS: first profile exists
+SAVE_PASS: blocked index backup rejects new selection
+SAVE_PASS: failed profile creation preserves previous selection
+SAVE_PASS: failed profile persistence preserves index
+SAVE_PASS: stage baseline
+SAVE_PASS: partial stage rejects save
+SAVE_PASS: partial stage preserves active bytes
+SAVE_PASS: partial first-save stage rejects persistence
+SAVE_PASS: partial first-save stage never becomes active
+SAVE_PASS: rename baseline
+SAVE_PASS: rename second generation
+SAVE_PASS: delete-before-failed-move reports failure
+SAVE_PASS: failed move restores missing active
+SAVE_PASS: failed move preserves previous backup
+SAVE_PASS: recovery baseline
+SAVE_PASS: recovery generation
+SAVE_PASS: missing primary recovers validated backup
+SAVE_PASS: corrupt save disables writes
+SAVE_PASS: corrupt original preserved byte for byte
+SAVE_PASS: corrupt bytes quarantined without replacing original
+SAVE_PASS: bounded task baseline
+SAVE_PASS: failed task queue preserves evicted history
+SAVE_PASS: sole backup baseline
+SAVE_PASS: sole backup generation
+SAVE_PASS: missing primary failed replacement rejected
+SAVE_PASS: failed replacement never rewrites sole unchanged backup
+SAVE_PASS: rollback baseline
+SAVE_PASS: rollback generation
+SAVE_PASS: backup rollback failure rejects transaction
+SAVE_PASS: backup rollback failure retains active original
+SAVE_PASS: backup rollback failure retains verified previous backup stage
+SAVE_PASS: backup rollback failure reports recovery file location
+SAVE_PASS: backup restore baseline
+SAVE_PASS: backup restore generation
+SAVE_PASS: backup replacement failure rejects transaction
+SAVE_PASS: failed backup restoration retains verified original backup
+SAVE_PASS: failed backup restoration reports recovery location
+SAVE_PASS: backup move baseline
+SAVE_PASS: backup move generation
+SAVE_PASS: failed backup move preserves active original
+SAVE_PASS: failed backup move retains original backup despite failed recovery
+SAVE_PASS: invalid UTF8 save rejected instead of repairing text
+SAVE_PASS: invalid encoding original bytes preserved
+SAVE_PASS: valid UTF8 save accepted
+SAVE_PASS: valid Unicode memory round trips exactly
+SAVE_PASS: UTF8 rejects overlong surrogate out-of-range truncated or invalid continuation fixture [192, 128]
+SAVE_PASS: UTF8 rejects overlong surrogate out-of-range truncated or invalid continuation fixture [224, 128, 160]
+SAVE_PASS: UTF8 rejects overlong surrogate out-of-range truncated or invalid continuation fixture [237, 160, 128]
+SAVE_PASS: UTF8 rejects overlong surrogate out-of-range truncated or invalid continuation fixture [240, 128, 128, 128]
+SAVE_PASS: UTF8 rejects overlong surrogate out-of-range truncated or invalid continuation fixture [244, 144, 128, 128]
+SAVE_PASS: UTF8 rejects overlong surrogate out-of-range truncated or invalid continuation fixture [226, 130]
+SAVE_PASS: UTF8 rejects overlong surrogate out-of-range truncated or invalid continuation fixture [194, 65]
+SAVE_PASS: UTF8 rejects overlong surrogate out-of-range truncated or invalid continuation fixture [245, 128, 128, 128]
+GENESIS_SAVE_SAFETY: 65 passed, 2 failed

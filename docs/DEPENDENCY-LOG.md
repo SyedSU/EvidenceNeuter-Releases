@@ -26,3 +26,10 @@
 Original project licensing: no root LICENSE found in the four checkouts; Genesis BROWSER-PROTOTYPE.md states original application/art has no open-source grant. This does not establish compatibility or OSS-signing eligibility. Preserve existing branding/notices, obtain the owner's licensing decision, and review every bundled component before public distribution.
 
 Review promotion format: add `Reviewed by/date`, immutable source URL/SHA or exact version, source-manifest digest, OSI license text/location/compatibility rationale, latest reviewed upstream release/commit date, exact permissions/domains and validation evidence. Mark `approved for <specific workstream/platform>` only when every field is supported. A newly discovered release/snippet never promotes an entry automatically.
+
+
+## C save-safety review update — 2026-10-13
+
+DEP01 reviewed for the existing-engine Linux logic test scope: sourceMIT LICENSE at immutable ed1daf0bf001b61586d9930840f2f1394092c079 read; MIT permits retained proprietary/original app code with required notices. Official release4.7.2 published2026-08-18, Linux asset size77,860,424 and SHA256cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4 verified; runtime version4.7.2.stable.official.ed1daf0bf. Source review found Unix fflush/no fsync and Windows remove-before-move; these limits are recorded rather than assumed away. Exact source/metadata/license/permission evidence: [godot-vetting.json](evidence/2026-10-13-save-safety/godot-vetting.json). Permission scope: temporary work/ download and isolated local file tests; no setup settings/global engine/player runtime change. Full export/copyright/runtime-model/publisher/platform review remains separate; no broad DEP01 production approval.
+
+DEP14 remains unadopted. Five explicit source mutants and eight controlled process kills were implemented with existing GDScript/Python standard library; this is not installation/vetting of GUT/GdUnit4/gdmutant or comprehensive mutation coverage. No new package, GitHub Action, framework, signing provider or third-party tool was adopted. Original project licensing/SignPath eligibility remains K10.

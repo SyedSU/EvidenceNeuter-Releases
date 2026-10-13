@@ -1,0 +1,21 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+SAVE_PASS: initial save
+SAVE_PASS: backup directory rejects save
+SAVE_PASS: backup failure preserves active bytes
+SAVE_PASS: backup failure reports error
+SAVE_PASS: candidate baseline
+SAVE_PASS: invalid candidate refuses persistence
+SAVE_PASS: invalid candidate preserves original
+SAVE_PASS: care baseline
+SAVE_PASS: failed feed rolls back berry energy and progress
+SAVE_PASS: failed feed reports failure
+SAVE_PASS: failed harvest rolls back berries and cooldown
+SAVE_PASS: failed harvest reports failure
+SAVE_PASS: failed rest reports false
+SAVE_PASS: failed rest rolls back energy and progress
+SAVE_PASS: first profile exists
+SAVE_PASS: blocked index backup rejects new selection
+SAVE_PASS: failed profile creation preserves previous selection
+SAVE_PASS: failed profile persistence preserves index
+GENESIS_SAVE_SAFETY: 18 passed, 0 failed

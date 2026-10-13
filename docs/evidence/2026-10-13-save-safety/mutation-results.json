@@ -1,0 +1,32 @@
+[
+  {
+    "mutation": "candidate-validation",
+    "exit_code": 1,
+    "killed": true,
+    "tests_fail_for_behavior": true
+  },
+  {
+    "mutation": "backup-replacement-error",
+    "exit_code": 1,
+    "killed": true,
+    "tests_fail_for_behavior": true
+  },
+  {
+    "mutation": "partial-stage-error",
+    "exit_code": 0,
+    "killed": false,
+    "tests_fail_for_behavior": false
+  },
+  {
+    "mutation": "backup-recovery-preservation",
+    "exit_code": 1,
+    "killed": true,
+    "tests_fail_for_behavior": true
+  },
+  {
+    "mutation": "reward-deduplication",
+    "exit_code": "timeout",
+    "killed": true,
+    "tests_fail_for_behavior": true
+  }
+]

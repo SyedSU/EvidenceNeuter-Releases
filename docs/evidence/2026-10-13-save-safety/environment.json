@@ -1,0 +1,71 @@
+{
+  "atUtc": "2026-10-13T01:36:18.821741+00:00",
+  "commands": [
+    {
+      "command": [
+        "gh",
+        "auth",
+        "status"
+      ],
+      "exit_code": 0,
+      "stdout": "github.com\n  X Failed to log in to github.com using token (GH_TOKEN)\n  - Active account: true\n  - The token in GH_TOKEN is invalid.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "curl",
+        "-I",
+        "--max-time",
+        "15",
+        "https://evidence-neuter.vercel.app"
+      ],
+      "exit_code": 56,
+      "stdout": "HTTP/1.1 403 Forbidden\ncontent-length: 16\ncontent-type: text/plain\ndate: Tue, 13 Oct 2026 01:36:18 GMT\nserver: envoy\nconnection: close\n\n",
+      "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (56) CONNECT tunnel failed, response 403\n"
+    },
+    {
+      "command": [
+        "dotnet",
+        "--info"
+      ],
+      "error": "[Errno 2] No such file or directory: 'dotnet'"
+    },
+    {
+      "command": [
+        "godot",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "4.6.3.stable.official.7d41c59c4\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "blender",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "Blender 4.3.2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "adb",
+        "version"
+      ],
+      "error": "[Errno 2] No such file or directory: 'adb'"
+    },
+    {
+      "command": [
+        "sdkmanager",
+        "--version"
+      ],
+      "error": "[Errno 2] No such file or directory: 'sdkmanager'"
+    }
+  ],
+  "androidVariables": {
+    "ANDROID_HOME": null,
+    "ANDROID_SDK_ROOT": null,
+    "ANDROID_NDK_HOME": null
+  }
+}

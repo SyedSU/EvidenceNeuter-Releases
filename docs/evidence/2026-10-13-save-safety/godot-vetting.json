@@ -1,0 +1,16 @@
+{
+  "releaseUrl": "https://github.com/godotengine/godot-builds/releases/tag/4.7.2-stable",
+  "publishedAt": "2026-08-18T15:56:46Z",
+  "asset": {
+    "name": "Godot_v4.7.2-stable_linux.x86_64.zip",
+    "url": "https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip",
+    "size": 77860424,
+    "digest": "sha256:cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4"
+  },
+  "sourceCommit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+  "license": "Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md).\nCopyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+  "sourceNotes": {
+    "unixFlush": "FileAccessUnix.flush calls fflush, not fsync.",
+    "windowsRename": "DirAccessWindows.rename removes the destination before MoveFileW; not atomic overwrite."
+  }
+}

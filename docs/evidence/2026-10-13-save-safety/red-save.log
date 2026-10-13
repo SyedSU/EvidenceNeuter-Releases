@@ -1,0 +1,34 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+SAVE_PASS: initial save
+SAVE_FAIL: backup directory rejects save
+SAVE_FAIL: backup failure preserves active bytes
+SAVE_FAIL: backup failure reports error
+SAVE_PASS: candidate baseline
+SAVE_FAIL: invalid candidate refuses persistence
+SAVE_FAIL: invalid candidate preserves original
+SAVE_PASS: care baseline
+SAVE_FAIL: failed feed rolls back berry energy and progress
+SAVE_FAIL: failed feed reports failure
+SAVE_FAIL: failed harvest rolls back berries and cooldown
+SAVE_FAIL: failed harvest reports failure
+SAVE_PASS: failed rest reports false
+SAVE_FAIL: failed rest rolls back energy and progress
+SAVE_PASS: first profile exists
+SAVE_FAIL: blocked index backup rejects new selection
+SAVE_FAIL: failed profile creation preserves previous selection
+SAVE_FAIL: failed profile persistence preserves index
+GENESIS_SAVE_SAFETY: 5 passed, 13 failed
+ERROR: Failed to open '/workspace/work/save-safety/red-data/EvidenceGenesis/backup-blocked.json.backup'.
+   at: copy (core/io/dir_access.cpp:429)
+   GDScript backtrace (most recent call first):
+       [0] save (res://scripts/state.gd:114)
+       [1] run (res://tests/save_safety_test.gd:15)
+       [2] _initialize (res://tests/run_red.gd:4)
+ERROR: Failed to open '/workspace/work/save-safety/red-data/EvidenceGenesis/profiles.json.backup'.
+   at: copy (core/io/dir_access.cpp:429)
+   GDScript backtrace (most recent call first):
+       [0] persist (res://scripts/profiles.gd:31)
+       [1] create (res://scripts/profiles.gd:49)
+       [2] run (res://tests/save_safety_test.gd:30)
+       [3] _initialize (res://tests/run_red.gd:4)

@@ -1,0 +1,5 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+GENESIS_STARTUP_TEST_OK: missing profile preserves legacy, menu fits, text scales
+GENESIS_RESTORE_TEST_OK: menu restore creates profile, failed restore rolls back
+GENESIS_SETTINGS_SAVE_TEST_OK: failed companion save preserves state and reports error

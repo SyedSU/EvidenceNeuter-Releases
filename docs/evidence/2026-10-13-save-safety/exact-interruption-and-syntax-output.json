@@ -1,0 +1,47 @@
+{
+  "state-after_stage-killed.log": {
+    "exactOutput": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\n",
+    "originalSize": 73,
+    "originalSha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+  },
+  "state-after_backup-killed.log": {
+    "exactOutput": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\n",
+    "originalSize": 73,
+    "originalSha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+  },
+  "state-after_delete-killed.log": {
+    "exactOutput": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\n",
+    "originalSize": 73,
+    "originalSha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+  },
+  "state-after_commit-killed.log": {
+    "exactOutput": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\n",
+    "originalSize": 73,
+    "originalSha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+  },
+  "index-after_stage-killed.log": {
+    "exactOutput": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\n",
+    "originalSize": 73,
+    "originalSha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+  },
+  "index-after_backup-killed.log": {
+    "exactOutput": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\n",
+    "originalSize": 73,
+    "originalSha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+  },
+  "index-after_delete-killed.log": {
+    "exactOutput": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\n",
+    "originalSize": 73,
+    "originalSha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+  },
+  "index-after_commit-killed.log": {
+    "exactOutput": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\n",
+    "originalSize": 73,
+    "originalSha256": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e"
+  },
+  "npm-check.log": {
+    "exactOutput": "\n> evidence-genesis@0.5.0 check\n> node --check web/app.js && node --check web/ui.js && node --check web/scene.js && node --check web/core.js\n\n",
+    "originalSize": 142,
+    "originalSha256": "77086c3d2d49f8facb28e4e1d1908435ec47fbb24f36631317d629d519452349"
+  }
+}

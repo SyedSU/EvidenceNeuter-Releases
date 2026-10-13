@@ -1,0 +1,19 @@
+test_archives_preserve_exact_bytes_and_inventory (test_component_packages.ComponentPackagingTests.test_archives_preserve_exact_bytes_and_inventory) ... ok
+test_empty_component_and_missing_required_payload_rejected (test_component_packages.ComponentPackagingTests.test_empty_component_and_missing_required_payload_rejected) ... ok
+test_full_package_parity_detects_changed_payload (test_component_packages.ComponentPackagingTests.test_full_package_parity_detects_changed_payload) ... ok
+test_symlinks_cannot_escape_component (test_component_packages.ComponentPackagingTests.test_symlinks_cannot_escape_component) ... ok
+test_timestamps_and_modes_do_not_change_archive (test_component_packages.ComponentPackagingTests.test_timestamps_and_modes_do_not_change_archive) ... ok
+test_unknown_source_provenance_rejected (test_component_packages.ComponentPackagingTests.test_unknown_source_provenance_rejected) ... ok
+test_interrupted_profile_index_writes (test_native_save_safety.NativeSaveSafetyTests.test_interrupted_profile_index_writes) ... ok
+test_interrupted_workshop_writes (test_native_save_safety.NativeSaveSafetyTests.test_interrupted_workshop_writes) ... ok
+test_real_state_regression_suite (test_native_save_safety.NativeSaveSafetyTests.test_real_state_regression_suite) ... ok
+test_health_and_generation_transport (test_runtime.RuntimeTests.test_health_and_generation_transport) ... ok
+test_no_cloud_model_address (test_runtime.RuntimeTests.test_no_cloud_model_address) ... ok
+test_rejects_cross_origin_and_invalid_input (test_runtime.RuntimeTests.test_rejects_cross_origin_and_invalid_input) ... ok
+test_static_server_does_not_expose_runtime (test_runtime.RuntimeTests.test_static_server_does_not_expose_runtime) ... ok
+test_unavailable_model_never_falls_back (test_runtime.RuntimeTests.test_unavailable_model_never_falls_back) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 6.346s
+
+OK

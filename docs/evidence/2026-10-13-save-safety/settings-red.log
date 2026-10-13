@@ -1,0 +1,8 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+GENESIS_STARTUP_TEST_OK: missing profile preserves legacy, menu fits, text scales
+GENESIS_RESTORE_TEST_OK: menu restore creates profile, failed restore rolls back
+SCRIPT ERROR: Assertion failed.
+          at: run (res://tests/startup_test.gd:37)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/startup_test.gd:37)

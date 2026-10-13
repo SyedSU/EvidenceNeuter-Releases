@@ -1,0 +1,18 @@
+
+> evidence-genesis@0.5.0 test
+> node --test tests/core.test.js
+
+✔ lessons persist, corrections replace lessons, and notebooks belong to each character (1.782989ms)
+✔ teaching format changes actual output; sign-off and glossary are included (4.463634ms)
+✔ only user approval grants progress and repeated approval does not duplicate it (0.270357ms)
+✔ export keeps Urdu text and escapes executable HTML (0.566925ms)
+✔ invalid saves and oversized notes are rejected (0.342176ms)
+✔ printable export renders headings and lists without executing HTML (0.222355ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 80.798188
