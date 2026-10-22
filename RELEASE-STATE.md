@@ -2,6 +2,8 @@
 
 ## 2026-10-23 implementation continuation
 
+Shared consumer identity checker now derives expected Hub/Genesis versions and save epoch from the existing reviewed source lock. It cross-checks Hub project/update versions and Genesis package/build/component/fresh-save identities without importing build scripts. Local56 distribution tests and the real three-consumer checker pass; source locks and download gates remain unchanged. S03 engineering defect corrected locally; remote CI and release acceptance remain separate.
+
 Release-preparation portability fix verified locally: 51 distribution tests pass both in this workspace and in an isolated copy containing only this repository's tools/tests/schemas/catalog/release. Preparation tests use temporary real Git repositories and fixture locks, not absolute sibling checkouts. Missing source directories produce a blocked record with no unsigned proposals, even when package and metadata inputs are supplied; unresolved commits and unequal source trees remain rejected. Publication/download authorization stays false. This addresses the reproduced K12 portability defect; a fresh remote CI run is still required before marking S42 complete. Source locks, signing configuration and published assets are unchanged.
 
 State revision 3 · 2026-10-13 (Asia/Karachi) · completed source session: C — P0 SAVE SAFETY.
