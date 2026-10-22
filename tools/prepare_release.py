@@ -46,7 +46,9 @@ def import_component_report(path,config):
 def integration_mapping(repository,build,integrated):
  for commit in (build,integrated):
   if not isinstance(commit,str) or not re.fullmatch('[a-f0-9]{40}',commit):raise ValueError('Explicit full source commits required')
- def git(*args):return subprocess.check_output(['git','-C',str(repository),*args],text=True).strip()
+ def git(*args):
+  try:return subprocess.check_output(['git','-C',str(repository),*args],text=True,stderr=subprocess.PIPE).strip()
+  except subprocess.CalledProcessError as error:raise ValueError('Source commit cannot be resolved in supplied repository') from error
  # A squash/rebase may change SHA: only explicit source-tree equality justifies reuse.
  trees=[git('rev-parse',commit+'^{tree}') for commit in (build,integrated)]
  if trees[0]!=trees[1]:raise ValueError('Integration changed source tree: rebuild and review required')
@@ -62,14 +64,16 @@ def prepare(config):
  for product in ('hub','genesis'):
   source=config[product]
   if source.get('reviewedBuildCommit')!=lock[product]['sourceCommit']:raise ValueError('Reviewed build source differs from canonical lock')
-  if source.get('repository') and source.get('integrationCommit'):report['provenance'][product]=integration_mapping(source['repository'],source['reviewedBuildCommit'],source['integrationCommit'])
+  if source.get('repository') and source.get('integrationCommit'):
+   if Path(source['repository']).is_dir():report['provenance'][product]=integration_mapping(source['repository'],source['reviewedBuildCommit'],source['integrationCommit'])
+   else:blockers.append(product+': source checkout unavailable; supply the reviewed repository')
   else:blockers.append(product+': postmerge integration mapping missing')
  metadata=config['metadata']
  if not isinstance(metadata.get('sequence'),int) or metadata['sequence']<1 or not metadata.get('expires'):blockers.append('Reviewed sequence and fresh expiry missing')
  else:
   expiry=datetime.datetime.fromisoformat(metadata['expires'].replace('Z','+00:00'))
   if not datetime.datetime.now(datetime.timezone.utc)<expiry<=datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(days=30):raise ValueError('Invalid preparation expiry')
- hub=config['hub'];genesis=config['genesis'];ready=all(metadata.get(k) for k in ('sequence','expires','hubManifestUrl','genesisManifestUrl'))
+ hub=config['hub'];genesis=config['genesis'];ready=len(report['provenance'])==2 and all(metadata.get(k) for k in ('sequence','expires','hubManifestUrl','genesisManifestUrl'))
  for k in ('hubManifestUrl','genesisManifestUrl'):
   if metadata.get(k):release_url(metadata[k],metadata_locator=True)
   else:blockers.append(k+' missing')

@@ -1,8 +1,38 @@
-import copy,json,tempfile,unittest,zipfile,subprocess
+import copy,json,tempfile,unittest,zipfile,subprocess,shutil
+from unittest.mock import patch
 from pathlib import Path
 from tools.prepare_release import prepare,inspect_package,integration_mapping,ROOT
 class PreparationTests(unittest.TestCase):
- def setUp(self):self.config=json.loads((ROOT/'release/preparation.json').read_text())
+ def setUp(self):
+  self.config=json.loads((ROOT/'release/preparation.json').read_text())
+  temporary=tempfile.TemporaryDirectory();self.addCleanup(temporary.cleanup)
+  root=Path(temporary.name);(root/'catalog').mkdir()
+  shutil.copyfile(ROOT/'catalog/development.json',root/'catalog/development.json')
+  repository=root/'source';subprocess.run(['git','init','-q',str(repository)],check=True)
+  def git(*args):return subprocess.check_output(['git','-C',str(repository),*args],text=True).strip()
+  git('config','user.email','fixture@example.invalid');git('config','user.name','Fixture')
+  (repository/'source').write_text('synthetic source fixture')
+  git('add','.');git('commit','-qm','fixture');commit=git('rev-parse','HEAD')
+  lock=json.loads((ROOT/'catalog/source-lock.json').read_text())
+  for product in ('hub','genesis'):
+   self.config[product].update(repository=str(repository),reviewedBuildCommit=commit,integrationCommit=commit)
+   lock[product]['sourceCommit']=commit
+  (root/'catalog/source-lock.json').write_text(json.dumps(lock))
+  override=patch('tools.prepare_release.ROOT',root);override.start();self.addCleanup(override.stop)
+ def test_missing_source_checkout_produces_blocked_record(self):
+  with tempfile.TemporaryDirectory() as directory:
+   for product in ('hub','genesis'):
+    self.config[product]['repository']=str(Path(directory)/product)
+   result=prepare(self.config)
+   self.assertFalse(result['publicationAuthorized'])
+   self.assertEqual(result['provenance'],{})
+   self.assertEqual(result['unsignedProposals'],{})
+   self.assertTrue(any('hub' in item and 'source checkout unavailable' in item for item in result['blockers']))
+ def test_explicit_unresolvable_commit_rejected(self):
+  with tempfile.TemporaryDirectory() as directory:
+   subprocess.run(['git','init','-q',directory],check=True)
+   with self.assertRaisesRegex(ValueError,'Source commit cannot be resolved'):
+    integration_mapping(directory,'a'*40,'b'*40)
  def test_missing_inputs_produce_blocked_record_without_fabricated_assets(self):
   result=prepare(self.config)
   self.assertFalse(result['publicationAuthorized']);self.assertFalse(result['publicDownloads']);self.assertEqual(result['unsignedProposals'],{});self.assertGreater(len(result['blockers']),5)
@@ -60,6 +90,11 @@ class PreparationTests(unittest.TestCase):
    result=prepare(self.config)
    self.assertEqual(len(result['unsignedProposals']['genesis']['packages']),3)
    self.assertFalse(result['unsignedProposals']['catalog']['publicDownloads']);self.assertFalse(result['publicationAuthorized'])
+   missing=copy.deepcopy(self.config)
+   for product in ('hub','genesis'):missing[product]['repository']=str(Path(directory)/'absent-source')
+   blocked=prepare(missing)
+   self.assertEqual(blocked['unsignedProposals'],{})
+   self.assertFalse(blocked['publicationAuthorized'])
    evidence=Path(directory)/'acceptance.json';evidence.write_text(json.dumps({'synthetic':True}))
    self.config['acceptanceEvidencePath']=str(evidence)
    with self.assertRaisesRegex(ValueError,'Synthetic'):prepare(self.config)

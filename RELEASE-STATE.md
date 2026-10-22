@@ -1,5 +1,9 @@
 # Evidence Neuter — RELEASE-STATE
 
+## 2026-10-23 implementation continuation
+
+Release-preparation portability fix verified locally: 51 distribution tests pass both in this workspace and in an isolated copy containing only this repository's tools/tests/schemas/catalog/release. Preparation tests use temporary real Git repositories and fixture locks, not absolute sibling checkouts. Missing source directories produce a blocked record with no unsigned proposals, even when package and metadata inputs are supplied; unresolved commits and unequal source trees remain rejected. Publication/download authorization stays false. This addresses the reproduced K12 portability defect; a fresh remote CI run is still required before marking S42 complete. Source locks, signing configuration and published assets are unchanged.
+
 State revision 3 · 2026-10-13 (Asia/Karachi) · completed source session: C — P0 SAVE SAFETY.
 
 **Release verdict: blocked.** Phase1 governance is retained. The C save-safety session fixes Genesis failure handling and controlled process recovery; it does not publish packages, configure trust, approve target acceptance or activate downloads. Native OS sync/replacement engineering is now implemented; physical/target, full transaction concurrency, new-parent durability and inspected-artifact acceptance remain blocked. Read [the canonical brief](docs/RELEASE-BRIEF.md) first. Historical README/plan status and authorization statements are superseded only where this state and the current owner brief explicitly differ; technical constraints remain applicable. Never treat a passed documentation check as product acceptance.
