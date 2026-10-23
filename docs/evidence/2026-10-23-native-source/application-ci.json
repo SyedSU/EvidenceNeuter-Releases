@@ -39,12 +39,14 @@
     },
     {
       "repository": "SyedSU/EvidenceBot",
-      "runId": 39916897287,
-      "sourceCommit": "e61418770f9fdd92a2b4e55707b91250f9aee848",
+      "runId": 39918908387,
+      "sourceCommit": "5150133db092be1974f318e7b0ed3f847e4dfa96",
       "status": "completed",
       "conclusion": "success",
-      "url": "https://github.com/SyedSU/EvidenceBot/actions/runs/39916897287",
-      "scope": "Linux clean-checkout native source checks; not Windows/Android package or live-provider acceptance"
+      "url": "https://github.com/SyedSU/EvidenceBot/actions/runs/39918908387",
+      "scope": "Linux clean-checkout native source checks; not Windows/Android package or live-provider acceptance",
+      "previousCleanCheckoutRunId": 39916897287,
+      "jobId": 120299074920
     }
   ]
 }
