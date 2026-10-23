@@ -8,13 +8,37 @@ on:
 permissions:
   contents: read
 jobs:
+  protection:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Require an existing protected candidate environment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/environment_preflight.py --environment distribution-candidate
   candidate:
+    needs: protection
     runs-on: ubuntu-latest
     environment: distribution-candidate
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.reviewed_commit }}
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Bind review to this immutable main workflow commit
+        env:
+          REVIEWED_COMMIT: ${{ inputs.reviewed_commit }}
+          WORKFLOW_COMMIT: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import os,re,subprocess
+          sha=os.environ['REVIEWED_COMMIT']
+          if not re.fullmatch('[a-f0-9]{40}',sha) or sha!=os.environ['WORKFLOW_COMMIT'] or subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()!=sha:raise SystemExit('Reviewed commit must equal this main workflow commit')
+          PY
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -37,4 +61,4 @@ jobs:
         with:
           name: distribution-review-evidence
           path: artifacts/
-          retention-days: 14
+          retention-days: 3

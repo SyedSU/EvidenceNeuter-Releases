@@ -29,13 +29,28 @@ on:
         required: true
 permissions:
   contents: read
+concurrency:
+  group: reviewed-metadata-publication
+  cancel-in-progress: false
 jobs:
   verify:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.reviewed_commit }}
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Bind publication to this immutable main workflow commit
+        env:
+          REVIEWED_COMMIT: ${{ inputs.reviewed_commit }}
+          WORKFLOW_COMMIT: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import os,re,subprocess
+          sha=os.environ['REVIEWED_COMMIT']
+          if not re.fullmatch('[a-f0-9]{40}',sha) or sha!=os.environ['WORKFLOW_COMMIT'] or subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()!=sha:raise SystemExit('Reviewed commit must equal this main workflow commit')
+          PY
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -47,6 +62,9 @@ jobs:
           FILE: ${{ inputs.envelope_path }}
           KIND: ${{ inputs.kind }}
           PUBLIC_KEY: ${{ vars.DISTRIBUTION_PUBLIC_KEY_PEM }}
+          CATALOG_SEQUENCE_FLOOR: ${{ vars.CATALOG_SEQUENCE_FLOOR }}
+          HUB_SEQUENCE_FLOOR: ${{ vars.HUB_SEQUENCE_FLOOR }}
+          GENESIS_SEQUENCE_FLOOR: ${{ vars.GENESIS_SEQUENCE_FLOOR }}
           HUB_PUBLIC_KEY: ${{ vars.HUB_MANIFEST_PUBLIC_KEY_PEM }}
           GENESIS_PUBLIC_KEY: ${{ vars.GENESIS_MANIFEST_PUBLIC_KEY_PEM }}
           PUBLISHER_PIN: ${{ vars.HUB_PUBLISHER_SHA256 }}
@@ -67,11 +85,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.reviewed_commit }}
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Recheck the immutable main workflow commit before loading release tools
+        env:
+          REVIEWED_COMMIT: ${{ inputs.reviewed_commit }}
+          WORKFLOW_COMMIT: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import os,re,subprocess
+          sha=os.environ['REVIEWED_COMMIT']
+          if not re.fullmatch('[a-f0-9]{40}',sha) or sha!=os.environ['WORKFLOW_COMMIT'] or subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()!=sha:raise SystemExit('Reviewed commit must equal this main workflow commit')
+          PY
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: pip install -r requirements.txt
+      - name: Recheck environment protection after approval
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/environment_preflight.py
       - name: Validate candidate and immutable inputs
         env:
           COMMIT: ${{ inputs.reviewed_commit }}
@@ -79,6 +112,9 @@ jobs:
           FILE: ${{ inputs.envelope_path }}
           KIND: ${{ inputs.kind }}
           PUBLIC_KEY: ${{ vars.DISTRIBUTION_PUBLIC_KEY_PEM }}
+          CATALOG_SEQUENCE_FLOOR: ${{ vars.CATALOG_SEQUENCE_FLOOR }}
+          HUB_SEQUENCE_FLOOR: ${{ vars.HUB_SEQUENCE_FLOOR }}
+          GENESIS_SEQUENCE_FLOOR: ${{ vars.GENESIS_SEQUENCE_FLOOR }}
           HUB_PUBLIC_KEY: ${{ vars.HUB_MANIFEST_PUBLIC_KEY_PEM }}
           GENESIS_PUBLIC_KEY: ${{ vars.GENESIS_MANIFEST_PUBLIC_KEY_PEM }}
           PUBLISHER_PIN: ${{ vars.HUB_PUBLISHER_SHA256 }}

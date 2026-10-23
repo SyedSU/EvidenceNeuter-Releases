@@ -100,6 +100,13 @@ class PreparationTests(unittest.TestCase):
    with self.assertRaisesRegex(ValueError,'Synthetic'):prepare(self.config)
 
 class EnvironmentTests(unittest.TestCase):
+ def test_candidate_environment_requires_its_own_exact_review_policy(self):
+  from tools.environment_preflight import validate_environment
+  environment={'name':'distribution-candidate','can_admins_bypass':False,'protection_rules':[{'type':'required_reviewers','prevent_self_review':True,'reviewers':[{'type':'User','reviewer':{'id':1}}]}],'deployment_branch_policy':{'custom_branch_policies':True,'protected_branches':False}}
+  policies={'branch_policies':[{'name':'main','type':'branch'}]}
+  self.assertEqual(validate_environment(environment,policies,'distribution-candidate')['environment'],'distribution-candidate')
+  with self.assertRaises(ValueError):validate_environment(environment,policies)
+  with self.assertRaises(ValueError):validate_environment(environment,policies,'unreviewed-environment')
  def test_missing_environment_or_reviewers_fail_closed(self):
   from tools.environment_preflight import validate_environment
   for environment in [{},{'name':'distribution-release','protection_rules':[]}]:
