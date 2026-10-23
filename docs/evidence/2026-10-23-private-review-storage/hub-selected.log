@@ -1,0 +1,5 @@
+2026-10-23T02:18:32.5805803Z Ran 5 tests in 0.414s
+2026-10-23T02:19:25.7975133Z UPDATER PASS: 119 assertions; ephemeral signing key and synthetic package fixtures, not production releases.
+2026-10-23T02:20:39.6126964Z PASS: native installer/bootstrap package, isolated standalone bootstrap without SDK bindings, running-install/uninstall guards, four-page keyboard navigation, resize/focus, genuine interactive Finish launch, uninstall and unrelated-file preservation. Laptop/high-DPI/gameplay acceptance remains separate.
+2026-10-23T02:20:50.4936373Z PRIVATE_REVIEW_DRAFT_STORED: https://github.com/SyedSU/EvidenceNeuterHub/releases/tag/untagged-7b20d5c95fcb89605e63
+2026-10-23T02:20:50.4938089Z SERVER_ASSET_SHA256_VERIFIED: 11 assets; independent package inspection still required
