@@ -1,0 +1,44 @@
+{
+  "scope": "Downloaded private Windows packages; not production/device/signing approval",
+  "records": [
+    {
+      "runId": 39893240641,
+      "jobId": 120217625097,
+      "androidAcceptance": "UNRUN",
+      "downloadedAssetsVerified": 11,
+      "downloadedInstallerNativeSmoke": true,
+      "downloadedInstallerSha256": "5dbfe457ad29f5c06e63d49c3da1382f8e3c07db44ff15b48b445644428eb2b5",
+      "inspectionRunId": "39893240641",
+      "originalRunId": 39888763913,
+      "productionPublicationAuthorized": false,
+      "publicDownloads": false,
+      "releaseId": 421386828,
+      "repository": "SyedSU/EvidenceNeuterHub",
+      "signerAcceptance": "UNRUN",
+      "sourceCommit": "cbad8156d6ec5e91eb9eef7b4aaa2bc3ec7717c1",
+      "targetDeviceAcceptance": "UNRUN"
+    },
+    {
+      "runId": 39893238079,
+      "jobId": 120217616841,
+      "androidAcceptance": "UNRUN",
+      "checksumManifest": true,
+      "componentByteParity": true,
+      "downloadedAssetsVerified": 6,
+      "downloadedNativeSmoke": true,
+      "downloadedPeVersion": "0.5.0.0",
+      "downloadedRealModelGeneration": true,
+      "inspectionRunId": "39893238079",
+      "originalRunId": 39888761585,
+      "productionPublicationAuthorized": false,
+      "publicDownloads": false,
+      "releaseId": 421386682,
+      "repository": "SyedSU/EvidenceGenesis",
+      "signerAcceptance": "UNRUN",
+      "sourceCommit": "a7b05c58be82c794302d3f4eb9c9e5221efcb455",
+      "targetDeviceAcceptance": "UNRUN",
+      "thirdPartyNoticeBytes": true,
+      "zipFiles": 61
+    }
+  ]
+}

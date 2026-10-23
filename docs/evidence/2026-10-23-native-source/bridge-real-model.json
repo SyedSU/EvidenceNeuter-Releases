@@ -1,0 +1,13 @@
+{
+  "actualCapiGenerationCancellationReuse": true,
+  "actualGodotGeneration": true,
+  "androidDeviceAcceptance": "UNRUN",
+  "godotSourceCommit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+  "modelSha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+  "modelSourceCommit": "9217f5db79a29953eb74d5343926648285ec7e67",
+  "platform": "linux-x64",
+  "publicationAuthorized": false,
+  "sourceCommit": "478d284dd916566779891ed8fe79131aee27d8fc",
+  "runId": 39916369377,
+  "jobId": 120290714207
+}
