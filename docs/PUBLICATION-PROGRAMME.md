@@ -4,7 +4,7 @@ This records the current owner-approved scope and execution order. It supersedes
 
 ## Scope
 
-All nine repositories: EvidenceNeuter website, EvidenceNeuterHub, EvidenceGenesis, EvidenceNeuter-Releases, EvidenceFlow, EvidenceCouncil, EvidenceAcademy, EvidenceLab and EvidenceBot. Verify exact repository identities and README requirements before each implementation. Five newer product repositories now have functional native source implementations and clean Linux CI; full Windows/Android packages, bundled inference and product acceptance remain open. See the dated RELEASE-STATE continuation for exact source/run identities.
+All nine repositories: EvidenceNeuter website, EvidenceNeuterHub, EvidenceGenesis, EvidenceNeuter-Releases, EvidenceFlow, EvidenceCouncil, EvidenceAcademy, EvidenceLab and EvidenceBot. Verify exact repository identities and README requirements before each implementation. Five newer product repositories now have functional native source implementations and clean Linux CI; unsigned Windows portable review ZIPs now pass actual Windows CI; production Windows/Android packages, bundled inference and full product acceptance remain open. See the dated RELEASE-STATE continuation for exact source/run identities.
 
 Quality, functionality and design are release criteria. Original code is proprietary; free compatible third-party assets are permitted only after license/source/maintenance review and attribution. English UI, adult audience, website/GitHub distribution. Each product requires Windows and Android with actual local AI before its launch. Preserve explicit template mode and never silently substitute cloud inference.
 

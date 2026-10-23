@@ -1,0 +1,435 @@
+{
+  "scope": "Unsigned private Windows portable development/review packages. No Android/full-product/production acceptance.",
+  "records": [
+    {
+      "repository": "SyedSU/EvidenceFlow",
+      "sourceCommit": "01f40e9567b8ff10d9b42fcc2197c0b2dace94d5",
+      "runId": 39922783087,
+      "jobId": 120311768465,
+      "conclusion": "success",
+      "draftReleaseUrl": "https://github.com/SyedSU/EvidenceFlow/releases/tag/untagged-56d7b98fb9d5032dadfd",
+      "releaseId": 421592834,
+      "privateDraft": true,
+      "publicDownloads": false,
+      "androidAcceptance": "UNRUN",
+      "bundledInference": false,
+      "productionSigningAcceptance": "UNRUN",
+      "downloadedIndependentInspection": "UNRUN",
+      "package": {
+        "name": "EvidenceFlow-Windows-x64-review.zip",
+        "size": 38005654,
+        "sha256": "2b284a2260cd69eda2ec4f6a13cd2016cdcd8aaf13ebf62c65b13a17de2dc176",
+        "manifest": {
+          "product": "EvidenceFlow",
+          "version": "0.1.0-dev",
+          "platform": "windows-x64",
+          "sourceCommit": "01f40e9567b8ff10d9b42fcc2197c0b2dace94d5",
+          "publicationAuthorized": false,
+          "bundledInference": false,
+          "files": [
+            {
+              "path": "EvidenceFlow.exe",
+              "size": 109303464,
+              "sha256": "c61018b124c012982a9d8d6eac10f610a4235ae0bd88882d553b7822989b6fd7"
+            },
+            {
+              "path": "genesis_save.dll",
+              "size": 109568,
+              "sha256": "f077a11fd1616c9fbdf29de866dbfb1927921994980426f23aa9c1276b739d75"
+            },
+            {
+              "path": "LICENSE.txt",
+              "size": 524,
+              "sha256": "f77b4d8ed0b0aeab2f740333dc2435f82ab5b0e9660ec3c3aac8caac07868d80"
+            },
+            {
+              "path": "REVIEW-BUILD.txt",
+              "size": 585,
+              "sha256": "89864c78aa2a9d64b07b12dcb7ab550e520637348cbc40297637d60083406925"
+            },
+            {
+              "path": "THIRD-PARTY-NOTICES.txt",
+              "size": 100108,
+              "sha256": "cb1980c88089573bcacd7221d777c689bb8bbd778799f24c27fca0fe5f774d6d"
+            }
+          ]
+        },
+        "sourceCommit": "01f40e9567b8ff10d9b42fcc2197c0b2dace94d5",
+        "packagedNativeSmoke": true,
+        "peVersion": "0.1.0.0",
+        "godotSourceCommit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "publicationAuthorized": false
+      },
+      "assets": [
+        {
+          "name": "EvidenceFlow-Windows-x64-review.zip",
+          "size": 38005654,
+          "sha256": "2b284a2260cd69eda2ec4f6a13cd2016cdcd8aaf13ebf62c65b13a17de2dc176",
+          "url": "https://github.com/SyedSU/EvidenceFlow/releases/download/untagged-56d7b98fb9d5032dadfd/EvidenceFlow-Windows-x64-review.zip"
+        },
+        {
+          "name": "package-report.json",
+          "size": 1488,
+          "sha256": "055b4beffba99d22699e380eaeb34b67309e2064e6fafba1c041333391faaa2c",
+          "url": "https://github.com/SyedSU/EvidenceFlow/releases/download/untagged-56d7b98fb9d5032dadfd/package-report.json"
+        },
+        {
+          "name": "review-build.json",
+          "size": 1008,
+          "sha256": "80e0cc8504eb32a6272f05bb0b79ef5724b4ef15b229c0b698158dbd13d8056f",
+          "url": "https://github.com/SyedSU/EvidenceFlow/releases/download/untagged-56d7b98fb9d5032dadfd/review-build.json"
+        },
+        {
+          "name": "windows-smoke.log",
+          "size": 109,
+          "sha256": "46c7cc5e3b97a423a83d3d7f67287db86cdad4c41ff2ec27bf5a22047c484834",
+          "url": "https://github.com/SyedSU/EvidenceFlow/releases/download/untagged-56d7b98fb9d5032dadfd/windows-smoke.log"
+        }
+      ]
+    },
+    {
+      "repository": "SyedSU/EvidenceCouncil",
+      "sourceCommit": "925eda3861747a4585450a0bd3654acf93c4ea93",
+      "runId": 39922787148,
+      "jobId": 120311781787,
+      "conclusion": "success",
+      "draftReleaseUrl": "https://github.com/SyedSU/EvidenceCouncil/releases/tag/untagged-5f31fe0f7b4e0e799a6c",
+      "releaseId": 421592725,
+      "privateDraft": true,
+      "publicDownloads": false,
+      "androidAcceptance": "UNRUN",
+      "bundledInference": false,
+      "productionSigningAcceptance": "UNRUN",
+      "downloadedIndependentInspection": "UNRUN",
+      "package": {
+        "name": "EvidenceCouncil-Windows-x64-review.zip",
+        "size": 37998360,
+        "sha256": "3c40804eb941a308ac4dfe21a547579879d1d9ad7752708554e0cee85eca5409",
+        "manifest": {
+          "product": "EvidenceCouncil",
+          "version": "0.1.0-dev",
+          "platform": "windows-x64",
+          "sourceCommit": "925eda3861747a4585450a0bd3654acf93c4ea93",
+          "publicationAuthorized": false,
+          "bundledInference": false,
+          "files": [
+            {
+              "path": "EvidenceCouncil.exe",
+              "size": 109295880,
+              "sha256": "5853d47bd576f6451e2a27152e16cc35811d57be1539d3d2282f6d2d46034d58"
+            },
+            {
+              "path": "genesis_save.dll",
+              "size": 109568,
+              "sha256": "2a99e7a105dccd15209ba2a69b038dd5a391ea9c5836fd72a30f73610140479e"
+            },
+            {
+              "path": "LICENSE.txt",
+              "size": 524,
+              "sha256": "f77b4d8ed0b0aeab2f740333dc2435f82ab5b0e9660ec3c3aac8caac07868d80"
+            },
+            {
+              "path": "REVIEW-BUILD.txt",
+              "size": 591,
+              "sha256": "06aeb4c81e45d48185f21e9846e3a672cec8ada03dfc9f10f667b424381245b4"
+            },
+            {
+              "path": "THIRD-PARTY-NOTICES.txt",
+              "size": 100108,
+              "sha256": "cb1980c88089573bcacd7221d777c689bb8bbd778799f24c27fca0fe5f774d6d"
+            }
+          ]
+        },
+        "sourceCommit": "925eda3861747a4585450a0bd3654acf93c4ea93",
+        "packagedNativeSmoke": true,
+        "peVersion": "0.1.0.0",
+        "godotSourceCommit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "publicationAuthorized": false
+      },
+      "assets": [
+        {
+          "name": "EvidenceCouncil-Windows-x64-review.zip",
+          "size": 37998360,
+          "sha256": "3c40804eb941a308ac4dfe21a547579879d1d9ad7752708554e0cee85eca5409",
+          "url": "https://github.com/SyedSU/EvidenceCouncil/releases/download/untagged-5f31fe0f7b4e0e799a6c/EvidenceCouncil-Windows-x64-review.zip"
+        },
+        {
+          "name": "package-report.json",
+          "size": 1497,
+          "sha256": "63c9e8a07b7424f2ff8b8db7973f2e08b239054ad8b4c042fc8c883b11a4251c",
+          "url": "https://github.com/SyedSU/EvidenceCouncil/releases/download/untagged-5f31fe0f7b4e0e799a6c/package-report.json"
+        },
+        {
+          "name": "review-build.json",
+          "size": 1023,
+          "sha256": "e5de34c49bd7496b8e639729ff81948e5de8142f3fe654d150b5cbc239c3361e",
+          "url": "https://github.com/SyedSU/EvidenceCouncil/releases/download/untagged-5f31fe0f7b4e0e799a6c/review-build.json"
+        },
+        {
+          "name": "windows-smoke.log",
+          "size": 109,
+          "sha256": "46c7cc5e3b97a423a83d3d7f67287db86cdad4c41ff2ec27bf5a22047c484834",
+          "url": "https://github.com/SyedSU/EvidenceCouncil/releases/download/untagged-5f31fe0f7b4e0e799a6c/windows-smoke.log"
+        }
+      ]
+    },
+    {
+      "repository": "SyedSU/EvidenceAcademy",
+      "sourceCommit": "c47e64341ff1fa2516d61fadcece3c17f354e4f4",
+      "runId": 39922790671,
+      "jobId": 120311793200,
+      "conclusion": "success",
+      "draftReleaseUrl": "https://github.com/SyedSU/EvidenceAcademy/releases/tag/untagged-d4829b31c9d2479645e4",
+      "releaseId": 421592740,
+      "privateDraft": true,
+      "publicDownloads": false,
+      "androidAcceptance": "UNRUN",
+      "bundledInference": false,
+      "productionSigningAcceptance": "UNRUN",
+      "downloadedIndependentInspection": "UNRUN",
+      "package": {
+        "name": "EvidenceAcademy-Windows-x64-review.zip",
+        "size": 38002798,
+        "sha256": "af6221c33df4ffd1197f4f307434e9e149f0d38821f05292915de118432bf8b8",
+        "manifest": {
+          "product": "EvidenceAcademy",
+          "version": "0.1.0-dev",
+          "platform": "windows-x64",
+          "sourceCommit": "c47e64341ff1fa2516d61fadcece3c17f354e4f4",
+          "publicationAuthorized": false,
+          "bundledInference": false,
+          "files": [
+            {
+              "path": "EvidenceAcademy.exe",
+              "size": 109300336,
+              "sha256": "d888782626355c2929799dfbef81c856a6e0ee23f7bafdf4bbfc31d43173fc42"
+            },
+            {
+              "path": "genesis_save.dll",
+              "size": 109568,
+              "sha256": "26e88b1c830df3669bf30dbe5d9867963b092b75d181eea74d1ac41331279425"
+            },
+            {
+              "path": "LICENSE.txt",
+              "size": 524,
+              "sha256": "f77b4d8ed0b0aeab2f740333dc2435f82ab5b0e9660ec3c3aac8caac07868d80"
+            },
+            {
+              "path": "REVIEW-BUILD.txt",
+              "size": 591,
+              "sha256": "e99021ae11c447931707ba4046afcf70ef66fd5f7e8235a107c00abe25f3b40f"
+            },
+            {
+              "path": "THIRD-PARTY-NOTICES.txt",
+              "size": 100108,
+              "sha256": "cb1980c88089573bcacd7221d777c689bb8bbd778799f24c27fca0fe5f774d6d"
+            }
+          ]
+        },
+        "sourceCommit": "c47e64341ff1fa2516d61fadcece3c17f354e4f4",
+        "packagedNativeSmoke": true,
+        "peVersion": "0.1.0.0",
+        "godotSourceCommit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "publicationAuthorized": false
+      },
+      "assets": [
+        {
+          "name": "EvidenceAcademy-Windows-x64-review.zip",
+          "size": 38002798,
+          "sha256": "af6221c33df4ffd1197f4f307434e9e149f0d38821f05292915de118432bf8b8",
+          "url": "https://github.com/SyedSU/EvidenceAcademy/releases/download/untagged-d4829b31c9d2479645e4/EvidenceAcademy-Windows-x64-review.zip"
+        },
+        {
+          "name": "package-report.json",
+          "size": 1497,
+          "sha256": "9f91b649969fce3f65c24691da83290e2524ff645478bca328ccba76b346ded5",
+          "url": "https://github.com/SyedSU/EvidenceAcademy/releases/download/untagged-d4829b31c9d2479645e4/package-report.json"
+        },
+        {
+          "name": "review-build.json",
+          "size": 1023,
+          "sha256": "bd5691621a85fad94d3e261cd709a9137697007397c47d9d226d6527ff92a909",
+          "url": "https://github.com/SyedSU/EvidenceAcademy/releases/download/untagged-d4829b31c9d2479645e4/review-build.json"
+        },
+        {
+          "name": "windows-smoke.log",
+          "size": 109,
+          "sha256": "46c7cc5e3b97a423a83d3d7f67287db86cdad4c41ff2ec27bf5a22047c484834",
+          "url": "https://github.com/SyedSU/EvidenceAcademy/releases/download/untagged-d4829b31c9d2479645e4/windows-smoke.log"
+        }
+      ]
+    },
+    {
+      "repository": "SyedSU/EvidenceLab",
+      "sourceCommit": "112b3e7b0695454a619beb5bab5d8450bbe0906d",
+      "runId": 39922793284,
+      "jobId": 120311801861,
+      "conclusion": "success",
+      "draftReleaseUrl": "https://github.com/SyedSU/EvidenceLab/releases/tag/untagged-23a3a4fb3c2c7fa62eed",
+      "releaseId": 421592839,
+      "privateDraft": true,
+      "publicDownloads": false,
+      "androidAcceptance": "UNRUN",
+      "bundledInference": false,
+      "productionSigningAcceptance": "UNRUN",
+      "downloadedIndependentInspection": "UNRUN",
+      "package": {
+        "name": "EvidenceLab-Windows-x64-review.zip",
+        "size": 38006583,
+        "sha256": "609e1b11c3631a6d6fa0e15982333b34738f21a2a738007639de2a8424cd7b92",
+        "manifest": {
+          "product": "EvidenceLab",
+          "version": "0.1.0-dev",
+          "platform": "windows-x64",
+          "sourceCommit": "112b3e7b0695454a619beb5bab5d8450bbe0906d",
+          "publicationAuthorized": false,
+          "bundledInference": false,
+          "files": [
+            {
+              "path": "EvidenceLab.exe",
+              "size": 109304256,
+              "sha256": "704d11eccc93de556836f73e32036f2f23cf80bd5474cd5ce067be1571e815c3"
+            },
+            {
+              "path": "genesis_save.dll",
+              "size": 109568,
+              "sha256": "afd2f19c997a25b67c23233d12b15b46bbc13c0549885c5da8956a7ff3683972"
+            },
+            {
+              "path": "LICENSE.txt",
+              "size": 524,
+              "sha256": "f77b4d8ed0b0aeab2f740333dc2435f82ab5b0e9660ec3c3aac8caac07868d80"
+            },
+            {
+              "path": "REVIEW-BUILD.txt",
+              "size": 583,
+              "sha256": "b73114524b5b0e52ad049960c9ca582ae3e55abce9e315d9f02c7caeaa025ef2"
+            },
+            {
+              "path": "THIRD-PARTY-NOTICES.txt",
+              "size": 100108,
+              "sha256": "cb1980c88089573bcacd7221d777c689bb8bbd778799f24c27fca0fe5f774d6d"
+            }
+          ]
+        },
+        "sourceCommit": "112b3e7b0695454a619beb5bab5d8450bbe0906d",
+        "packagedNativeSmoke": true,
+        "peVersion": "0.1.0.0",
+        "godotSourceCommit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "publicationAuthorized": false
+      },
+      "assets": [
+        {
+          "name": "EvidenceLab-Windows-x64-review.zip",
+          "size": 38006583,
+          "sha256": "609e1b11c3631a6d6fa0e15982333b34738f21a2a738007639de2a8424cd7b92",
+          "url": "https://github.com/SyedSU/EvidenceLab/releases/download/untagged-23a3a4fb3c2c7fa62eed/EvidenceLab-Windows-x64-review.zip"
+        },
+        {
+          "name": "package-report.json",
+          "size": 1485,
+          "sha256": "1aea94178d3bbdeba16483043605c90e81e84bd4cee1784e8e75e9ec11f2301f",
+          "url": "https://github.com/SyedSU/EvidenceLab/releases/download/untagged-23a3a4fb3c2c7fa62eed/package-report.json"
+        },
+        {
+          "name": "review-build.json",
+          "size": 1003,
+          "sha256": "8fd5fc48094782cd99dbb27bb1f5330390dc4355c04af55bad3d81a856379c5f",
+          "url": "https://github.com/SyedSU/EvidenceLab/releases/download/untagged-23a3a4fb3c2c7fa62eed/review-build.json"
+        },
+        {
+          "name": "windows-smoke.log",
+          "size": 109,
+          "sha256": "46c7cc5e3b97a423a83d3d7f67287db86cdad4c41ff2ec27bf5a22047c484834",
+          "url": "https://github.com/SyedSU/EvidenceLab/releases/download/untagged-23a3a4fb3c2c7fa62eed/windows-smoke.log"
+        }
+      ]
+    },
+    {
+      "repository": "SyedSU/EvidenceBot",
+      "sourceCommit": "bfe88a965a0ba87f5e2a7551affa7c43f2a28166",
+      "runId": 39922798644,
+      "jobId": 120311818412,
+      "conclusion": "success",
+      "draftReleaseUrl": "https://github.com/SyedSU/EvidenceBot/releases/tag/untagged-d097c6b74fdaa1780b18",
+      "releaseId": 421592577,
+      "privateDraft": true,
+      "publicDownloads": false,
+      "androidAcceptance": "UNRUN",
+      "bundledInference": false,
+      "productionSigningAcceptance": "UNRUN",
+      "downloadedIndependentInspection": "UNRUN",
+      "package": {
+        "name": "EvidenceBot-Windows-x64-review.zip",
+        "size": 38008089,
+        "sha256": "5d8260ff1cc7786c6924418a5c7850e2fc7bfb9b73de58fe7fe54b9ead631a44",
+        "manifest": {
+          "product": "EvidenceBot",
+          "version": "0.1.0-dev",
+          "platform": "windows-x64",
+          "sourceCommit": "bfe88a965a0ba87f5e2a7551affa7c43f2a28166",
+          "publicationAuthorized": false,
+          "bundledInference": false,
+          "files": [
+            {
+              "path": "EvidenceBot.exe",
+              "size": 109305832,
+              "sha256": "af692247dc3692b03481eaa7269eeaeef413404518f057b85922f000fcd2d1ff"
+            },
+            {
+              "path": "genesis_save.dll",
+              "size": 109568,
+              "sha256": "d6703954b46ba7aaf32502a39f5d8d2c4e5119661f6aa230bff7a473e74e0587"
+            },
+            {
+              "path": "LICENSE.txt",
+              "size": 524,
+              "sha256": "f77b4d8ed0b0aeab2f740333dc2435f82ab5b0e9660ec3c3aac8caac07868d80"
+            },
+            {
+              "path": "REVIEW-BUILD.txt",
+              "size": 583,
+              "sha256": "aff67e7040778dff72a6d09d1846c8c3460c490de0b11427cbac3ee80aa0acfb"
+            },
+            {
+              "path": "THIRD-PARTY-NOTICES.txt",
+              "size": 100108,
+              "sha256": "cb1980c88089573bcacd7221d777c689bb8bbd778799f24c27fca0fe5f774d6d"
+            }
+          ]
+        },
+        "sourceCommit": "bfe88a965a0ba87f5e2a7551affa7c43f2a28166",
+        "packagedNativeSmoke": true,
+        "peVersion": "0.1.0.0",
+        "godotSourceCommit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "publicationAuthorized": false
+      },
+      "assets": [
+        {
+          "name": "EvidenceBot-Windows-x64-review.zip",
+          "size": 38008089,
+          "sha256": "5d8260ff1cc7786c6924418a5c7850e2fc7bfb9b73de58fe7fe54b9ead631a44",
+          "url": "https://github.com/SyedSU/EvidenceBot/releases/download/untagged-d097c6b74fdaa1780b18/EvidenceBot-Windows-x64-review.zip"
+        },
+        {
+          "name": "package-report.json",
+          "size": 1485,
+          "sha256": "cf87438fc0500885886c121eba93e888c0e40569037caf96fbe5b14d9bc8e207",
+          "url": "https://github.com/SyedSU/EvidenceBot/releases/download/untagged-d097c6b74fdaa1780b18/package-report.json"
+        },
+        {
+          "name": "review-build.json",
+          "size": 1003,
+          "sha256": "9f7e034b90c52429750948b6369214dae1e853c53c0194f57aa486b8beeaf610",
+          "url": "https://github.com/SyedSU/EvidenceBot/releases/download/untagged-d097c6b74fdaa1780b18/review-build.json"
+        },
+        {
+          "name": "windows-smoke.log",
+          "size": 109,
+          "sha256": "46c7cc5e3b97a423a83d3d7f67287db86cdad4c41ff2ec27bf5a22047c484834",
+          "url": "https://github.com/SyedSU/EvidenceBot/releases/download/untagged-d097c6b74fdaa1780b18/windows-smoke.log"
+        }
+      ]
+    }
+  ]
+}
